@@ -1,6 +1,86 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-06-30",
+      date: "2026-06-30",
+      title: "Agentic coding 進入開源協作與本地開發加速期",
+      topic: "Agentic Coding",
+      impact: "中高",
+      memory: "今天要記住：AI coding 的競爭焦點正從單一大模型能力，轉向多代理協作、可本地部署與可驗收的工程流程。",
+      status: "未讀",
+      summary:
+        "近 24 小時沒有足夠強的新 Codex 或 Hermes 官方公開更新可單獨成篇，但全球 AI 社群對 agentic coding 的討論明顯升溫。從 Qwen 3.6 27B 的本地開發熱度，到 Ornith-1 與 Micro-Agent 這類強調協作與自我改進的開源方向，都在提醒企業導入 AI coding 時要同時思考模型、編排、驗收與成本。",
+      tags: ["Agent", "開發工具", "開源", "AI FDE"],
+      signals: [
+        {
+          type: "官方/產品",
+          title: "Codex / Hermes 近 24 小時未見夠強的公開更新",
+          text: "今天先檢查公開產品更新，沒有找到新的官方功能、版本或能力公告足以單獨成為主題。",
+          why: "這代表今天更值得學的是社群與開源側正在形成的新實作方向，而不是追逐不存在的硬新聞。"
+        },
+        {
+          type: "全球社群",
+          title: "Qwen 3.6 27B 成為本地開發熱門焦點",
+          text: "Hacker News 上對 Qwen 3.6 27B 的討論快速升溫，焦點集中在本地開發可用性、成本與效能平衡。",
+          why: "企業 PoC 不一定每次都要用最大全球模型，能本地跑、能控制成本、能調整流程的模型更接近實務需求。"
+        },
+        {
+          type: "GitHub 熱門專案",
+          title: "agency-agents 登上 GitHub Trending",
+          text: "多代理協作框架出現在當日 Trending，說明 agent orchestration 已從概念討論走向可直接試作的工程工具。",
+          why: "AI FDE 要開始理解任務拆分、角色分工與代理之間的狀態管理，而不只是單輪 prompt。"
+        },
+        {
+          type: "研究/開源模型",
+          title: "Ornith-1.0 主打自我改進的 agentic coding",
+          text: "社群關注自我 scaffolding 與迭代改寫能力，代表 coding agent 開始往持續修正、持續合作的工作型態演進。",
+          why: "這能幫你把 AI coding 從一次性產生程式碼，改成可追蹤、可修補、可驗收的開發流程。"
+        },
+        {
+          type: "開源工具",
+          title: "vLLM 提出 Micro-Agent 協作思路",
+          text: "Micro-Agent 把多角色協作放進模型 API 使用流程，強調用協作策略而不只是更大模型來提升解題表現。",
+          why: "未來方案設計不只比模型名稱，還要比推論編排、代理協作與整體成本結構。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "如果多代理協作與本地模型已能覆蓋不少開發任務，企業就能用更低成本建立可控的 AI coding 流程。"
+        },
+        {
+          label: "疑慮風險",
+          text: "代理變多後，系統也更難除錯與驗收；若沒有 trace、評估與回退設計，複雜度可能超過效益。"
+        },
+        {
+          label: "後續追蹤",
+          text: "接下來值得看哪些團隊能把 agent trace、任務評估、成本監控與模型替換做成穩定產品，而不只是 demo。"
+        }
+      ],
+      term: {
+        name: "Agentic Coding",
+        definition:
+          "Agentic coding 是讓模型不只回一段程式碼，而是能拆任務、讀檔、修改、驗證、重試，像工程助理一樣完成一段工作流程。",
+        example:
+          "例如把需求拆成讀 repo、找錯誤、改檔、跑檢查與整理變更摘要，而不是只要求模型一次寫完函式。",
+        misunderstanding:
+          "Agentic coding 不是把聊天機器人包成 IDE 插件就算完成；真正關鍵是流程控制、可觀測性與驗收機制。"
+      },
+      fde: {
+        scenario:
+          "客戶希望為內部開發團隊導入 AI coding 助理，但擔心雲端模型成本過高，且每次輸出都難以驗收。",
+        questions: [
+          "哪些任務適合先交給單代理，哪些需要多代理協作？",
+          "是否需要保留 agent trace、版本差異與檢查結果供稽核？",
+          "本地模型、雲端模型與人工覆核要如何分工，才能兼顧成本與品質？"
+        ],
+        exercise:
+          "設計一個 AI coding PoC 流程圖，至少拆成需求解析、檔案修改、測試檢查、人工覆核四段，並標示每段的風險控點。",
+        interview:
+          "我會先把 AI coding 任務拆成可觀測的幾個步驟，再決定哪些步驟用本地模型、哪些保留人工覆核，避免直接追求全自動。"
+      }
+    },
+    {
       id: "2026-06-29",
       date: "2026-06-29",
       title: "模型蒸餾爭議把 AI 競爭推向治理問題",
@@ -186,15 +266,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "AI 競爭正在從單純模型能力，轉向授權、發布節奏、評估與企業治理。"
+      text: "AI 競爭正在從單純模型能力，轉向授權治理、發布節奏，以及 agentic workflow 的實作能力。"
     },
     {
       title: "本週名詞",
-      text: "Model Distillation、Limited Preview、Task-based Evaluation。"
+      text: "Agentic Coding、Model Distillation、Limited Preview。"
     },
     {
       title: "本週練習",
-      text: "把一個 AI PoC 拆成資料來源、驗收指標、風險監控與回退方案。"
+      text: "把一個 AI PoC 拆成資料來源、代理流程、驗收指標、風險監控與回退方案。"
     }
   ]
 };
