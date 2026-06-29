@@ -2,6 +2,8 @@
 
 Public-safe AI learning journal for GitHub Pages.
 
+Live site: <https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/>
+
 ## Purpose
 
 This project turns the daily AI learning workflow into a browsable learning site:
@@ -31,4 +33,4 @@ Do not add company confidential data, personal mailbox details, API keys, tokens
 
 ## GitHub Pages
 
-The project can be published from the repository root using GitHub Pages. No build output directory is required.
+The project is published from the repository root using GitHub Pages. No build output directory is required.

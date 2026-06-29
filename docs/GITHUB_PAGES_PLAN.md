@@ -1,17 +1,17 @@
-# GitHub Pages Plan
+# GitHub Pages Maintenance
 
-## Recommended Setup
+## Current Setup
 
-1. Create a dedicated repository for this project.
-2. Keep the repository public-safe.
-3. Publish from the repository root with GitHub Pages.
-4. Keep `index.html`, `styles.css`, `app.js`, `data/`, and `assets/` at the root level.
+- Repository: <https://github.com/zzzzzzzzzzphoebe/phoebe-ai-learning>
+- GitHub Pages: <https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/>
+- Source: `main` branch, repository root
+- Build mode: static files, no build step
 
-## Suggested Repository Name
+Keep the repository public-safe. Keep `index.html`, `styles.css`, `app.js`, `data/`, and `assets/` at the root level.
 
-`phoebe-ai-learning`
+## Manual Recovery Flow
 
-## Manual Publish Flow
+Use this only if the repository needs to be recreated from a fresh local copy:
 
 ```bash
 cd /Users/ye/Desktop/Phoebe/04-Projects/10-ai-learning-journal
@@ -22,7 +22,7 @@ git commit -m "Initial AI learning journal"
 gh repo create phoebe-ai-learning --public --source=. --remote=origin --push
 ```
 
-Then enable GitHub Pages:
+Then enable GitHub Pages from:
 
 ```text
 Settings -> Pages -> Build and deployment -> Deploy from a branch -> main /(root)
