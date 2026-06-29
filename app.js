@@ -30,6 +30,7 @@ function renderToday() {
   $("#entry-impact").textContent = entry.impact;
   $("#entry-status").textContent = status;
   $("#entry-memory").textContent = entry.memory;
+  renderSignals(entry);
 
   $("#debate-list").innerHTML = entry.debate
     .map(
@@ -52,6 +53,26 @@ function renderToday() {
   $("#fde-exercise").textContent = entry.fde.exercise;
   $("#fde-interview").textContent = entry.fde.interview;
   $("[data-next-status]").textContent = nextStatusLabel(status);
+}
+
+function renderSignals(entry) {
+  const signals = entry.signals || [];
+  $("#signals-list").innerHTML = signals.length
+    ? signals
+        .map(
+          (signal) => `
+            <article class="signal-card">
+              <div class="signal-type">${signal.type}</div>
+              <div>
+                <h3>${signal.title}</h3>
+                <p>${signal.text}</p>
+                <strong>${signal.why}</strong>
+              </div>
+            </article>
+          `
+        )
+        .join("")
+    : `<article class="signal-card"><div class="signal-type">待補</div><div><h3>今日尚未整理多訊號</h3><p>後續每日任務會固定納入社群與 GitHub 熱門專案。</p></div></article>`;
 }
 
 function nextStatusLabel(status) {
@@ -79,6 +100,7 @@ function matchesEntry(entry) {
     entry.topic,
     entry.summary,
     entry.memory,
+    ...(entry.signals || []).flatMap((signal) => [signal.type, signal.title, signal.text, signal.why]),
     entry.term.name,
     entry.term.definition,
     entry.fde.scenario,

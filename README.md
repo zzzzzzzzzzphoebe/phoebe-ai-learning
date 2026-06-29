@@ -9,6 +9,7 @@ Live site: <https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/>
 This project turns the daily AI learning workflow into a browsable learning site:
 
 - latest AI event or product/research movement
+- global AI community signals and GitHub trending projects
 - hot debate and follow-up signals
 - important AI term explained in plain language
 - AI Field Deployment Engineer practice prompt
