@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Phoebe AI Learning is a public-safe daily AI learning journal for tracking AI news, debates, terms, and AI FDE practice."
+    />
+    <title>Phoebe AI Learning</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23d9f2ee'/%3E%3Cpath d='M15 34c8-15 23-22 43-19-4 21-17 34-38 40' fill='none' stroke='%230f766e' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M26 43c9-2 17-8 24-18' fill='none' stroke='%230f766e' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#today" aria-label="Phoebe AI Learning home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M4 12.4c2.8-5 7.8-7.2 14.9-6.5-1.4 7.2-5.5 11.7-12.4 13.5" />
+            <path d="M8.8 15.5c2.9-.7 5.5-2.6 7.7-5.8" />
+            <path d="M5.4 18.3 3.8 21" />
+          </svg>
+        </span>
+        <span>Phoebe AI Learning</span>
+      </a>
+      <nav class="top-nav" aria-label="主要導覽">
+        <a href="#today">今日</a>
+        <a href="#debate">討論</a>
+        <a href="#terms">名詞</a>
+        <a href="#fde">FDE</a>
+        <a href="#archive">檔案</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-grid" id="today" aria-labelledby="today-title">
+        <div class="focus-panel">
+          <div class="section-label">Daily brief</div>
+          <p class="date-line" id="entry-date"></p>
+          <h1 id="today-title"></h1>
+          <p class="summary" id="entry-summary"></p>
+          <div class="focus-actions">
+            <button class="primary-action" type="button" data-scroll-target="#fde">
+              今天的練習
+            </button>
+            <button class="secondary-action" type="button" data-scroll-target="#archive">
+              查看近期
+            </button>
+          </div>
+          <dl class="signal-grid" aria-label="今日重點指標">
+            <div>
+              <dt>主題</dt>
+              <dd id="entry-topic"></dd>
+            </div>
+            <div>
+              <dt>影響</dt>
+              <dd id="entry-impact"></dd>
+            </div>
+            <div>
+              <dt>學習狀態</dt>
+              <dd id="entry-status"></dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside class="radar-panel" aria-label="AI news radar">
+          <img src="./assets/ai-news-radar.png" alt="抽象 AI 全球訊號雷達圖" />
+          <div class="radar-caption">
+            <span>World AI radar</span>
+            <strong id="entry-memory"></strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="toolbar" aria-label="學習資料篩選">
+        <label class="search-box">
+          <span class="visually-hidden">搜尋學習筆記</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6" />
+            <path d="m16 16 4 4" />
+          </svg>
+          <input id="search-input" type="search" placeholder="搜尋 AI 名詞、主題、FDE 情境" />
+        </label>
+        <div class="filter-tags" id="filter-tags" aria-label="主題標籤"></div>
+      </section>
+
+      <section class="learning-grid" aria-label="今日學習內容">
+        <article class="panel debate-panel" id="debate">
+          <div class="panel-heading">
+            <div>
+              <div class="section-label">Hot debate</div>
+              <h2>熱門討論</h2>
+            </div>
+            <button class="icon-button" type="button" data-copy-section="debate" aria-label="複製熱門討論">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="8" y="8" width="10" height="12" rx="2" />
+                <path d="M6 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+          <div class="stance-list" id="debate-list"></div>
+        </article>
+
+        <article class="panel term-panel" id="terms">
+          <div class="panel-heading">
+            <div>
+              <div class="section-label">Key term</div>
+              <h2>重要名詞</h2>
+            </div>
+            <button class="status-button" type="button" data-next-status>標記已讀</button>
+          </div>
+          <div class="term-card">
+            <p class="term-name" id="term-name"></p>
+            <p id="term-definition"></p>
+            <div class="term-columns">
+              <div>
+                <h3>實務例子</h3>
+                <p id="term-example"></p>
+              </div>
+              <div>
+                <h3>常見誤解</h3>
+                <p id="term-misunderstanding"></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel fde-panel" id="fde">
+          <div class="panel-heading">
+            <div>
+              <div class="section-label">AI FDE practice</div>
+              <h2>轉職練習</h2>
+            </div>
+            <button class="icon-button" type="button" data-copy-section="fde" aria-label="複製 FDE 練習">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M8.7 14.9a6 6 0 1 1 6.6 0c-.8.5-1.3 1.2-1.3 2.1h-4c0-.9-.5-1.6-1.3-2.1Z" />
+              </svg>
+            </button>
+          </div>
+          <div class="practice-layout">
+            <div>
+              <h3>客戶情境</h3>
+              <p id="fde-scenario"></p>
+            </div>
+            <div>
+              <h3>需求釐清</h3>
+              <ul id="fde-questions"></ul>
+            </div>
+            <div>
+              <h3>今日小練習</h3>
+              <p id="fde-exercise"></p>
+            </div>
+            <div>
+              <h3>面試可用表述</h3>
+              <p id="fde-interview"></p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="archive-section" id="archive" aria-labelledby="archive-title">
+        <div class="archive-heading">
+          <div>
+            <div class="section-label">Learning archive</div>
+            <h2 id="archive-title">近期學習檔案</h2>
+          </div>
+          <p>用同一套結構沉澱每天的 AI 事件、爭論、名詞與實務練習。</p>
+        </div>
+        <div class="archive-list" id="archive-list"></div>
+      </section>
+
+      <section class="weekly-strip" aria-labelledby="weekly-title">
+        <div>
+          <div class="section-label">Weekly review</div>
+          <h2 id="weekly-title">本週回顧</h2>
+        </div>
+        <div class="weekly-items" id="weekly-items"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Public-safe AI learning notes for GitHub Pages. No private mailbox, company data, API keys, or internal records.</p>
+    </footer>
+
+    <script src="./data/learning-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
