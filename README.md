@@ -10,6 +10,8 @@ This project turns the daily AI learning workflow into a browsable learning site
 
 - latest AI event or product/research movement
 - global AI community signals and GitHub trending projects
+- source links for website reading, grouped by official, community, GitHub, paper, and media sources
+- a three-step learning path: quick read, deep read, and FDE practice
 - hot debate and follow-up signals
 - important AI term explained in plain language
 - AI Field Deployment Engineer practice prompt

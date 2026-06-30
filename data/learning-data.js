@@ -9,40 +9,126 @@ window.AI_LEARNING_DATA = {
       memory: "今天要記住：AI coding 的競爭焦點正從單一大模型能力，轉向多代理協作、可本地部署與可驗收的工程流程。",
       status: "未讀",
       summary:
-        "近 24 小時沒有足夠強的新 Codex 或 Hermes 官方公開更新可單獨成篇，但全球 AI 社群對 agentic coding 的討論明顯升溫。從 Qwen 3.6 27B 的本地開發熱度，到 Ornith-1 與 Micro-Agent 這類強調協作與自我改進的開源方向，都在提醒企業導入 AI coding 時要同時思考模型、編排、驗收與成本。",
+        "近 24 小時沒有足夠強的新 Codex 或 Hermes 官方公開更新可單獨成篇，但 AI coding 的主題很明顯：使用量暴增、成本控管變嚴、agentic workflow 從 demo 走向可驗收工程。今天要同時看 GitHub Copilot 的商業訊號、開源 agent inference 系統、以及 agent harness 這類把流程寫進程式的研究路線。",
       tags: ["Agent", "開發工具", "開源", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先看全球 AI 重要訊號，掌握 GitHub Copilot 使用量與成本、ThunderAgent、LLM-as-Code、vLLM 這幾個方向。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "理解 agentic coding 的重點不是只換更強模型，而是把控制流、成本、trace、驗收與回退變成工程流程。"
+        },
+        {
+          label: "今日練習",
+          text: "把一個 AI coding PoC 拆成需求解析、檔案修改、測試檢查、成本監控、人工覆核五個步驟。"
+        }
+      ],
       signals: [
         {
           type: "官方/產品",
+          priority: "觀察",
           title: "Codex / Hermes 近 24 小時未見夠強的公開更新",
           text: "今天先檢查公開產品更新，沒有找到新的官方功能、版本或能力公告足以單獨成為主題。",
-          why: "這代表今天更值得學的是社群與開源側正在形成的新實作方向，而不是追逐不存在的硬新聞。"
+          why: "這代表今天更值得學的是 AI coding 產業與開源側正在形成的新實作方向，而不是追逐不存在的硬新聞。",
+          learningPoint: "每天要先分清楚：官方產品更新、社群熱點、開源工具和研究脈絡不是同一種訊號。",
+          sources: [
+            {
+              label: "Phoebe site context",
+              kind: "內部紀錄",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
         },
         {
-          type: "全球社群",
-          title: "Qwen 3.6 27B 成為本地開發熱門焦點",
-          text: "Hacker News 上對 Qwen 3.6 27B 的討論快速升溫，焦點集中在本地開發可用性、成本與效能平衡。",
-          why: "企業 PoC 不一定每次都要用最大全球模型，能本地跑、能控制成本、能調整流程的模型更接近實務需求。"
+          type: "產業/商業",
+          priority: "高",
+          title: "AI coding 需求推高 GitHub 使用量",
+          text: "GitHub 內部會議訊號顯示，Copilot 與 AI coding 需求帶動平台使用量創高；這也讓計費、容量與服務穩定性變成更重要的企業議題。",
+          why: "AI coding 從個人效率工具變成企業基礎設施後，採購與導入不能只看功能，還要看用量、成本、SLA 與可治理性。",
+          learningPoint: "當一個 AI 工具開始按用量計費，FDE 要能把技術價值翻成成本模型與使用規範。",
+          sources: [
+            {
+              label: "Business Insider",
+              kind: "媒體",
+              url: "https://www.businessinsider.com/github-best-month-ever-internal-meeting-2026-6"
+            },
+            {
+              label: "Copilot pricing reaction",
+              kind: "媒體",
+              url: "https://www.businessinsider.com/github-copilot-token-uage-pricing-change-reaction-2026-6"
+            }
+          ]
         },
         {
-          type: "GitHub 熱門專案",
-          title: "agency-agents 登上 GitHub Trending",
-          text: "多代理協作框架出現在當日 Trending，說明 agent orchestration 已從概念討論走向可直接試作的工程工具。",
-          why: "AI FDE 要開始理解任務拆分、角色分工與代理之間的狀態管理，而不只是單輪 prompt。"
+          type: "研究/開源",
+          priority: "高",
+          title: "ThunderAgent 把 agentic inference 當成可排程系統",
+          text: "ThunderAgent 主張把 agentic workflow 抽象成 LLM Programs，讓推論引擎能理解 KV cache、工具環境與流程狀態，而不是把每次模型呼叫分開處理。",
+          why: "這把 AI agent 的瓶頸從 prompt 轉到系統工程：排程、快取、工具資源、吞吐量與可重現部署。",
+          learningPoint: "面對企業 agent 導入，要問的不只是模型準不準，還要問 serving 架構能不能支撐多步驟工作流。",
+          sources: [
+            {
+              label: "arXiv",
+              kind: "論文",
+              url: "https://arxiv.org/abs/2602.13692"
+            },
+            {
+              label: "GitHub Repo",
+              kind: "GitHub",
+              url: "https://github.com/ThunderAgent-org/ThunderAgent"
+            }
+          ]
         },
         {
-          type: "研究/開源模型",
-          title: "Ornith-1.0 主打自我改進的 agentic coding",
-          text: "社群關注自我 scaffolding 與迭代改寫能力，代表 coding agent 開始往持續修正、持續合作的工作型態演進。",
-          why: "這能幫你把 AI coding 從一次性產生程式碼，改成可追蹤、可修補、可驗收的開發流程。"
+          type: "研究/架構",
+          priority: "中高",
+          title: "LLM-as-Code 主張控制流回到程式",
+          text: "LLM-as-Code / Agentic Programming 的核心觀點是：不要讓模型自己決定所有 loop、branch、stop；程式負責控制流，模型只在需要推理或生成時被呼叫。",
+          why: "這對 AI FDE 很重要，因為企業最怕的是不可預測、不可重現、不可驗收；把控制流寫成程式能降低這些風險。",
+          learningPoint: "設計 agent 時，可以把模型當成能力元件，而不是把整個流程都交給模型自由發揮。",
+          sources: [
+            {
+              label: "arXiv",
+              kind: "論文",
+              url: "https://arxiv.org/abs/2606.15874"
+            }
+          ]
         },
         {
           type: "開源工具",
-          title: "vLLM 提出 Micro-Agent 協作思路",
-          text: "Micro-Agent 把多角色協作放進模型 API 使用流程，強調用協作策略而不只是更大模型來提升解題表現。",
-          why: "未來方案設計不只比模型名稱，還要比推論編排、代理協作與整體成本結構。"
+          priority: "中",
+          title: "vLLM 代表推論基礎設施成為 agent 方案底座",
+          text: "vLLM 生態提醒我們，高吞吐、低延遲、批次化、KV cache 管理與 OpenAI-compatible API，是多 agent / coding agent 成本控制的底層能力。",
+          why: "如果客戶要把 agentic coding 擴到團隊層級，推論服務與成本控管會比單次 demo 更重要。",
+          learningPoint: "評估 agent 平台時，要同時看 model、orchestration、serving、observability 四層。",
+          sources: [
+            {
+              label: "vLLM GitHub",
+              kind: "GitHub",
+              url: "https://github.com/vllm-project/vllm"
+            },
+            {
+              label: "vLLM project",
+              kind: "官方",
+              url: "https://vllm.ai"
+            }
+          ]
         }
       ],
+      deepDive: {
+        context:
+          "AI coding 正在從早期的「問模型幫我寫一段程式」，走向能讀 repo、改檔、執行檢查、重試、整理差異、甚至多代理協作的工作流。這讓企業看到效率，也讓成本、穩定性與責任邊界變得更嚴肅。",
+        whyNow:
+          "GitHub Copilot 使用量上升與 usage-based pricing 討論，說明 AI coding 已經變成真實成本中心；同時 ThunderAgent、LLM-as-Code 等研究把焦點放到 agentic workflow 的控制與部署，代表社群正在補工程化缺口。",
+        technicalBackground:
+          "傳統 chat-based coding 主要依賴單次上下文與模型能力；agentic coding 則需要任務規劃、工具呼叫、檔案狀態、測試回饋、trace、回退方案。當代理流程變長，控制流是否由模型自由決定，或由程式明確編排，就會直接影響可靠性。",
+        enterpriseImpact:
+          "企業導入時，FDE 必須把「提高開發效率」拆成可衡量指標：任務完成率、人工覆核時間、測試通過率、每次任務 token 成本、失敗回退成本、資料外洩風險與稽核紀錄。",
+        watchNext:
+          "接下來要追蹤三件事：AI coding 平台如何提供成本上限與 usage analytics；開源 agent 框架是否開始內建 trace/eval；推論引擎是否更懂 agent workflow，而不只是服務單次 prompt。"
+      },
       debate: [
         {
           label: "支持觀點",
