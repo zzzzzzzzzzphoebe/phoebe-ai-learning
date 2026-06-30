@@ -33,6 +33,8 @@ function renderToday() {
   renderReadingPath(entry);
   renderSignals(entry);
   renderDeepDive(entry);
+  renderToolUse(entry);
+  renderQuotaStrategy(entry);
 
   $("#debate-list").innerHTML = entry.debate
     .map(
@@ -55,6 +57,58 @@ function renderToday() {
   $("#fde-exercise").textContent = entry.fde.exercise;
   $("#fde-interview").textContent = entry.fde.interview;
   $("[data-next-status]").textContent = nextStatusLabel(status);
+}
+
+function renderToolUse(entry) {
+  const items = entry.toolUseRadar || [];
+  $("#tool-use-grid").innerHTML = items.length
+    ? items
+        .map(
+          (item) => `
+            <article class="tool-radar-card">
+              <div class="tool-radar-kicker">${item.tool}</div>
+              <h3>${item.pattern}</h3>
+              <ul>
+                ${(item.examples || []).map((example) => `<li>${example}</li>`).join("")}
+              </ul>
+              ${item.learningPoint ? `<strong>${item.learningPoint}</strong>` : ""}
+              ${renderSources(item.sources)}
+            </article>
+          `
+        )
+        .join("")
+    : `<article class="tool-radar-card"><div class="tool-radar-kicker">待補</div><h3>今日尚未整理 AI 工具用法</h3><p>後續每日任務會固定追蹤 Codex、Hermes、Claude 與其他 AI 工具的實際用法。</p></article>`;
+}
+
+function renderQuotaStrategy(entry) {
+  const strategy = entry.quotaStrategy;
+  if (!strategy) {
+    $("#quota-layout").innerHTML =
+      `<article class="quota-card"><h3>額度策略待補</h3><p>後續每日任務會補上 Codex Pro 額度應投入的專案、配置方式與避免浪費的任務。</p></article>`;
+    return;
+  }
+  const lists = [
+    ["最值得投入的專案", strategy.bestProjects || []],
+    ["本週配置", strategy.weeklyPlan || []],
+    ["避免浪費", strategy.avoid || []]
+  ];
+  $("#quota-layout").innerHTML = `
+    <article class="quota-card quota-principle">
+      <h3>使用原則</h3>
+      <p>${strategy.principle}</p>
+      ${renderSources(strategy.sources)}
+    </article>
+    ${lists
+      .map(
+        ([title, items]) => `
+          <article class="quota-card">
+            <h3>${title}</h3>
+            <ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </article>
+        `
+      )
+      .join("")}
+  `;
 }
 
 function renderSignals(entry) {
@@ -179,6 +233,22 @@ function matchesEntry(entry) {
     ]),
     ...(entry.readingPath || []).flatMap((item) => [item.label, item.text]),
     ...(entry.deepDive ? Object.values(entry.deepDive) : []),
+    ...(entry.toolUseRadar || []).flatMap((item) => [
+      item.tool,
+      item.pattern,
+      item.learningPoint,
+      ...(item.examples || []),
+      ...(item.sources || []).flatMap((source) => [source.label, source.kind])
+    ]),
+    ...(entry.quotaStrategy
+      ? [
+          entry.quotaStrategy.principle,
+          ...(entry.quotaStrategy.bestProjects || []),
+          ...(entry.quotaStrategy.weeklyPlan || []),
+          ...(entry.quotaStrategy.avoid || []),
+          ...(entry.quotaStrategy.sources || []).flatMap((source) => [source.label, source.kind])
+        ]
+      : []),
     entry.term.name,
     entry.term.definition,
     entry.fde.scenario,

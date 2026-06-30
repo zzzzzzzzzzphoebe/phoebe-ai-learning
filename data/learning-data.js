@@ -129,6 +129,118 @@ window.AI_LEARNING_DATA = {
         watchNext:
           "接下來要追蹤三件事：AI coding 平台如何提供成本上限與 usage analytics；開源 agent 框架是否開始內建 trace/eval；推論引擎是否更懂 agent workflow，而不只是服務單次 prompt。"
       },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 repo 級任務交給 agent 做到可驗收",
+          examples: [
+            "修 bug 前先讀 AGENTS.md、git status、測試與錯誤 log，再提出最小修改。",
+            "把重複流程做成每日排程、靜態網站、報表或可重跑腳本。",
+            "做 code review、測試補洞、文件更新、PR 摘要與部署前檢查。"
+          ],
+          learningPoint: "Codex 的價值在長流程與可驗證成果，不在一次問答。",
+          sources: [
+            {
+              label: "OpenAI Codex",
+              kind: "官方",
+              url: "https://openai.com/codex/"
+            },
+            {
+              label: "Codex pricing",
+              kind: "官方",
+              url: "https://developers.openai.com/codex/pricing"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把本機工作流變成可維護的個人系統",
+          examples: [
+            "整理每日 AI 學習網站、排程、寄信、sidecar memory 與 GitHub Pages 發布狀態。",
+            "連接本機檔案、長期 workspace、工具入口與個人偏好，減少每天重新說明。",
+            "把零散任務沉澱成可追蹤的工作區、專案索引與自動化紀錄。"
+          ],
+          learningPoint: "Hermes 類工具最適合做個人作業系統：記住脈絡、維護流程、幫你收斂輸出。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude Code",
+          pattern: "用對話式 coding agent 處理大型修改與理解陌生 codebase",
+          examples: [
+            "請 agent 解釋架構、定位 bug、修改多檔案並跑測試。",
+            "把自然語言需求轉成可審查的 diff，而不是只產生片段程式碼。",
+            "用在重構、測試、文件與資料處理腳本這類需要讀上下文的任務。"
+          ],
+          learningPoint: "Claude Code 的學習重點是 prompt less, inspect more：讓 agent 先讀環境，再動手改。",
+          sources: [
+            {
+              label: "Claude Code overview",
+              kind: "官方",
+              url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+            }
+          ]
+        },
+        {
+          tool: "其他 AI 工具",
+          pattern: "把 AI 拆成研究、寫作、設計、資料與開發的專門工具鏈",
+          examples: [
+            "GitHub Copilot 偏向 IDE 內即時補全、聊天與日常 coding 輔助。",
+            "Perplexity / ChatGPT Deep Research 類工具適合做有來源的快速研究起點。",
+            "vLLM、local model 與開源 agent repo 適合用來理解成本、部署與可控性。"
+          ],
+          learningPoint: "不要只比較模型名，應該比較任務：研究、開發、整理、部署、驗收各自需要不同工具。",
+          sources: [
+            {
+              label: "GitHub Copilot docs",
+              kind: "官方",
+              url: "https://docs.github.com/en/copilot"
+            },
+            {
+              label: "vLLM",
+              kind: "開源",
+              url: "https://vllm.ai"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "Codex Pro 額度應優先用在會產生長期資產的專案：能 commit、能部署、能測試、能重複使用、能累積作品集。一次性翻譯、簡短問答、單段文案應交給一般 ChatGPT 或等低成本時段處理。",
+        bestProjects: [
+          "個人 AI 學習網站：每天新增內容、來源、趨勢分類與搜尋功能，累積可展示作品。",
+          "AI FDE 作品集：做 3-5 個可公開 demo，例如 RAG 知識庫、agentic coding 流程、評估 dashboard、成本監控工具。",
+          "工作流自動化：把重複整理、寄信、報表、資料清洗、檔案歸檔做成腳本或排程。",
+          "既有專案升級：讓 Codex 讀整個 repo，補測試、修 bug、重構、寫 README、整理部署流程。"
+        ],
+        weeklyPlan: [
+          "60% 額度投入可發布專案：網站、dashboard、工具、automation。",
+          "25% 額度投入學習與研究：追蹤 AI 社群、GitHub 熱門 repo、論文與官方更新。",
+          "15% 額度投入維護：code review、測試、文件、整理 backlog 與修小 bug。"
+        ],
+        avoid: [
+          "不要把 Pro 額度花在可以一次問完的小知識、翻譯或短摘要。",
+          "不要在需求不清楚時直接叫 Codex 大改；先請它讀 repo、列風險、提出小步驟。",
+          "不要只追求產生很多檔案；每次任務都要留下可驗收結果，例如測試通過、網站更新、commit 或報告。"
+        ],
+        sources: [
+          {
+            label: "OpenAI Codex",
+            kind: "官方",
+            url: "https://openai.com/codex/"
+          },
+          {
+            label: "Codex pricing",
+            kind: "官方",
+            url: "https://developers.openai.com/codex/pricing"
+          }
+        ]
+      },
       debate: [
         {
           label: "支持觀點",

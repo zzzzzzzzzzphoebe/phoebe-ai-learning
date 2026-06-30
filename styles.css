@@ -136,6 +136,8 @@ main {
 .signals-section,
 .learning-path,
 .deep-dive-section,
+.tool-use-section,
+.quota-section,
 .weekly-strip {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -542,6 +544,80 @@ h3 {
   line-height: 1.62;
 }
 
+.tool-use-section,
+.quota-section {
+  margin-bottom: 18px;
+  padding: 24px;
+}
+
+.tool-radar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tool-radar-card,
+.quota-card {
+  padding: 14px;
+  background: #fbfcfd;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.tool-radar-kicker {
+  width: fit-content;
+  min-height: 28px;
+  margin-bottom: 10px;
+  padding: 6px 9px;
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--accent-soft);
+  border-radius: 7px;
+}
+
+.tool-radar-card h3,
+.quota-card h3 {
+  font-size: 17px;
+}
+
+.tool-radar-card p,
+.tool-radar-card strong,
+.quota-card p,
+.quota-card li {
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.tool-radar-card strong {
+  display: block;
+  margin: 12px 0;
+  color: var(--accent-strong);
+  font-size: 13px;
+}
+
+.tool-radar-card ul,
+.quota-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.tool-radar-card li + li,
+.quota-card li + li {
+  margin-top: 6px;
+}
+
+.quota-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.15fr) repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.quota-principle {
+  background: var(--accent-soft);
+  border-color: rgba(15, 118, 110, 0.22);
+}
+
 .panel {
   padding: 24px;
 }
@@ -796,6 +872,8 @@ h3 {
   .signals-list,
   .path-items,
   .deep-dive-grid,
+  .tool-radar-grid,
+  .quota-layout,
   .weekly-strip {
     grid-template-columns: 1fr;
   }
