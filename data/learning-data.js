@@ -1,6 +1,279 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-01",
+      date: "2026-07-01",
+      title: "Claude Sonnet 5 把 AI coding 拉進長流程工程化競爭",
+      topic: "AI Coding",
+      impact: "高",
+      memory: "今天要記住：新一代 coding 模型的競爭，已經不只是寫得更快，而是能不能在長流程任務中維持可控、可驗收、可治理。",
+      status: "未讀",
+      summary:
+        "2026-06-30 最值得深讀的公開更新，是 Anthropic 正式推出 Claude Sonnet 5。這件事重要，不只是因為模型變強，而是官方訊息、Claude Code 實務脈絡與 HN 社群反應都在指向同一個方向：AI coding 正在往長流程任務、checkpoint、可回退與可治理工程化前進。同一天，Google 也把 Gemini 2.5 Flash-Lite Image 推到更輕量的多模態工作流，開源社群則由 Qwen-AgentWorld 與 GLM-5.2 持續推高 agent 與本地模型熱度。",
+      tags: ["AI Coding", "Agent", "Claude", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先看 Claude Sonnet 5、Gemini 2.5 Flash-Lite Image、Qwen-AgentWorld、GLM-5.2 這四個方向，快速抓住今天的產品與開源重點。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把 Claude Sonnet 5 當成一個訊號：AI coding 的真正差異點，正在從單次補全，轉向長流程任務中的 checkpoint、差異整理、可回退與驗收機制。"
+        },
+        {
+          label: "今日練習",
+          text: "設計一個 coding agent workflow，至少包含需求解析、改檔、檢查、人工核准、失敗回退五段，並定義每段的驗收訊號。"
+        }
+      ],
+      signals: [
+        {
+          type: "官方/產品",
+          priority: "觀察",
+          title: "Codex / Hermes 近 24 小時未見值得單獨成篇的公開更新",
+          text: "今天先檢查 Codex 與 Hermes 相關公開更新，近 24 小時沒有新的官方功能、版本或能力公告強到需要獨立成篇。",
+          why: "這讓今天更適合把重點放在公開可驗證、且已開始被社群大規模討論的 AI coding 主線，而不是硬追不存在的官方快訊。",
+          learningPoint: "每日學習先判斷今天是『產品發布日』還是『實務脈絡成形日』，兩者的讀法不同。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          type: "官方/產品",
+          priority: "高",
+          title: "Anthropic 在 2026-06-30 推出 Claude Sonnet 5",
+          text: "Anthropic 正式發布 Claude Sonnet 5，主打更好的 coding 表現，並把長流程工作中的 checkpoint、恢復與穩定性放到更前面的位置。",
+          why: "這不是單純模型升級，而是在告訴市場：企業真正願意付費的是可持續工作的 coding agent，而不是只會一次產生程式碼的聊天模型。",
+          learningPoint: "看 AI coding 更新時，要特別注意模型能力之外的流程性訊號，例如 checkpoint、恢復、差異管理與長任務可靠性。",
+          sources: [
+            {
+              label: "Anthropic announcement",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/claude-sonnet-5"
+            },
+            {
+              label: "Claude Code overview",
+              kind: "官方文件",
+              url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+            }
+          ]
+        },
+        {
+          type: "官方/多模態",
+          priority: "中高",
+          title: "Google 推進 Gemini 2.5 Flash-Lite Image，讓輕量模型也能進入多模態工作流",
+          text: "Google DeepMind 把 Gemini 2.5 Flash-Lite Image 推向更便宜、反應更快的圖片生成與編輯場景，代表多模態能力正往更大眾、更可嵌入流程的方向走。",
+          why: "企業導入 AI 時，未必每一步都需要最強模型；更常見的是把較輕量模型接進客服、內部工具、內容製作或文件處理流程。",
+          learningPoint: "AI FDE 需要學會分層選模：高價前沿模型負責高價值推理，輕量模型負責大量、可模板化的工作流步驟。",
+          sources: [
+            {
+              label: "Gemini 2.5 Flash-Lite Image",
+              kind: "官方",
+              url: "https://deepmind.google/models/gemini-image/flash-lite/"
+            }
+          ]
+        },
+        {
+          type: "研究/開源",
+          priority: "中高",
+          title: "Qwen-AgentWorld 把語言世界模型推向可執行代理場景",
+          text: "Qwen 團隊公開 Qwen-AgentWorld 的論文與 GitHub repo，把可模擬、多步驟、可與環境互動的 language world model 往 agent 實作再推進一步。",
+          why: "這條線的重要性在於，未來 agent 不只靠 prompt chaining，而可能需要更強的環境建模、記憶與行動規劃能力。",
+          learningPoint: "讀 agent 研究時，要開始留意『環境建模』與『多步驟世界狀態』，而不是只看單輪 benchmark。",
+          sources: [
+            {
+              label: "Qwen-AgentWorld paper",
+              kind: "論文",
+              url: "https://arxiv.org/abs/2506.20739"
+            },
+            {
+              label: "Qwen-AgentWorld GitHub",
+              kind: "GitHub",
+              url: "https://github.com/QwenLM/Qwen-AgentWorld"
+            }
+          ]
+        },
+        {
+          type: "全球社群/開源",
+          priority: "中",
+          title: "Hugging Face 社群持續追高 GLM-5.2 這類開放 agent 模型",
+          text: "Hugging Face 熱門討論中，GLM-5.2 被視為新一波可本地實驗的 agent 模型代表，顯示社群仍高度關注開放模型在 reasoning、工具使用與本機工作流中的可行性。",
+          why: "這代表企業與個人開發者都在找一條不完全依賴閉源前沿模型的路，尤其是在成本、部署彈性與資料控制上。",
+          learningPoint: "不要只追 frontier API，也要追蹤哪些開放模型開始具備可做 workflow eval 的能力。",
+          sources: [
+            {
+              label: "Hugging Face GLM-5.2 post",
+              kind: "社群",
+              url: "https://huggingface.co/posts/gnokit/804411866862303"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "Claude Sonnet 5 的意義，不在於又多了一個更強模型名稱，而在於它把 AI coding 的評比標準往更完整的工作流程推進。從 repo 理解、長時間任務、checkpoint、失敗恢復，到最後的可驗收 diff，這些都比單次補全更接近企業真實需求。",
+        whyNow:
+          "時間點很關鍵：2026-06-30 正好是 AI coding 平台競爭快速升溫的階段，市場已經不再滿足於『能寫出一段程式碼』。官方發布與社群回響同時聚焦在工作流可靠性，說明產業正在把 coding agent 當成工程系統，而不是玩具。",
+        technicalBackground:
+          "長流程 coding agent 需要的不只是模型推理能力，還包括任務切分、檔案狀態理解、工具呼叫、checkpoint、重試策略、測試回饋、差異比較與人工審查節點。若缺少這些機制，模型即使在 benchmark 上更強，也很難穩定交付真實任務。",
+        enterpriseImpact:
+          "對企業導入來說，這意味著選型標準應該升級。FDE 不該只談模型分數，而要定義可治理指標，例如長任務完成率、平均人工接手次數、測試通過率、回退成功率、token 成本上限、以及是否能留下完整稽核軌跡。",
+        watchNext:
+          "接下來最值得追的是三件事：第一，Claude Sonnet 5 與其他 coding agent 平台會不會更公開地談 eval 與 cost guardrails；第二，開放模型是否能在長流程 coding 任務接近閉源體驗；第三，企業是否開始把 coding agent 導入規格寫進內部 SDLC 與資安治理流程。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 repo 級工作做成有驗收門檻的長流程任務",
+          examples: [
+            "先讀 AGENTS.md、git status、現有測試與錯誤訊號，再決定修改範圍與風險。",
+            "把修 bug、補測試、更新文件、整理 commit 與部署前檢查串成一個可重跑流程。",
+            "要求每次任務留下 diff、檢查結果與待人工確認事項，而不是只追求一次回覆很漂亮。"
+          ],
+          learningPoint: "Codex 最值得學的是如何把代理輸出變成可驗收的工程成果。",
+          sources: [
+            {
+              label: "OpenAI Codex",
+              kind: "官方",
+              url: "https://openai.com/codex/"
+            },
+            {
+              label: "Codex pricing",
+              kind: "官方",
+              url: "https://developers.openai.com/codex/pricing"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把每日研究、內容維護、寄信與記憶管理串成個人作業系統",
+          examples: [
+            "固定掃描公開 AI 更新，整理成站內 entry、weekly 回顧與 Gmail 短提醒。",
+            "用 sidecar memory 保留前一次主題、寄送結果、GitHub Pages 狀態與個人偏好。",
+            "把公開學習站、長期工作區與 automation 串起來，減少每天重複交代背景。"
+          ],
+          learningPoint: "Hermes / Phoebe 類工具的價值，在於把個人工作流變成可持續維護的系統。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude",
+          pattern: "用更穩定的長流程 coding agent 處理多檔案修改與長任務",
+          examples: [
+            "讓 agent 先理解 codebase，再分段完成修改、測試、回報與必要回退。",
+            "把 checkpoint 與人工審查節點設計進工作流，避免長任務失控後難以追回。",
+            "在需要長時間閱讀 repo、整理多步驟差異時，把模型能力和流程能力一起評估。"
+          ],
+          learningPoint: "Claude Sonnet 5 帶來的核心學習點，是 coding agent 的可靠性設計，而不只是模型名稱更新。",
+          sources: [
+            {
+              label: "Anthropic announcement",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/claude-sonnet-5"
+            },
+            {
+              label: "Claude Code overview",
+              kind: "官方文件",
+              url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+            }
+          ]
+        },
+        {
+          tool: "其他 AI 工具",
+          pattern: "前沿閉源模型與開放模型分工，形成多層次工作流",
+          examples: [
+            "用 Claude / Codex 處理高風險 repo 任務，用 GLM-5.2 或其他開放模型做本地實驗與 eval。",
+            "用 Gemini 2.5 Flash-Lite Image 做文件圖示、流程圖草稿或內容生成的輕量步驟。",
+            "追蹤 Qwen-AgentWorld 這類 repo，理解未來 agent 會如何結合世界模型、環境記憶與規劃。"
+          ],
+          learningPoint: "真正可落地的 AI 工具鏈，通常不是單一模型包辦，而是按成本、風險與任務分層。",
+          sources: [
+            {
+              label: "Gemini 2.5 Flash-Lite Image",
+              kind: "官方",
+              url: "https://deepmind.google/models/gemini-image/flash-lite/"
+            },
+            {
+              label: "Qwen-AgentWorld GitHub",
+              kind: "GitHub",
+              url: "https://github.com/QwenLM/Qwen-AgentWorld"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "Codex Pro 額度應優先花在會留下長期資產、而且需要讀 repo、改檔、驗收與重跑的任務。今天的重點不是多問幾次模型，而是用額度建立可重複的 coding workflow、作品集與評估機制。",
+        bestProjects: [
+          "AI coding workflow demo：做一個有需求解析、改檔、測試、人工核准、回退機制的公開示範。",
+          "AI FDE 作品集：建立 3-5 個可部署成果，例如 RAG demo、agentic coding dashboard、evaluation harness、成本監控頁。",
+          "既有 repo 深度整理：讓 Codex 讀完整專案、補測試、寫文件、重構模組與整理部署流程。",
+          "長期自動化資產：把每日研究、網站更新、寄信、摘要整理做成可持續維護的 workflow。"
+        ],
+        weeklyPlan: [
+          "55% 額度投入可公開展示的長期資產：網站、工具、demo、dashboard。",
+          "25% 額度投入 repo 級維護：修 bug、補測試、重構、文件與 code review。",
+          "20% 額度投入研究驗證：追蹤公開更新、比較工作流、建立小型 eval 與成本估算。"
+        ],
+        avoid: [
+          "不要把主要額度浪費在短問答、一次性改寫或純聊天探索。",
+          "不要在沒有驗收標準時就讓 agent 大改 repo；先定義檢查點與回退方案。",
+          "不要只累積很多輸出文字；要優先留下 commit、站點更新、測試結果、報表或可重跑腳本。"
+        ],
+        sources: [
+          {
+            label: "OpenAI Codex",
+            kind: "官方",
+            url: "https://openai.com/codex/"
+          },
+          {
+            label: "Codex pricing",
+            kind: "官方",
+            url: "https://developers.openai.com/codex/pricing"
+          }
+        ]
+      },
+      debate: [
+        {
+          label: "支持觀點",
+          text: "如果 coding agent 真的能在長流程任務中維持穩定與可回退，企業導入門檻會大幅下降，AI coding 也更可能成為正式開發基礎設施。"
+        },
+        {
+          label: "疑慮風險",
+          text: "模型能力再強，若缺少 checkpoint、審查節點、權限邊界與成本上限，長流程代理仍可能製造更高的工程與治理風險。"
+        },
+        {
+          label: "後續追蹤",
+          text: "接下來值得看的是：各家 AI coding 平台何時把長任務評估、成本 guardrails 與稽核紀錄變成標配，而不是高階使用者才會自己補。"
+        }
+      ],
+      term: {
+        name: "Checkpointed Coding Agent",
+        definition:
+          "Checkpointed coding agent 是指在長流程開發任務中，會保留中間狀態、允許回退、並在重要節點做檢查或人工核准的 AI coding 工作流。",
+        example: "例如 agent 先讀 repo、修改三個檔案、跑測試，若第二步失敗就回到前一個 checkpoint，而不是整段流程全部重來。",
+        misunderstanding: "Checkpoint 不是單純存對話記錄；真正重要的是能回到可工作的狀態，並讓人知道哪一步出了問題。"
+      },
+      fde: {
+        scenario: "客戶想導入 AI coding 助理處理內部專案維護，但擔心長任務一旦失控，就會改壞多個檔案、難以追責且成本失控。",
+        questions: [
+          "哪些開發任務可以先限定在低風險、可重跑且可測試的範圍內？",
+          "需要哪些 checkpoint、人工核准與回退機制，才能讓團隊敢正式使用？",
+          "怎麼衡量長任務完成率、人工接手次數、token 成本與測試通過率？"
+        ],
+        exercise: "畫出一個企業版 coding agent workflow，標示每一段的權限、驗收標準、checkpoint 與失敗回退方式。",
+        interview: "我不會只推薦哪個 coding 模型最強，而會先設計長流程任務的 checkpoint、驗收與治理機制，讓客戶能安全擴大使用。"
+      }
+    },
+    {
       id: "2026-06-30",
       date: "2026-06-30",
       title: "Agentic coding 進入開源協作與本地開發加速期",
@@ -464,15 +737,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "AI 競爭正在從單純模型能力，轉向授權治理、發布節奏，以及 agentic workflow 的實作能力。"
+      text: "本週主線很清楚：AI 競爭正在從單純模型能力，轉向授權治理、長流程 coding agent 的可靠性，以及可落地的 workflow 工程化。"
     },
     {
       title: "本週名詞",
-      text: "Agentic Coding、Model Distillation、Limited Preview。"
+      text: "Model Distillation、Agentic Coding、Checkpointed Coding Agent。"
     },
     {
       title: "本週練習",
-      text: "把一個 AI PoC 拆成資料來源、代理流程、驗收指標、風險監控與回退方案。"
+      text: "把一個企業 AI coding PoC 拆成資料來源、代理流程、checkpoint、驗收指標、風險監控與回退方案。"
     }
   ]
 };
