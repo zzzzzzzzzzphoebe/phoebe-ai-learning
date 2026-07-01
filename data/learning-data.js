@@ -1,6 +1,355 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-02",
+      date: "2026-07-02",
+      title: "Frontier agent 開始進入治理審查與任務型 benchmark 時代",
+      topic: "Agent Governance",
+      impact: "高",
+      memory: "今天要記住：frontier agent 的競爭不再只是誰更強，而是誰能通過治理審查、在特定任務上被量化驗證，並且可被企業放心接進流程。",
+      status: "未讀",
+      summary:
+        "2026-07-01 最值得深讀的公開訊號，不是一個單一模型發布，而是 frontier agent 正在同時被兩種力量重塑：一邊是 Anthropic Fable 5 / Mythos 5 在政府審查後恢復部署，說明最強代理模型已經進入真實治理與出口管制邏輯；另一邊是 HealthAgentBench 這類任務型 benchmark 開始要求 agent 在真實多步驟環境中被量化。再加上 Anthropic Sonnet 5 的正式上線與 ZCode 3.0 + GLM-5.2 的社群熱度，今天的學習重點是把『更強 agent』翻譯成『可治理、可比較、可落地的 agent 系統』。",
+      tags: ["Agent", "治理", "Benchmark", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先看 Fable 5 解禁、Sonnet 5、HealthAgentBench、ZCode 3.0 四個方向，抓住今天產品、治理與社群三條線。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把今天主軸理解成一個轉折：frontier agent 已經不能只靠 demo 或 benchmark 排名說服企業，而要同時回答安全審查、領域任務成功率與部署方式。"
+        },
+        {
+          label: "今日練習",
+          text: "設計一份企業版 agent deployment gate：列出允許上線前必須通過的任務成功率、人工覆核點、風險分類與回退條件。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把 agent 新聞轉成『企業如何安全上線』與『我如何設計可驗收系統』的能力，而不是只追模型名詞。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 frontier agent deployment gate 草圖，包含任務型 eval、權限邊界、人工核准與回退策略。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent 治理、任務型評估設計、供應商選型、企業導入敘事。"
+        },
+        {
+          label: "下一步",
+          text: "用 Codex Pro 做成可展示的 eval dashboard 或 deployment checklist demo。"
+        }
+      ],
+      signals: [
+        {
+          type: "官方/產品",
+          priority: "觀察",
+          title: "Codex / Hermes 近 24 小時未見值得單獨成篇的公開更新",
+          text: "今天先檢查 Codex 與 Hermes 相關公開更新，近 24 小時沒有新的官方功能、版本或能力公告強到需要獨立成篇。",
+          why: "這代表今天更值得把注意力放在『agent 如何被治理與驗證』這條更大的產業主線，而不是勉強追不存在的官方快訊。",
+          learningPoint: "每日學習不只要找新功能，也要判斷今天真正改變產業的是功能、政策、還是評估框架。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          type: "治理/產品",
+          priority: "高",
+          title: "Anthropic Fable 5 與 Mythos 5 在美國政府審查後恢復部署",
+          text: "Anthropic 最強公開模型 Fable 5 與更高階的 Mythos 5，在出口管制與安全爭議後於 2026-07-01 開始恢復存取，顯示 frontier agent 的部署已經進入真實政府審查流程。",
+          why: "這不是單一公司的風波，而是市場開始接受一件事：最強 agent 的可用性，可能取決於安全等級、國別限制、驗證流程與政府關係，而不是單純 API 是否發布。",
+          learningPoint: "AI FDE 在選型時要新增一層問題：模型是否可穩定供應、是否受政策限制、以及限制條件會不會直接改變產品設計。",
+          sources: [
+            {
+              label: "The Guardian",
+              kind: "媒體",
+              url: "https://www.theguardian.com/technology/2026/jul/01/anthropic-fable-mythos-ai-models-us-export-controls-lifted"
+            },
+            {
+              label: "Business Insider",
+              kind: "媒體",
+              url: "https://www.businessinsider.com/anthropic-restores-fable-5-mythos-access-trump-white-house-talks-2026-6"
+            }
+          ]
+        },
+        {
+          type: "官方/產品",
+          priority: "高",
+          title: "Claude Sonnet 5 把 agentic 能力往更便宜、更普及的預設層推進",
+          text: "Anthropic 在 2026-06-30 推出 Claude Sonnet 5，強調它是最具 agentic 能力的 Sonnet，能規劃、用工具、長步驟完成任務，並直接成為所有 Claude 方案的預設模型。",
+          why: "這意味著 agent 能力不再只屬於最昂貴的旗艦模型，而是開始下放到更容易被大量採用的成本帶。",
+          learningPoint: "真正要追的不是『哪家又變強』，而是『哪種能力開始進入預設工作流與主流價格帶』。",
+          sources: [
+            {
+              label: "Anthropic announcement",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/claude-sonnet-5"
+            },
+            {
+              label: "Claude Code overview",
+              kind: "官方文件",
+              url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "高",
+          title: "HealthAgentBench 把 frontier agent 拉進真實醫療工作流評估",
+          text: "Microsoft 研究團隊在 2026-06-30 提出 HealthAgentBench，用 54 個醫療 agent 任務、7 種場景與端到端環境測試 frontier agents，結果顯示最強且最具成本效益的 agent 也只有約 42% 成功率。",
+          why: "這提醒大家：agent 很會 demo，不代表已經能在高風險真實領域穩定工作；企業需要的是任務成功率與失敗分布，而不是單次驚艷案例。",
+          learningPoint: "做企業導入時，要優先建立自己的 task-based eval，而不是只引用通用 benchmark 或供應商簡報。",
+          sources: [
+            {
+              label: "HealthAgentBench paper",
+              kind: "論文",
+              url: "https://arxiv.org/abs/2606.31179"
+            },
+            {
+              label: "HealthAgentBench GitHub",
+              kind: "GitHub",
+              url: "https://github.com/microsoft/HealthAgentBench"
+            }
+          ]
+        },
+        {
+          type: "全球社群/工具",
+          priority: "中高",
+          title: "ZCode 3.0 + GLM-5.2 登上 Hacker News，開放陣營開始複製 Claude Code 體驗",
+          text: "ZCode 3.0 主打深度適配 GLM-5.2 與多 agent 協作，並在 2026-07-01 登上 Hacker News 首位，顯示社群正積極追逐『像 Claude Code 一樣能工作的本地或替代型 coding agent 體驗』。",
+          why: "這代表 agent 工具的競爭不只在模型 API，而是整個產品層：工作區、任務流、技能、長任務控制與本地開發感受。",
+          learningPoint: "看 AI coding 工具時，不要只比模型分數；要看它是否把規劃、執行、回報、回退與環境控制做成一個完整產品。",
+          sources: [
+            {
+              label: "ZCode official site",
+              kind: "官方",
+              url: "https://zcode.z.ai/cn"
+            },
+            {
+              label: "Hacker News discussion",
+              kind: "社群",
+              url: "https://news.ycombinator.com/item?id=48751752"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天真正值得學的，不是又多了一個模型名稱，而是 frontier agent 的兩個現實門檻正在變硬：第一個是部署治理，第二個是任務型驗證。Anthropic Fable 5 / Mythos 5 的恢復部署說明，最強模型的可用性可能被政策、出口管制與安全分級直接影響；HealthAgentBench 則說明，就算是最強 agent，到了高風險、長步驟、環境複雜的任務裡，成功率依然遠未到『放心上線』。",
+        whyNow:
+          "時間點很關鍵。2026-07-01 同時出現解禁、正式上線、社群追逐替代型 coding agent、以及新 benchmark 壓力，代表 agent 市場正在從『發表能力』過渡到『證明可部署』。接下來企業不只會問哪家最強，還會問能不能持續供應、是否受限制、在我這類任務上的成功率是多少。",
+        technicalBackground:
+          "agent 系統要真正可交付，至少要回答四件事：它能否在多步驟環境中維持狀態與計畫；它如何使用工具與處理失敗；它的任務成功率如何按場景量化；以及在高風險能力上有沒有分級、限流、審查與回退機制。這使得 agent 評估不再只是 benchmark score，而更接近一套 deployment gate：資料、工具、權限、trace、人工覆核與風險路由。",
+        enterpriseImpact:
+          "對企業導入來說，這直接改變採購與 PoC 方法。FDE 應該把需求從『幫我選最好的模型』轉成『幫我定義上線門檻』：哪些任務能先上、哪些要人工核准、哪些能力需要風險分級、哪些模型在政策或供應上有不確定性。這種表達比單純報模型名次更接近真正能成交與能落地的顧問能力。",
+        watchNext:
+          "接下來最值得追的三件事：第一，更多 frontier 模型會不會出現類似的分級供應與政策限制；第二，像 HealthAgentBench 這種領域 benchmark 會不會擴散到金融、客服、法務與內部知識工作；第三，開放或替代型 coding agent 產品能不能在工作流完整度上快速追近 Claude Code / Codex 這種體驗。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 agent 部署問題轉成可驗收的 repo 與 dashboard 產出",
+          examples: [
+            "先定義一個 deployment gate schema，再讓 Codex 產出靜態 dashboard、mock data 與說明文件。",
+            "把 repo 級任務設成讀碼、改檔、檢查、人工核准、回退五段，留下可追蹤的 diff 與檢查結果。",
+            "用 Codex 處理多檔案整理、測試補強與 demo 製作，讓學習內容變成作品集。"
+          ],
+          learningPoint: "Codex 最值得拿來做的，不是一次性問答，而是把抽象概念落成可展示的工程資產。",
+          sources: [
+            {
+              label: "OpenAI Codex",
+              kind: "官方",
+              url: "https://openai.com/codex/"
+            },
+            {
+              label: "Codex pricing",
+              kind: "官方",
+              url: "https://developers.openai.com/codex/pricing"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把公開研究掃描、網站更新、寄信與記憶管理串成個人 AI 作業系統",
+          examples: [
+            "每日先判斷今天是產品發布日、治理事件日、還是 benchmark 更新日，再選主軸。",
+            "把網站 entry、weekly 回顧、Gmail 摘要與 automation memory 一次更新，維持長期一致性。",
+            "用 public-safe workflow 把研究信號轉成可展示的學習資產，而不是只留在聊天紀錄。"
+          ],
+          learningPoint: "Hermes / Phoebe 的價值在於把『每天知道很多』變成『每天累積一個可回看的系統』。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude",
+          pattern: "把 Sonnet 5 當成較低成本的 agentic execution layer，但敏感任務仍需分級",
+          examples: [
+            "在多檔案修改、文件整理、一般 automation 任務上用 Sonnet 5 取得較高性價比。",
+            "對於涉入敏感 cyber 或高風險能力的工作流，先設計路由與人工審查，不假設所有任務都能直接交給同一個模型。",
+            "比較 Sonnet 類預設模型與更高階模型在任務完成率、成本與限制條件上的差異。"
+          ],
+          learningPoint: "模型分級不只是價格差異，也反映可部署範圍與風險控制策略。",
+          sources: [
+            {
+              label: "Anthropic announcement",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/claude-sonnet-5"
+            },
+            {
+              label: "The Guardian",
+              kind: "媒體",
+              url: "https://www.theguardian.com/technology/2026/jul/01/anthropic-fable-mythos-ai-models-us-export-controls-lifted"
+            }
+          ]
+        },
+        {
+          tool: "其他 AI 工具",
+          pattern: "同時追蹤替代型 coding agent 與領域 benchmark，建立多供應商視角",
+          examples: [
+            "研究 ZCode 3.0 這類產品如何把 GLM-5.2 包裝成接近 Claude Code 的工作流體驗。",
+            "用 HealthAgentBench 這類研究，學會怎麼設計屬於自己產業的 task-based eval。",
+            "把 open-source 或區域型工具當成比較基準，而不是只看單一美系供應商。"
+          ],
+          learningPoint: "AI 工具鏈的成熟度，取決於產品層與評估層是否一起跟上，而不是模型名稱是否最新。",
+          sources: [
+            {
+              label: "ZCode official site",
+              kind: "官方",
+              url: "https://zcode.z.ai/cn"
+            },
+            {
+              label: "HealthAgentBench paper",
+              kind: "論文",
+              url: "https://arxiv.org/abs/2606.31179"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "Codex Pro 額度應優先花在能把 agent 治理與評估概念變成公開作品的任務，而不是只追更多新聞摘要。今天最值得做的是 deployment gate、task-based eval dashboard、供應商比較頁這類會留下長期資產的東西。",
+        bestProjects: [
+          "Frontier Agent Deployment Gate：做一個可視化上線檢查表，展示任務成功率、權限分級、人工覆核與回退條件。",
+          "Task-based Eval Dashboard：把特定領域任務拆成 accuracy、success rate、latency、cost、risk 五個面向，做成面試級作品。",
+          "Multi-vendor Agent Comparison：比較 Codex、Claude、ZCode / GLM 類工具在工作流完整度、治理能力與成本上的差異。",
+          "既有學習站升級：把 daily entry、weekly 回顧、搜尋與專案池做成更像個人研究情報台。"
+        ],
+        weeklyPlan: [
+          "50% 額度投入可公開展示的長期資產：dashboard、demo、比較頁、學習站。",
+          "30% 額度投入 repo 級工程任務：修整結構、補檢查、改善資料模型與內容生產流程。",
+          "20% 額度投入研究驗證：追 benchmark、官方公告、社群新工具，並整理成可執行假設。"
+        ],
+        avoid: [
+          "不要把主要額度花在追逐每一則新聞或重複摘要同一件事。",
+          "不要先做大而空的 agent 產品；先做 deployment gate、eval、checklist 這種可驗證部件。",
+          "不要只比較模型輸出好不好看；要留下任務指標、流程設計與可展示成果。"
+        ],
+        sources: [
+          {
+            label: "OpenAI Codex",
+            kind: "官方",
+            url: "https://openai.com/codex/"
+          },
+          {
+            label: "Codex pricing",
+            kind: "官方",
+            url: "https://developers.openai.com/codex/pricing"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Frontier Agent Deployment Gate Dashboard",
+          value: "把今天的治理主軸變成一個可展示作品：用表格與圖示定義哪些 agent 任務可上線、哪些需要人工核准。",
+          codexTask: "請 Codex 建一個 public-safe 單頁 dashboard，包含任務分類、風險等級、成功率門檻、人工覆核與回退規則。",
+          asset: "AI FDE 治理與導入作品頁",
+          nextStep: "先做靜態版資料模型與 UI，再補情境案例"
+        },
+        {
+          priority: "能力累積",
+          title: "Task-based Agent Eval Pack",
+          value: "把 HealthAgentBench 的思路移植到泛化的企業場景，練習怎麼設計自己的任務型評估框架。",
+          codexTask: "讓 Codex 產生 eval schema、假資料、指標定義與結果解讀模版。",
+          asset: "AI FDE 評估方法作品",
+          nextStep: "先用客服、文件摘要、知識問答三種任務做第一版"
+        },
+        {
+          priority: "長期資產",
+          title: "Personal AI Learning Operating System",
+          value: "持續把世界 AI 訊號轉成可展示能力、專案候選與職涯敘事，而不是散落在聊天紀錄。",
+          codexTask: "持續優化 Phoebe AI Learning 的 weekly 回顧、專案池、搜尋與資料結構。",
+          asset: "個人 AI 學習作戰室",
+          nextStep: "把 deployment gate 類作品加入專案池，形成週節奏"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "每天把產品發布、治理事件、社群熱點與 benchmark 分開判讀，再整合成主軸。",
+          evidence: "網站上的全球 AI 雷達與來源連結"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 agent 能不能上線，拆成權限、風險分級、eval、人工覆核與回退設計。",
+          evidence: "今日 deployment gate 練習與專案候選池"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex Pro 把治理與評估概念做成 dashboard、demo 與可展示頁面。",
+          evidence: "GitHub Pages、commit、靜態 dashboard 或互動 prototype"
+        },
+        {
+          skill: "專業表達",
+          practice: "把模型治理與任務成功率翻譯成企業導入語言與面試可用表述。",
+          evidence: "重要名詞、FDE 練習、weekly 回顧"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "如果 frontier agent 能被分級治理、且能用真實任務 benchmark 驗證，企業反而更有可能放心導入，而不是永遠停留在概念驗證。"
+        },
+        {
+          label: "疑慮風險",
+          text: "若模型供應受政策限制、benchmark 與真實任務脫節，或工具產品只做出漂亮 demo，企業仍可能高估 agent 的可部署性。"
+        },
+        {
+          label: "後續追蹤",
+          text: "接下來值得觀察的是：哪些供應商會把上線條件、風險路由與任務成功率講得更透明，以及哪些領域會最先出現自己的 agent benchmark。"
+        }
+      ],
+      term: {
+        name: "Deployment Gate",
+        definition:
+          "Deployment gate 是一套在 AI agent 正式上線前必須通過的條件組合，通常包含任務成功率、風險分級、人工覆核、權限邊界與回退策略。",
+        example: "例如企業可以規定：只有在文件摘要任務成功率超過 92%、敏感欄位有人工複核、失敗能回退到人工流程時，agent 才能正式進 production。",
+        misunderstanding: "Deployment gate 不是單純的法務簽核；它應該是可被量化、可重跑驗證、可持續更新的技術與流程門檻。"
+      },
+      fde: {
+        scenario: "客戶想把 frontier agent 接進內部工作流，但擔心模型供應受政策影響、某些高風險能力無法穩定開放，且缺少任務成功率數據。",
+        questions: [
+          "哪些任務可以先從低風險、可回退、容易量化的流程開始？",
+          "需要哪些 deployment gate 條件，才能讓業務、法遵與 IT 同時接受？",
+          "如果供應商限制突然改變，是否有替代模型、降級流程或人工接手方案？"
+        ],
+        exercise: "畫出一個 agent deployment gate，至少列出任務成功率門檻、人工覆核點、風險分級與回退機制。",
+        interview: "我不會只推薦最強模型，而會先幫客戶定義 deployment gate，確保 agent 的能力、供應穩定性與治理條件一起被驗證。"
+      }
+    },
+    {
       id: "2026-07-01",
       date: "2026-07-01",
       title: "Claude Sonnet 5 把 AI coding 拉進長流程工程化競爭",
@@ -803,15 +1152,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線很清楚：AI 競爭正在從單純模型能力，轉向授權治理、長流程 coding agent 的可靠性，以及可落地的 workflow 工程化。"
+      text: "本週主線很清楚：AI 競爭正在從單純模型能力，轉向 frontier agent 的治理審查、長流程 coding agent 的可靠性，以及任務型 benchmark 的可驗收落地。"
     },
     {
       title: "本週名詞",
-      text: "Model Distillation、Agentic Coding、Checkpointed Coding Agent。"
+      text: "Deployment Gate、Checkpointed Coding Agent、Task-based Evaluation。"
     },
     {
       title: "本週練習",
-      text: "把一個企業 AI coding PoC 拆成資料來源、代理流程、checkpoint、驗收指標、風險監控與回退方案。"
+      text: "把一個企業 agent 導入 PoC 拆成任務型 eval、權限分級、人工覆核、checkpoint、供應風險與回退方案。"
     }
   ]
 };
