@@ -25,6 +25,24 @@ window.AI_LEARNING_DATA = {
           text: "設計一個 coding agent workflow，至少包含需求解析、改檔、檢查、人工核准、失敗回退五段，並定義每段的驗收訊號。"
         }
       ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把 AI coding 的變化轉成 AI FDE 能力、作品集與可面試表述，而不是只追逐模型新聞。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一個 checkpointed coding agent workflow 草圖，明確標示驗收、回退與人工核准。"
+        },
+        {
+          label: "能力焦點",
+          text: "長流程 agent 設計、成本治理、工程驗收、企業導入風險說明。"
+        },
+        {
+          label: "下一步",
+          text: "用 Codex Pro 把 workflow 做成可展示的互動 demo 或評估 dashboard。"
+        }
+      ],
       signals: [
         {
           type: "官方/產品",
@@ -241,6 +259,54 @@ window.AI_LEARNING_DATA = {
           }
         ]
       },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Checkpointed Coding Agent Demo",
+          value: "把今天的 Claude Sonnet 5 主題轉成作品集：展示一個 coding agent 如何分段改檔、檢查、回退與等待人工核准。",
+          codexTask: "請 Codex 建一個靜態互動流程圖，資料用 public-safe mock，呈現需求解析、改檔、測試、核准、回退。",
+          asset: "可放到 GitHub Pages 的 AI FDE demo 頁",
+          nextStep: "先做單頁 prototype，再加上測試紀錄與面試說明"
+        },
+        {
+          priority: "能力累積",
+          title: "AI Coding Evaluation Dashboard",
+          value: "把模型能力討論轉成企業會買單的指標：長任務完成率、人工接手次數、測試通過率、token 成本與回退成功率。",
+          codexTask: "讓 Codex 產生 dashboard schema、假資料、圖表與評估說明，先做靜態版。",
+          asset: "AI FDE 評估方法作品",
+          nextStep: "用今天的 workflow 指標當第一版資料模型"
+        },
+        {
+          priority: "長期資產",
+          title: "Personal AI Learning Operating System",
+          value: "把每日學習站升級成長期能力系統：每天輸入世界訊號，輸出專案、練習、能力證據與週回顧。",
+          codexTask: "持續優化 Phoebe AI Learning 的資料結構、搜尋、專案池、週回顧與自動排程 prompt。",
+          asset: "個人 AI 學習作戰室",
+          nextStep: "把 projectPipeline 和 capabilityFlywheel 固定寫進每日排程"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "每天把官方公告、社群討論、GitHub repo 與論文拆成主軸與多訊號。",
+          evidence: "網站上的全球 AI 雷達與來源連結"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 AI coding 事件轉成 workflow、checkpoint、回退、權限與驗收設計。",
+          evidence: "今日 FDE 練習與專案候選池"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex Pro 建立可部署、可測試、可反覆改進的工具或 demo。",
+          evidence: "GitHub Pages、commit、dashboard 或互動 prototype"
+        },
+        {
+          skill: "專業表達",
+          practice: "把每天學到的內容壓縮成面試可用語句與客戶導入說明。",
+          evidence: "重要名詞、面試可用表述、週回顧"
+        }
+      ],
       debate: [
         {
           label: "支持觀點",

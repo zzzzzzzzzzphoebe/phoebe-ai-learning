@@ -12,8 +12,11 @@ This project turns the daily AI learning workflow into a browsable learning site
 - global AI community signals and GitHub trending projects
 - source links for website reading, grouped by official, community, GitHub, paper, and media sources
 - a three-step learning path: quick read, deep read, and FDE practice
+- a life operating system view: direction, today's output, capability focus, and next step
 - an AI tool-use radar: what people are doing with Codex, Hermes / Phoebe, Claude, and other AI tools
 - a Codex Pro leverage plan: which projects deserve quota, how to allocate weekly effort, and what to avoid
+- a project pipeline that turns AI trends into Codex Pro build candidates
+- a capability flywheel that connects research, system design, engineering output, and professional expression
 - hot debate and follow-up signals
 - important AI term explained in plain language
 - AI Field Deployment Engineer practice prompt

@@ -30,11 +30,14 @@ function renderToday() {
   $("#entry-impact").textContent = entry.impact;
   $("#entry-status").textContent = status;
   $("#entry-memory").textContent = entry.memory;
+  renderLifeOS(entry);
   renderReadingPath(entry);
   renderSignals(entry);
   renderDeepDive(entry);
   renderToolUse(entry);
   renderQuotaStrategy(entry);
+  renderProjectPipeline(entry);
+  renderCapabilityFlywheel(entry);
 
   $("#debate-list").innerHTML = entry.debate
     .map(
@@ -59,6 +62,25 @@ function renderToday() {
   $("[data-next-status]").textContent = nextStatusLabel(status);
 }
 
+function renderLifeOS(entry) {
+  const lifeOS = entry.lifeOS || [
+    { label: "方向", text: "把每日 AI 資訊轉成 AI FDE 能力與可展示作品。" },
+    { label: "今日產出", text: "完成一個可驗收的小練習或專案切片。" },
+    { label: "能力焦點", text: "研究判讀、系統設計、工具落地、清楚表達。" },
+    { label: "下一步", text: "把今天的學習沉澱到作品集或面試素材。" }
+  ];
+  $("#life-os-grid").innerHTML = lifeOS
+    .map(
+      (item) => `
+        <article class="life-os-card">
+          <span>${item.label}</span>
+          <p>${item.text}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function renderToolUse(entry) {
   const items = entry.toolUseRadar || [];
   $("#tool-use-grid").innerHTML = items.length
@@ -78,6 +100,57 @@ function renderToolUse(entry) {
         )
         .join("")
     : `<article class="tool-radar-card"><div class="tool-radar-kicker">待補</div><h3>今日尚未整理 AI 工具用法</h3><p>後續每日任務會固定追蹤 Codex、Hermes、Claude 與其他 AI 工具的實際用法。</p></article>`;
+}
+
+function renderProjectPipeline(entry) {
+  const projects = entry.projectPipeline || [];
+  $("#project-list").innerHTML = projects.length
+    ? projects
+        .map(
+          (project) => `
+            <article class="project-row">
+              <div>
+                <span class="project-priority">${project.priority}</span>
+                <h3>${project.title}</h3>
+                <p>${project.value}</p>
+              </div>
+              <dl>
+                <div>
+                  <dt>Codex 任務</dt>
+                  <dd>${project.codexTask}</dd>
+                </div>
+                <div>
+                  <dt>產出資產</dt>
+                  <dd>${project.asset}</dd>
+                </div>
+                <div>
+                  <dt>下一步</dt>
+                  <dd>${project.nextStep}</dd>
+                </div>
+              </dl>
+            </article>
+          `
+        )
+        .join("")
+    : `<article class="project-row"><div><span class="project-priority">待補</span><h3>今日尚未整理專案候選</h3><p>後續每日任務會把重要 AI 趨勢轉成可執行專案。</p></div></article>`;
+}
+
+function renderCapabilityFlywheel(entry) {
+  const items = entry.capabilityFlywheel || [];
+  $("#flywheel-grid").innerHTML = items.length
+    ? items
+        .map(
+          (item, index) => `
+            <article class="flywheel-card">
+              <span>${String(index + 1).padStart(2, "0")}</span>
+              <h3>${item.skill}</h3>
+              <p>${item.practice}</p>
+              <strong>${item.evidence}</strong>
+            </article>
+          `
+        )
+        .join("")
+    : `<article class="flywheel-card"><span>01</span><h3>能力飛輪待補</h3><p>後續每日任務會固定整理研究、實作、表達與作品集證據。</p></article>`;
 }
 
 function renderQuotaStrategy(entry) {
@@ -232,6 +305,7 @@ function matchesEntry(entry) {
       ...(signal.sources || []).flatMap((source) => [source.label, source.kind])
     ]),
     ...(entry.readingPath || []).flatMap((item) => [item.label, item.text]),
+    ...(entry.lifeOS || []).flatMap((item) => [item.label, item.text]),
     ...(entry.deepDive ? Object.values(entry.deepDive) : []),
     ...(entry.toolUseRadar || []).flatMap((item) => [
       item.tool,
@@ -249,6 +323,15 @@ function matchesEntry(entry) {
           ...(entry.quotaStrategy.sources || []).flatMap((source) => [source.label, source.kind])
         ]
       : []),
+    ...(entry.projectPipeline || []).flatMap((project) => [
+      project.priority,
+      project.title,
+      project.value,
+      project.codexTask,
+      project.asset,
+      project.nextStep
+    ]),
+    ...(entry.capabilityFlywheel || []).flatMap((item) => [item.skill, item.practice, item.evidence]),
     entry.term.name,
     entry.term.definition,
     entry.fde.scenario,
