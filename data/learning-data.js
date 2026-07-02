@@ -1,6 +1,344 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-03",
+      date: "2026-07-03",
+      title: "AI agent 正在從單人助手變成受治理的工作系統",
+      topic: "Agent Systems",
+      impact: "高",
+      memory: "今天要記住：真正改變企業導入的，不只是模型更強，而是 agent 開始有權限邊界、團隊協作介面、可審計產物，以及需要處理記憶偏誤的新風險。",
+      status: "未讀",
+      summary:
+        "2026-07-02 最值得深讀的公開訊號，不是一個單一模型又刷新能力，而是 AI agent 的產品形態正在快速往『受治理的工作系統』靠攏。OpenAI 被捲入更深的政府協調與治理討論；Anthropic 一邊把 Claude Tag 放進 Slack，讓 agent 變成團隊可指派的同事，一邊推出 Claude Science，把 auditable artifacts、skills、connectors、compute orchestration 包成面向科研的工作台；研究社群也開始用 MemSyco-Bench 這類 benchmark 補上 agent memory 造成諂媚偏誤的新風險。今天真正該學的，是如何把 AI 從聊天介面翻譯成『可授權、可追蹤、可回退、可驗證』的工作流。",
+      tags: ["Agent", "Workflow", "治理", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先看 OpenAI 治理討論、Claude Tag、Claude Science、MemSyco-Bench 四條線，抓住今天是產品形態與治理一起變化，而不是只多一個模型。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把今天主軸理解成一個轉折：agent 不再只是你私下聊天的工具，而是要開始在 Slack、科學工作台、企業流程裡扮演可授權的協作角色。"
+        },
+        {
+          label: "今日練習",
+          text: "設計一份企業版 agent workspace spec，至少列出權限範圍、記憶保存規則、審計紀錄、人工介入點與失敗回退流程。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把『AI teammate 長什麼樣』這件事轉成你的 AI FDE 顧問能力，而不是只停在模型新聞層。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 agent workspace blueprint，說清楚企業裡的 agent 應該有哪些權限、記憶邊界、審計與回退機制。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent workspace 設計、權限治理、記憶風險、企業導入敘事。"
+        },
+        {
+          label: "下一步",
+          text: "用 Codex Pro 做成一個 public-safe 的 team-agent dashboard 或 Slack-style workflow demo。"
+        }
+      ],
+      signals: [
+        {
+          type: "官方/產品",
+          priority: "觀察",
+          title: "Codex / Hermes 近 24 小時未見值得單獨成篇的公開新公告",
+          text: "今天先檢查 Codex 與 Hermes 相關公開面，近 24 小時沒有新的官方功能、版本或公開公告強到值得獨立成篇。",
+          why: "這代表今天更值得把注意力放在更大的 agent 產品化與治理主線，而不是硬追不存在的快訊。",
+          learningPoint: "每日學習不只是追新功能，而是判斷今天真正改變工作方式的是哪一層結構。",
+          sources: [
+            {
+              label: "OpenAI Codex",
+              kind: "官方",
+              url: "https://openai.com/codex/"
+            }
+          ]
+        },
+        {
+          type: "治理/產業",
+          priority: "高",
+          title: "OpenAI 被捲入更深的政府協調與利益分配討論",
+          text: "2026-07-02 多家媒體報導，OpenAI 正在與美國政府討論讓公部門持有 5% 股權的概念性方案，作為 AI 治理、政治協調與利益分配的一部分。",
+          why: "這顯示 frontier AI 公司面對的已不只是產品競爭，而是資本結構、治理安排與政府關係，這些都會回頭影響模型供應與企業採用敘事。",
+          learningPoint: "AI FDE 不只要懂模型能力，也要能向客戶說明供應穩定性、政策風險與治理結構如何影響導入決策。",
+          sources: [
+            {
+              label: "The Guardian",
+              kind: "媒體",
+              url: "https://www.theguardian.com/technology/2026/jul/02/openai-stake-us-government-ai-sam-altman"
+            },
+            {
+              label: "Axios",
+              kind: "媒體",
+              url: "https://www.axios.com/2026/07/02/openai-stake-trump-altman"
+            }
+          ]
+        },
+        {
+          type: "官方/產品",
+          priority: "高",
+          title: "Claude Tag 把 agent 直接放進 Slack，朝多人成員式協作前進",
+          text: "Anthropic 的 Claude Tag 讓團隊能在 Slack 裡以 @Claude 指派任務，並在特定 channel 與工具權限範圍內讓 agent 持續累積上下文、非同步處理與主動追蹤。",
+          why: "這不再只是個人聊天助手，而是 agent 被包成有權限、可記憶、可花費控管、可被全隊共用的協作角色。",
+          learningPoint: "未來企業 AI 導入的競爭點之一，是如何設計 permission-scoped teammate，而不是單一 prompt 體驗。",
+          sources: [
+            {
+              label: "Anthropic Claude Tag",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/introducing-claude-tag"
+            }
+          ]
+        },
+        {
+          type: "官方/產品",
+          priority: "高",
+          title: "Claude Science 把 skills、connectors、compute 與可審計產物包成科研工作台",
+          text: "Anthropic 在 2026-06-30 推出 Claude Science beta，主打 60+ 科學技能與資料來源連接、reviewer agent、可追溯 artifact，以及在本機、SSH 或 HPC 上協調運算。",
+          why: "這代表 agent 正開始被垂直化成領域工作台，而不是只有通用聊天框；未來金融、法務、客服也很可能走向同樣的工作台化設計。",
+          learningPoint: "產品層的真正差異點，越來越是 domain workflow、artifact traceability 與 compute orchestration，而不是模型名稱本身。",
+          sources: [
+            {
+              label: "Anthropic Claude Science",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/claude-science-ai-workbench"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "中高",
+          title: "MemSyco-Bench 開始衡量 agent memory 造成的諂媚偏誤",
+          text: "Hugging Face Daily Papers 在 2026-07-02 收錄 MemSyco-Bench，專門評估 agent 在讀回記憶後，何時會過度迎合使用者而犧牲事實正確性與客觀判斷。",
+          why: "當 agent 開始長期記憶、跨任務追蹤與主動協作，記憶不再只是方便功能，也可能成為新的風險來源。",
+          learningPoint: "做 enterprise agent 時，不能只問記憶能不能存下來，還要問記憶何時該被忽略、更新、或與客觀證據衝突時如何處理。",
+          sources: [
+            {
+              label: "Hugging Face Daily Papers",
+              kind: "社群",
+              url: "https://huggingface.co/papers/2607.01071"
+            },
+            {
+              label: "MemSyco-Bench GitHub",
+              kind: "GitHub",
+              url: "https://github.com/XMUDeepLIT/MemSyco-Bench"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天最值得學的不是某個模型又多拿了幾分，而是 agent 的產品邊界正在往『工作系統』擴張。OpenAI 的政府持股討論提醒我們，frontier AI 的治理與供應已經越來越像基礎設施或產業政策問題；Anthropic 的 Claude Tag 與 Claude Science，則分別把 agent 推向團隊協作介面與領域型工作台。研究端的 MemSyco-Bench 又補上一個現實：只要 agent 開始有記憶與持續上下文，就必須處理新的偏誤風險。",
+        whyNow:
+          "這個時間點關鍵，因為最近幾天同時出現了治理、團隊協作、領域工作台與記憶風險四條線。這些訊號放在一起看，比任何單一模型發布都更接近未來企業真正會買單的 agent 形態，也更接近 AI FDE 需要會講、會設計、會驗證的問題。",
+        technicalBackground:
+          "一個可交付的 agent 工作系統，至少要回答五件事：它能接哪些工具與資料；它的記憶範圍如何被限制；它如何留下可審計的輸出與操作軌跡；它如何在長任務裡安排子代理、檢查與回退；以及它在推理時如何避免被舊記憶、錯誤上下文或使用者偏好誤導。這些問題共同構成了 agent workspace 的設計核心。",
+        enterpriseImpact:
+          "對企業導入來說，這意味著 PoC 不應再只是測幾個 prompt，而要設計完整工作流：誰能叫 agent、它看得到哪些資料、產出是否可審計、失敗誰接手、記憶如何更新。能把這些問題講清楚並做成 demo 的人，比單純會介紹模型新功能的人，更接近真正可成交的 AI FDE 角色。",
+        watchNext:
+          "接下來最值得追的三件事：第一，更多供應商會不會推出 permission-scoped team agent；第二，更多垂直工作台會不會把 skills、connectors、reviewer 與 compute 一起打包；第三，記憶、安全與評估 benchmark 是否會從研究社群更快滲透到企業採購與法遵要求。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 team-agent 與治理概念做成 repo 級可驗收作品，而不是停在抽象構想",
+          examples: [
+            "先定義 agent workspace schema，再讓 Codex 產出 Slack-style 任務流 demo、權限矩陣與審計頁面。",
+            "把多檔案專案拆成規格、改檔、檢查、review、回退五段，留下可追蹤 diff 與檢查紀錄。",
+            "用 Codex 製作 public-safe dashboard，展示記憶規則、角色權限與 failover 設計。"
+          ],
+          learningPoint: "Codex 最值得用在把工作流制度化與作品化，而不是只拿來問單題。",
+          sources: [
+            {
+              label: "OpenAI Codex",
+              kind: "官方",
+              url: "https://openai.com/codex/"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把公開掃描、網站更新、短郵件與 run memory 串成個人研究作業系統",
+          examples: [
+            "每天先判斷今天是治理日、產品形態日、還是 benchmark 日，再決定主軸。",
+            "同步更新網站、weekly、寄信與 sidecar memory，讓研究輸出可以長期回看與比較。",
+            "把 public-safe 條件當成產品邊界，避免研究內容混進不可公開資訊。"
+          ],
+          learningPoint: "Hermes / Phoebe 的價值是把分散的研究與執行，變成穩定可維護的節奏。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude",
+          pattern: "把 agent 從個人聊天升級成 permission-scoped teammate 與領域工作台",
+          examples: [
+            "用 Claude Tag 在 Slack channel 內指派長任務，並用 channel scope 控制它的記憶與工具。",
+            "在 Claude Science 類場景中，讓 coordinating agent 搭配 reviewer agent 產出可追溯 artifact。",
+            "先設計 spend limit、audit log、tool scope，再讓 agent 進入團隊日常流程。"
+          ],
+          learningPoint: "企業 agent 的重點正在從回答品質轉向權限、協作與可審計性。",
+          sources: [
+            {
+              label: "Anthropic Claude Tag",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/introducing-claude-tag"
+            },
+            {
+              label: "Anthropic Claude Science",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/claude-science-ai-workbench"
+            }
+          ]
+        },
+        {
+          tool: "其他 AI 工具",
+          pattern: "用 benchmark 與領域型 agent 案例，反推自己該如何設計記憶規則與專業工作台",
+          examples: [
+            "參考 MemSyco-Bench 先定義何時記憶可以影響決策，何時必須被客觀證據覆蓋。",
+            "觀察科研、機器人等垂直 agent 如何把 skills library 與 reviewer 機制包進產品。",
+            "把 MCP、skills、connector 視為工作台骨架，而不是附加功能。"
+          ],
+          learningPoint: "真正成熟的 agent stack 會同時處理工具接入、記憶治理與領域工作流。",
+          sources: [
+            {
+              label: "MemSyco-Bench",
+              kind: "社群",
+              url: "https://huggingface.co/papers/2607.01071"
+            },
+            {
+              label: "ASPIRE paper",
+              kind: "社群",
+              url: "https://huggingface.co/papers/2607.00272"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "Codex Pro 額度今天最值得花在把 agent workspace 與治理概念做成可展示產物，而不是再多做一份新聞摘要。最有價值的是那些能同時展示權限、記憶、審計與回退設計的作品。",
+        bestProjects: [
+          "Team Agent Workspace Demo：做一個 Slack-style agent 工作流頁，展示角色、工具、審計與 handoff。",
+          "Agent Memory Policy Dashboard：把記憶保留、更新、衝突解決與刪除規則做成可互動說明頁。",
+          "Domain Workbench Blueprint：用科研、金融或知識工作為例，定義 skills、connectors、reviewer 與 compute flow。",
+          "既有學習站升級：把 weekly 與專案池更明確地轉成長期作品與能力地圖。"
+        ],
+        weeklyPlan: [
+          "50% 額度投入可公開展示的長期資產：team-agent demo、dashboard、作品頁。",
+          "30% 額度投入 repo 級工程任務：資料結構、內容工作流、檢查與靜態站優化。",
+          "20% 額度投入研究驗證：追官方產品形態、記憶 benchmark、社群 workflow 變化。"
+        ],
+        avoid: [
+          "不要把額度花在重複整理同一則新聞。",
+          "不要一開始就做全功能 agent 平台；先把權限、記憶、審計這三件事說清楚。",
+          "不要只做漂亮介面，卻沒有 failure path、review step 與 source traceability。"
+        ],
+        sources: [
+          {
+            label: "OpenAI Codex",
+            kind: "官方",
+            url: "https://openai.com/codex/"
+          },
+          {
+            label: "Anthropic Claude Tag",
+            kind: "官方",
+            url: "https://www.anthropic.com/news/introducing-claude-tag"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Team Agent Workspace Demo",
+          value: "把今天主軸做成可展示作品，清楚呈現 AI teammate 的角色、權限、記憶邊界與審計紀錄。",
+          codexTask: "請 Codex 建一個 public-safe 單頁 demo，模擬 Slack-style agent task flow、audit log、tool scope 與 human handoff。",
+          asset: "AI FDE 團隊協作 agent 作品頁",
+          nextStep: "先做資料模型與 3 個典型任務卡片"
+        },
+        {
+          priority: "能力累積",
+          title: "Agent Memory Policy Kit",
+          value: "把記憶偏誤風險轉成企業導入規格，練習如何定義 memory write/read/update/delete policy。",
+          codexTask: "讓 Codex 產出記憶規則表、風險案例、UI mock 與 reviewer checklist。",
+          asset: "AI agent 治理方法作品",
+          nextStep: "先寫出 5 條 memory policy 與衝突案例"
+        },
+        {
+          priority: "長期資產",
+          title: "Personal AI Learning Operating System",
+          value: "持續把全球 AI 訊號轉成作品、專案池與職涯敘事，而不是散落成一次性摘要。",
+          codexTask: "持續優化 Phoebe AI Learning 的 weekly、搜尋、專案池與能力飛輪。",
+          asset: "個人 AI 學習作戰室",
+          nextStep: "把 team-agent 類作品加入首頁專案候選池"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把治理、產品形態、社群工具與 benchmark 分開判讀，再整合成同一天的主線。",
+          evidence: "網站上的全球 AI 雷達與來源連結"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 AI teammate 拆成權限、記憶、審計、review 與回退機制。",
+          evidence: "今日 agent workspace 練習與專案候選池"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex Pro 把 team-agent 流程做成 demo、dashboard 與資料模型。",
+          evidence: "GitHub Pages、commit、靜態 demo 或互動 prototype"
+        },
+        {
+          skill: "專業表達",
+          practice: "把 agent 產品化與治理問題翻成企業可採用的導入語言與面試表述。",
+          evidence: "重要名詞、FDE 練習、weekly 回顧"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "如果 agent 真能被限制在明確權限、留下審計紀錄、並在團隊流程中分工，它會比單純聊天模型更快進入真實工作。"
+        },
+        {
+          label: "疑慮風險",
+          text: "若 agent 的記憶會放大諂媚偏誤、工具權限設計過寬，或治理只停在行銷說法，企業導入反而會更危險。"
+        },
+        {
+          label: "後續追蹤",
+          text: "值得追蹤哪些供應商能把 permission scope、audit log、memory policy 與 reviewer flow 做成真正可用的標準能力。"
+        }
+      ],
+      term: {
+        name: "Permission-Scoped Agent",
+        definition:
+          "Permission-scoped agent 是被限制在特定資料、工具、頻道或任務範圍內運作的 AI agent，不會無限制地跨系統讀寫或共享記憶。",
+        example:
+          "例如在 Slack 的財務 channel 裡，agent 只能讀取該頻道與核准過的報表工具，不能自動看到工程或人資資料，也必須留下操作紀錄。",
+        misunderstanding:
+          "Permission-scoped 不等於安全已解決；它只是建立最小必要權限，仍需要審計、回退、輸出驗證與記憶治理。"
+      },
+      fde: {
+        scenario: "客戶想在團隊協作工具裡引入 AI teammate，讓它能追蹤任務、讀指定資料源並回覆同事，但擔心權限過大、記憶污染與錯誤自動化。",
+        questions: [
+          "這個 agent 應該被限制在哪些 channel、資料源與工具範圍內？",
+          "哪些任務可以全自動完成，哪些必須有人審核或批准後才能繼續？",
+          "如果 agent 因舊記憶、錯誤上下文或工具故障做出錯誤判斷，如何被發現並回退？"
+        ],
+        exercise:
+          "畫一張 team-agent workflow，至少標出權限範圍、記憶寫入點、audit log、review gate 與 human handoff。",
+        interview:
+          "我會把 AI teammate 當成一個要被授權與治理的工作系統，而不是只測 prompt 效果；先定義 scope、review 與回退，才能安全放進團隊流程。"
+      }
+    },
+    {
       id: "2026-07-02",
       date: "2026-07-02",
       title: "Frontier agent 開始進入治理審查與任務型 benchmark 時代",
@@ -1152,15 +1490,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線很清楚：AI 競爭正在從單純模型能力，轉向 frontier agent 的治理審查、長流程 coding agent 的可靠性，以及任務型 benchmark 的可驗收落地。"
+      text: "本週主線很清楚：AI 正在從模型能力競賽，走向受治理的 agent 工作系統，包括 frontier agent 的部署治理、長流程 coding 的可靠性，以及 team-agent 與領域工作台的產品化。"
     },
     {
       title: "本週名詞",
-      text: "Deployment Gate、Checkpointed Coding Agent、Task-based Evaluation。"
+      text: "Deployment Gate、Permission-Scoped Agent、Task-based Evaluation。"
     },
     {
       title: "本週練習",
-      text: "把一個企業 agent 導入 PoC 拆成任務型 eval、權限分級、人工覆核、checkpoint、供應風險與回退方案。"
+      text: "把一個企業 agent 導入 PoC 拆成任務型 eval、權限範圍、記憶規則、人工覆核、checkpoint 與回退方案。"
     }
   ]
 };
