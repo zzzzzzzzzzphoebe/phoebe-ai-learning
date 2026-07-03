@@ -42,3 +42,19 @@ Do not add company confidential data, personal mailbox details, API keys, tokens
 ## GitHub Pages
 
 The project is published from the repository root using GitHub Pages. No build output directory is required.
+
+## Publish Verification
+
+After pushing to `origin/main`, verify that GitHub Pages actually caught up:
+
+```bash
+./scripts/verify-pages-sync.sh
+```
+
+This checks three states:
+
+- local files in the repo
+- raw content on `origin/main`
+- public GitHub Pages content
+
+If raw GitHub matches local but Pages is still stale, treat it as a deploy problem rather than a content problem. Wait briefly and rerun the script. If it still reports stale Pages, retrigger the deploy instead of editing content blindly.
