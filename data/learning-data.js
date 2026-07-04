@@ -1,6 +1,374 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-05",
+      date: "2026-07-05",
+      title: "AI coding agent 正在走向可插拔工具層與技能標準",
+      topic: "Agent Tooling",
+      impact: "高",
+      memory: "今天要記住：最近 24 小時沒有更大的單一模型發布，但真正值得學的是 agent stack 正在往工具可插拔、技能可重用、流程可編排、風險可分級的方向收斂。",
+      status: "未讀",
+      summary:
+        "2026-07-05 最值得深讀的公開訊號，不是又一個模型分數刷新，而是 AI coding agent 的基礎設施層正在快速成形。近 24 小時 Codex 與 Hermes 沒有新的公開公告強到值得單獨成篇，但 GitHub 與官方周邊訊號很明顯：Page Agent 把瀏覽器 GUI 操作做成嵌入式 agent；Chrome DevTools MCP 直接把瀏覽器觀測與除錯能力接進 coding agent；herdr 這類 terminal multiplexer 開始管理多代理並行；Agent Skills 逐步往開放標準靠攏；Anthropic 也在 Fable 5 的 cyber safeguards 裡把 jailbreak 嚴重度分級公開化。今天真正該學的，是如何把『模型能力』翻成『可插拔工具、可重用技能、可驗收工作流、可治理風險分級』。",
+      tags: ["Agent", "MCP", "Skills", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先抓四條線：沒有更大的官方新發布、GitHub agent 工具層升溫、Agent Skills 標準化、Anthropic 開始把 jailbreak 嚴重度講清楚。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把今天主軸理解成一個轉折：AI coding agent 的競爭，正在從單一模型能力，轉向瀏覽器工具接入、技能封裝、任務編排與安全分級。"
+        },
+        {
+          label: "今日練習",
+          text: "設計一張 agent tooling stack 圖，至少標出 model、skills、MCP/tooling、orchestration、evaluation 與 safety gate 六層。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把『agent stack 怎麼落地』這件事變成你的 AI FDE 方法論，而不是只追逐哪個模型又更強。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 agent tooling stack blueprint，說清楚 skills、browser tools、orchestration、eval 與 safety gate 如何組成可交付系統。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent 系統分層、工具接入設計、技能封裝、可驗收工作流與安全邊界表達。"
+        },
+        {
+          label: "下一步",
+          text: "用 Codex Pro 做一個 public-safe 的 agent workbench demo，展示 skills catalog、browser tool scope、task queue 與 review gate。"
+        }
+      ],
+      signals: [
+        {
+          type: "官方/產品",
+          priority: "觀察",
+          title: "Codex / Hermes 近 24 小時未見值得單獨成篇的公開新公告",
+          text: "今天先檢查 Codex 與 Hermes 公開面，近 24 小時沒有新的官方功能、版本或公告強到值得單獨當主軸。",
+          why: "這代表今天更適合把注意力放在實作層真正正在成形的 agent tooling 與 workflow 標準，而不是硬追不存在的快訊。",
+          learningPoint: "每日學習不只追發布，而是判斷今天真正推動工作方式改變的是產品層、工具層還是工作流層。",
+          sources: [
+            {
+              label: "OpenAI News",
+              kind: "官方",
+              url: "https://openai.com/news/"
+            }
+          ]
+        },
+        {
+          type: "安全/治理",
+          priority: "高",
+          title: "Anthropic 把 Fable 5 的 cyber safeguards 與 jailbreak 嚴重度框架公開化",
+          text: "Anthropic 在 2026-07-02 補充說明 Fable 5 的 cyber safeguards，並提出 Cyber Jailbreak Severity 分級草案，試圖把 capability gain、breadth、weaponization 與 discoverability 變成可討論的共同語言。",
+          why: "這顯示 frontier agent 的安全治理正從抽象原則走向具體分類、等級與產業溝通框架。",
+          learningPoint: "AI FDE 不只要知道模型能做什麼，還要能把風險 uplift、可武器化程度與控制範圍翻成客戶聽得懂的導入語言。",
+          sources: [
+            {
+              label: "Anthropic Fable safeguards",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
+            }
+          ]
+        },
+        {
+          type: "GitHub 熱門專案",
+          priority: "高",
+          title: "Page Agent 顯示 GUI agent 正從重型 browser automation 走向頁內嵌入式控制",
+          text: "Alibaba 的 Page Agent 近期持續登上 GitHub Trending，主打只用頁內 JavaScript 與自然語言就能控制 web 介面，並提供可選的 MCP server 做外部控制。",
+          why: "這讓 agent 不一定要從外部接管整個瀏覽器，也可以更貼近產品內嵌 copilot、ERP/CRM 表單自動化與可控網頁工作流。",
+          learningPoint: "未來 AI FDE demo 很值得從『瀏覽器外部自動化』與『產品內嵌 agent』兩條路同時思考，而不是只學一種 browser agent 形態。",
+          sources: [
+            {
+              label: "page-agent",
+              kind: "GitHub",
+              url: "https://github.com/alibaba/page-agent"
+            }
+          ]
+        },
+        {
+          type: "GitHub 熱門專案",
+          priority: "高",
+          title: "Chrome DevTools MCP 讓 coding agent 直接拿到瀏覽器觀測、除錯與效能工具",
+          text: "Chrome DevTools MCP 在 GitHub Trending 上維持高熱度，repo 明確提供 Codex、Claude Code、Copilot、Gemini CLI 等多種 MCP 安裝方式，把瀏覽器檢測與除錯能力變成 agent 可調用工具。",
+          why: "這意味著 agent 不再只是寫程式，而是開始直接進入 QA、效能檢查、前端驗證與網站診斷工作流。",
+          learningPoint: "把 MCP 看成 agent 的 tool bus，會比把它當成單一插件更有價值，因為它直接決定 agent 能否進入真實驗收流程。",
+          sources: [
+            {
+              label: "chrome-devtools-mcp",
+              kind: "GitHub",
+              url: "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+            }
+          ]
+        },
+        {
+          type: "GitHub 熱門專案",
+          priority: "中高",
+          title: "herdr 這類 terminal multiplexer 顯示多代理編排開始成為獨立工作層",
+          text: "herdr 的定位很直接：在同一個 terminal 內同時跑多個 coding agents，並一眼看出誰被卡住、誰還在工作、誰已完成。",
+          why: "這說明多代理工作已經不只是研究概念，而是開始出現專門管理 agent 併發、觀察與協作狀態的操作介面。",
+          learningPoint: "當 agent 變多時，真正的瓶頸會從『模型會不會寫』轉成『任務怎麼拆、狀態怎麼看、誰來接手 review』。",
+          sources: [
+            {
+              label: "herdr",
+              kind: "GitHub",
+              url: "https://github.com/ogulcancelik/herdr"
+            }
+          ]
+        },
+        {
+          type: "開放標準",
+          priority: "中高",
+          title: "Agent Skills 正在往跨產品可重用的開放標準收斂",
+          text: "agentskills/agentskills 專案把 Agent Skills 規格與文件公開化，並明確寫出這個格式源自 Anthropic、已被愈來愈多 agent 產品採用。",
+          why: "一旦技能封裝有共同格式，agent 生態就更容易從單一產品能力，轉向可移植的 workflow 資產與知識庫。",
+          learningPoint: "值得累積的不是一次性的 prompt，而是可重用的 skill、reference、script 與檢查規則。",
+          sources: [
+            {
+              label: "Agent Skills spec",
+              kind: "GitHub",
+              url: "https://github.com/agentskills/agentskills"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "中",
+          title: "MedStreamBench 把『何時回答』納入 agent / VLM 評估，提醒部署不只看正確率",
+          text: "MedStreamBench 在 2026-07-02 發表，強調真實醫療視覺工作不只要答對，還要在正確時間點回答、延後判斷或主動發出警示。",
+          why: "這種 time-aware、proactive 的 benchmark 很適合拿來提醒企業，agent 評估不能只看靜態 QA 分數，而要看工作流中的時機與介入策略。",
+          learningPoint: "AI FDE 在設計 eval 時，應同時定義正確性、時機、人工接手點與誤警成本。",
+          sources: [
+            {
+              label: "MedStreamBench",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01751"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天最值得學的不是單一模型發布，而是 agent stack 的工具層正在成形。近 24 小時沒有更大的官方快訊，所以更應該看那些真正改變工作流的結構性訊號：瀏覽器控制開始有 MCP 與頁內 agent 兩種主流路徑，terminal 端開始出現多代理編排層，skills 逐漸變成可移植資產，而安全治理也開始被翻譯成分級框架。",
+        whyNow:
+          "這個時間點重要，因為當大家都在談 agent 時，真正能落地的差異其實不只在模型，而在你能不能把工具接入、技能重用、任務編排、評估方法與安全邊界一起設計成系統。這也是 AI FDE 最值得提前卡位的能力。",
+        technicalBackground:
+          "一個可交付的 agent workbench，至少要回答六層問題：第一層是模型；第二層是 skills 與 prompts 如何封裝；第三層是 MCP、browser、terminal、資料源等工具如何接入；第四層是任務如何拆分、同步、排程與 handoff；第五層是如何驗證輸出與觀察執行狀態；第六層是 safety gate、權限範圍與風險分級。今天看到的 page-agent、chrome-devtools-mcp、herdr、Agent Skills 與 Anthropic framework，剛好對應這幾層。",
+        enterpriseImpact:
+          "對企業來說，這代表 agent 導入不應再只做聊天框 PoC，而要設計完整工作台：有哪些 skills 可以重複使用、哪些工具能被調用、誰負責 review、瀏覽器與資料源權限如何限制、失敗時如何回退。能把這些問題做成 blueprint 或 demo 的人，比只會比較模型排行榜的人更接近可交付的 AI FDE 角色。",
+        watchNext:
+          "接下來最值得追三件事：第一，更多工具是否會以 MCP 或類似介面成為 agent 標配；第二，skills 是否真的能跨產品移植與版本管理；第三，安全與 eval 是否會從附錄，變成每個 agent workbench 的預設組件。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 agent tooling stack 做成 repo 級可驗收作品，而不是只談概念",
+          examples: [
+            "先定義一份 agent workbench schema，再讓 Codex 產出 skills catalog、tool scope、task queue 與 review panel。",
+            "把 Chrome DevTools MCP 類工具接進 demo，做出前端驗證、效能檢查與 UI regression 的工作流。",
+            "用 Codex 把 agent stack 分成資料模型、介面、檢查、文件與範例任務，留下可追蹤 diff 與驗證紀錄。"
+          ],
+          learningPoint: "Codex 最值得用在把工具層與驗收流程產品化，而不是只拿來生成一次性程式碼。",
+          sources: [
+            {
+              label: "OpenAI Codex",
+              kind: "官方",
+              url: "https://openai.com/codex/"
+            },
+            {
+              label: "chrome-devtools-mcp",
+              kind: "GitHub",
+              url: "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把公開掃描、網站更新、寄信與記憶管理串成個人 agent workbench",
+          examples: [
+            "每天先判斷今天要追的是模型、工具層還是 workflow 層，再決定主軸與專案池。",
+            "把網站 entry、weekly、automation memory 與 Gmail 摘要一次更新，讓研究輸出有持續脈絡。",
+            "把 public-safe 要求當成產品邊界，讓內容與工作流一開始就符合可公開展示條件。"
+          ],
+          learningPoint: "Hermes / Phoebe 的價值，是把研究輸入、內容整理與長期資產沉澱，做成穩定節奏而不是零散任務。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude",
+          pattern: "把 skills 與安全邊界變成 agent 產品能力，而不是藏在提示詞裡",
+          examples: [
+            "用 Agent Skills 的思路把一段專業 workflow 封裝成可重用技能，而不是每次重新描述。",
+            "參考 Anthropic 的 jailbreak severity 思路，先定義哪些能力屬於高 uplift、高風險雙用途，再決定 review gate。",
+            "把領域工作台拆成 skills、connectors、reviewers 與 artifact traceability。"
+          ],
+          learningPoint: "真正成熟的 agent 產品會把 skills 與安全分級做成顯性設計，而不是只靠模型內隱能力。",
+          sources: [
+            {
+              label: "Anthropic Fable safeguards",
+              kind: "官方",
+              url: "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
+            },
+            {
+              label: "Agent Skills spec",
+              kind: "GitHub",
+              url: "https://github.com/agentskills/agentskills"
+            }
+          ]
+        },
+        {
+          tool: "其他 AI 工具",
+          pattern: "用頁內 GUI agent、多代理 terminal 與時間感知 eval，補齊 agent 系統的外圍能力",
+          examples: [
+            "用 Page Agent 這類工具探索產品內嵌 copilot 與表單工作流自動化，而不是只做 headless 爬蟲。",
+            "用 herdr 這類介面觀察多代理工作是否卡在任務拆分、等待 review 還是工具權限。",
+            "參考 MedStreamBench 類 benchmark，為 agent 補上時機、延遲與誤警成本的評估指標。"
+          ],
+          learningPoint: "agent stack 的成熟度，越來越取決於工具接入、操作介面與評估方法，而不是只看模型名稱。",
+          sources: [
+            {
+              label: "page-agent",
+              kind: "GitHub",
+              url: "https://github.com/alibaba/page-agent"
+            },
+            {
+              label: "herdr",
+              kind: "GitHub",
+              url: "https://github.com/ogulcancelik/herdr"
+            },
+            {
+              label: "MedStreamBench",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01751"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "Codex Pro 額度今天最值得花在把 agent tooling 與 workflow 分層做成長期資產，而不是再重複整理一次模型新聞。最有價值的，是那些能同時展示 skills、tools、orchestration、eval 與 review 的作品。",
+        bestProjects: [
+          "Agent Workbench Demo：做一個單頁 workbench，展示 skills catalog、tool scope、task queue、review gate 與 execution log。",
+          "Browser Agent Evaluation Kit：把 MCP / browser tools 接進前端驗證、除錯與效能檢查流程，形成可展示 demo。",
+          "Agent Skills Library：把研究判讀、資料整理、報告生成、QA 驗證等流程封裝成 skills 與 reference assets。",
+          "Learning OS 升級：把 weekly、專案池與搜尋更明確地映射到長期作品與能力證據。"
+        ],
+        weeklyPlan: [
+          "45% 額度投入可公開展示的長期資產：workbench demo、evaluation kit、skills library。",
+          "35% 額度投入 repo 級工程任務：資料結構、內容工作流、靜態站檢查、介面優化。",
+          "20% 額度投入研究驗證：追工具層新專案、標準化趨勢與評估方法。"
+        ],
+        avoid: [
+          "不要把額度只花在追逐每天的新模型名稱。",
+          "不要一開始就做全能 agent 平台；先把 skills、tool scope、review gate 三件事做清楚。",
+          "不要只做漂亮介面，卻沒有 execution log、failure path 與 source traceability。"
+        ],
+        sources: [
+          {
+            label: "chrome-devtools-mcp",
+            kind: "GitHub",
+            url: "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+          },
+          {
+            label: "Agent Skills spec",
+            kind: "GitHub",
+            url: "https://github.com/agentskills/agentskills"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Agent Workbench Demo",
+          value: "把今天主軸做成可展示作品，清楚呈現 skills、browser tools、task queue、review 與 execution log 如何組成一個 agent 工作台。",
+          codexTask: "請 Codex 建一個 public-safe 單頁 demo，模擬 skills catalog、tool scope、task execution 與 human review panel。",
+          asset: "AI FDE agent workbench 作品頁",
+          nextStep: "先定義 4 個 skills 卡片與 3 個任務狀態"
+        },
+        {
+          priority: "能力累積",
+          title: "Browser Agent Evaluation Kit",
+          value: "把瀏覽器控制、UI 驗證、效能檢查與 review step 變成一套可重複示範的方法。",
+          codexTask: "讓 Codex 產出前端檢查清單、MCP tool matrix、驗收頁與失敗案例說明。",
+          asset: "AI FDE browser agent 方法作品",
+          nextStep: "先列出 5 個 UI 檢查情境與對應 tool"
+        },
+        {
+          priority: "長期資產",
+          title: "Personal Agent Skills Library",
+          value: "把你反覆做的研究、整理、報告與驗證流程封裝成 skills，而不是每次重寫 prompt。",
+          codexTask: "持續優化 Phoebe AI Learning 的 weekly、搜尋、專案池，並整理可重用 skills / references。",
+          asset: "個人 AI 學習作戰室與技能庫",
+          nextStep: "先把 daily learning workflow 拆成 3 個可重用 skills"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把官方公告、GitHub 熱門專案、開放標準與 benchmark 分層判讀，再整合成真正有結構的主線。",
+          evidence: "網站上的全球 AI 雷達與來源連結"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 agent 拆成 model、skills、tools、orchestration、eval 與 safety gate 六層。",
+          evidence: "今日 agent tooling stack 練習與專案候選池"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex Pro 把 workbench、evaluation kit 與 skills library 做成 demo 與可追蹤檔案。",
+          evidence: "GitHub Pages、commit、靜態 demo 或互動 prototype"
+        },
+        {
+          skill: "專業表達",
+          practice: "把工具層標準化與安全分級翻成企業能理解的導入語言與面試表述。",
+          evidence: "重要名詞、FDE 練習、weekly 回顧"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "如果 skills、tools 與 orchestration 有共同介面，agent 落地速度會比單純等下一代模型更快。"
+        },
+        {
+          label: "疑慮風險",
+          text: "若工具接入越來越容易，但 review gate、權限邊界與風險分級沒跟上，agent 只會更快把錯誤放大。"
+        },
+        {
+          label: "後續追蹤",
+          text: "值得追蹤哪些供應商與開源專案，能把 skills、browser tools、execution log 與安全框架做成真正可移植的標準組件。"
+        }
+      ],
+      term: {
+        name: "Agent Skills",
+        definition:
+          "Agent Skills 是把某個專業工作流封裝成可重用的指令、參考資料、腳本與檢查規則，讓 agent 能穩定重複執行，而不是每次都重新提示。",
+        example:
+          "例如把『每日 AI 學習站更新』拆成掃描來源、挑主軸、整理 signals、更新網站、寄短信、寫 sidecar memory 六段，並附上固定 schema 與檢查步驟。",
+        misunderstanding:
+          "Agent Skills 不只是 prompt 模板；如果沒有參考檔、工具邊界、檢查規則與可追溯資產，它就很難成為真正可移植的 workflow。"
+      },
+      fde: {
+        scenario: "客戶想建立一個企業內部 AI workbench，讓 agent 能做網站檢查、資料整理與報告初稿，但擔心工具權限過大、不同 agent 難管理、工作流無法驗收。",
+        questions: [
+          "哪些能力應該封裝成可重用 skills，哪些只適合一次性任務？",
+          "browser、terminal、資料庫、文件系統等工具要如何切 scope、留 log 與設 review gate？",
+          "如果未來要換模型或換 agent 產品，哪些 workflow 資產需要保持可移植？"
+        ],
+        exercise:
+          "畫一張 agent workbench architecture，至少標出 skills layer、tool bus、task orchestrator、review gate 與 execution log。",
+        interview:
+          "我會先把 agent 導入問題拆成 skills、tooling、orchestration、evaluation 與 safety 五個層次，因為企業真正需要的不是更會聊天的模型，而是可插拔、可治理、可驗收的工作系統。"
+      }
+    },
+    {
       id: "2026-07-03",
       date: "2026-07-03",
       title: "AI agent 正在從單人助手變成受治理的工作系統",
@@ -1490,15 +1858,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線很清楚：AI 正在從模型能力競賽，走向受治理的 agent 工作系統，包括 frontier agent 的部署治理、長流程 coding 的可靠性，以及 team-agent 與領域工作台的產品化。"
+      text: "本週主線很清楚：AI 正在從單看模型能力，走向完整的 agent 工作系統，包括 frontier agent 的治理、team-agent 與領域工作台的產品化，以及 skills、browser tools、MCP 與多代理 orchestration 這些工具層的標準化。"
     },
     {
       title: "本週名詞",
-      text: "Deployment Gate、Permission-Scoped Agent、Task-based Evaluation。"
+      text: "Deployment Gate、Permission-Scoped Agent、Agent Skills。"
     },
     {
       title: "本週練習",
-      text: "把一個企業 agent 導入 PoC 拆成任務型 eval、權限範圍、記憶規則、人工覆核、checkpoint 與回退方案。"
+      text: "把一個企業 agent 導入 PoC 拆成 skills layer、tool scope、任務編排、evaluation、人工覆核與回退方案。"
     }
   ]
 };
