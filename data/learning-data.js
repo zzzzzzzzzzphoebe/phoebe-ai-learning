@@ -1,6 +1,383 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-06",
+      date: "2026-07-06",
+      title: "AI agent 正在進入 benchmark、clarification 與 context engineering 時代",
+      topic: "Agent Evaluation",
+      impact: "高",
+      memory: "今天要記住：agent 不只要會做事，還要會問對問題、用得起評測、留下可維護的 context，這三件事會決定它能不能真的進企業流程。",
+      status: "未讀",
+      summary:
+        "2026-07-06 最值得深讀的公開訊號，不是單一模型又刷新分數，而是 agent workflow 的三個基礎面開始同時成熟：第一，Microsoft 早期 rollout 研究顯示 CLI agent 已有可觀的實際產出 uplift；第二，AgenticDataBench、DiscoBench、PACE 這些新 benchmark 把 data agent、clarification-aware search、低成本 agent eval 拉到更可落地的層次；第三，OpenWiki 這類工具與 Codex 研究都在提醒，agent 要長期可用，context file、skills 與多代理協作習慣也必須一起升級。今天真正該學的，是如何把 agent 從『會自動做事』翻成『可量測、會追問、留得下 context、可控制成本』的工作系統。",
+      tags: ["Agent", "Evaluation", "Context", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先抓三條線：agent 已開始帶來可量測產出、search/data agent 評測正在細化、context file 與技能文件正在變成長期資產。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把今天主軸理解成一個轉折：未來企業不是只問哪個 agent 最強，而是問它遇到模糊需求會不會問、評測成本能不能承受、團隊 context 能不能持續維護。"
+        },
+        {
+          label: "今日練習",
+          text: "為一個企業 agent PoC 畫出三層設計：clarification loop、proxy evaluation、context file / skills library，並列出各自的驗收指標。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把你從『追模型新聞的人』升級成『會設計 agent workflow 與驗收機制的人』，這更接近 AI FDE 的可成交能力。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 agent evaluation blueprint，說清楚何時該 ask clarification、何時用 proxy benchmark、哪些 context 應寫成長期文件。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent 評測設計、搜尋互動策略、context engineering、成本與產出敘事。"
+        },
+        {
+          label: "下一步",
+          text: "用 Codex Pro 做一個 public-safe 的 agent eval dashboard，展示 task success、clarification rate、proxy score 與 context coverage。"
+        }
+      ],
+      signals: [
+        {
+          type: "官方/產品",
+          priority: "觀察",
+          title: "Codex / Hermes 近 24 小時未見值得單獨成篇的公開新公告",
+          text: "今天先檢查 OpenAI News 與相關公開面，最近公開更新仍停在 2026-06-30 與更早條目，近 24 小時沒有新的 Codex / Hermes 官方快訊強到值得獨立當主軸。",
+          why: "這代表今天更值得把注意力放在 agent workflow 的結構性問題，而不是硬追不存在的產品發布。",
+          learningPoint: "每日學習不只追新品，而是判斷今天真正改變工作方式的是模型層、工具層還是驗收層。",
+          sources: [
+            {
+              label: "OpenAI News",
+              kind: "官方",
+              url: "https://openai.com/news/"
+            }
+          ]
+        },
+        {
+          type: "研究/產業",
+          priority: "高",
+          title: "Microsoft 的 CLI agent rollout 研究顯示採用者合併的 PR 約多 24%",
+          text: "2026-07-01 上線的 arXiv 論文研究 Microsoft 早期導入 Claude Code 與 GitHub Copilot CLI 的情況，指出採用主要靠社交網路擴散，而採用者合併的 pull requests 約比反事實情境高 24%。",
+          why: "這是少見把企業內部 agent 採用、留存與產出放在同一張圖上看的證據，能讓 agent 導入從『感覺有用』走向『有條件地值得投資』。",
+          learningPoint: "企業推 agent 不只是買模型，而是要設計 visible peer use、採用擴散與產出衡量方式。",
+          sources: [
+            {
+              label: "Microsoft rollout study",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01418"
+            }
+          ]
+        },
+        {
+          type: "研究/產品使用",
+          priority: "高",
+          title: "Codex 使用研究顯示多代理與 skills 已經從少數玩法變成可觀比例的工作習慣",
+          text: "OpenAI 的 Codex 研究指出 2026 上半年 agentic AI 使用快速成長，超過 10% 使用者每週會同時管理三個以上 agent，26.6% 會使用 skills，且複雜長任務請求的占比近乎十倍成長。",
+          why: "這說明 agent 不再只是單輪助手，工作模式正在往多代理協作、長任務委派與 skill 化擴張。",
+          learningPoint: "AI FDE 作品不該只展示單次 prompt，而要能展示 concurrent agents、skills 與長任務驗收。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "高",
+          title: "AgenticDataBench 把 data agent 評測推到真實資料工作流層級",
+          text: "AgenticDataBench 在 2026-07-03 受到 Hugging Face Daily Papers 關注，提供 344 個任務、433 個 data science skills、97 個資料集，橫跨 15 個領域，並包含 5 個真實 B2B fintech use cases。",
+          why: "這讓資料 agent 不再只用幾個玩具問題評估，而能比較它在異質資料、技能組合與真實任務中的表現。",
+          learningPoint: "若你想做金融或企業 AI FDE，benchmark 應更像 workflow 測試台，而不是只看單題答對率。",
+          sources: [
+            {
+              label: "AgenticDataBench",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/2607.01647"
+            },
+            {
+              label: "AgenticDataBench arXiv",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01647"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "高",
+          title: "DiscoBench 提醒 search agent 遇到模糊需求時，應先問而不是盲搜",
+          text: "DiscoBench 聚焦 clarification-aware deep search，評估 search agents 是否能辨識含糊請求、主動發問，並在多步資訊任務中修正搜尋路徑；論文指出一味重複搜尋往往還比直接猜更差。",
+          why: "這正好擊中企業最常見的 agent 失敗點：需求不清時，agent 若不敢問，只會更快把錯誤放大。",
+          learningPoint: "把『何時該 ask clarification』寫進 workflow，比一味追更強的檢索能力更重要。",
+          sources: [
+            {
+              label: "DiscoBench",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/2606.27669"
+            },
+            {
+              label: "DiscoBench arXiv",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.27669"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "中高",
+          title: "PACE 嘗試用不到 1% 的成本預測昂貴 agent benchmark 表現",
+          text: "PACE 提出 proxy benchmark 方法，從較小的 atomic evaluation 子集推估 agentic benchmark 分數；論文報告在 14 個模型、4 類 agentic benchmarks 上，能以低於 1% 的 full evaluation 成本維持不錯的預測準確度。",
+          why: "當 agent 評測動輒要花數千美元與數天執行時間，proxy eval 才有機會進入日常路由、模型選型與持續監控。",
+          learningPoint: "企業導入 agent 時，不能只有 full benchmark；還要設計便宜、可頻繁跑的 proxy signals。",
+          sources: [
+            {
+              label: "PACE",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/2607.02032"
+            },
+            {
+              label: "PACE arXiv",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.02032"
+            }
+          ]
+        },
+        {
+          type: "全球社群/GitHub",
+          priority: "中高",
+          title: "OpenWiki 在 Hacker News 走熱，反映 agent documentation 正在變成專門工具層",
+          text: "LangChain 的 OpenWiki 以『為 codebase 撰寫並維護 agent documentation 的 CLI』定位登上 Hacker News，並明確支援持續更新 wiki、同步 AGENTS.md / CLAUDE.md 等 context 檔。",
+          why: "這顯示 context file 不再只是附帶文件，而開始像測試、CI、lint 一樣，成為 agent workflow 的基礎建設。",
+          learningPoint: "值得累積的不是更多 prompt，而是會被 agent 反覆讀取、更新、驗證的 context assets。",
+          sources: [
+            {
+              label: "Hacker News discussion",
+              kind: "社群",
+              url: "https://news.ycombinator.com/"
+            },
+            {
+              label: "OpenWiki",
+              kind: "GitHub",
+              url: "https://github.com/langchain-ai/openwiki"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天最值得學的不是哪個模型又更強，而是 agent workflow 的三個底座開始同時變清楚。產出層有 Microsoft rollout 與 Codex 使用研究，說明 agent 已經在真實工作裡改變行為；評測層有 AgenticDataBench、DiscoBench、PACE，說明大家開始補 data workflow、clarification 與低成本 eval 的空缺；context 層則有 OpenWiki 這類工具，提醒團隊知識與 agent 指令需要被持續維護。",
+        whyNow:
+          "這個時間點重要，因為早期 agent 熱潮大多停在 demo 感與模型能力展示。現在開始出現的，反而是更難但更值錢的問題：它到底帶來多少產出？遇到模糊需求時會不會問？評測成本能不能壓到日常可跑？團隊 context 要怎麼變成可維護資產？這些問題才是企業導入是否會進一步擴大的門檻。",
+        technicalBackground:
+          "一個可交付的 agent 系統，至少要補齊三層。第一層是 interaction layer：需求含糊時要能判斷該追問，而不是盲目展開檢索或執行。第二層是 evaluation layer：除了昂貴 full benchmark，還要有 proxy benchmark 與 task-level metrics，才能日常監控模型路由與 workflow 退化。第三層是 context layer：AGENTS.md、skills、playbooks、codebase docs 要能被 agent 穩定讀取、更新與驗證，否則多代理工作只會越做越亂。",
+        enterpriseImpact:
+          "對企業來說，這意味著 agent 導入不應只做聊天框 PoC，而要設計成一個可管理工作系統：模糊需求先問、關鍵任務有便宜 proxy eval、知識與規範被寫成 context file、長任務能被多人 review。能把這些元素做成 dashboard、demo 或 blueprint 的人，比只會介紹模型排行的人更接近可交付的 AI FDE 角色。",
+        watchNext:
+          "接下來最值得追三件事：第一，clarification-aware benchmark 是否會進入主流 search / enterprise agent 評測；第二，proxy eval 是否能成為模型選型與 routing 的日常信號；第三，context engineering 是否會從 repo 裡的零散說明，升級成像測試與 CI 一樣的標準實務。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 agent eval 與 context discipline 做成 repo 級可驗收作品",
+          examples: [
+            "請 Codex 建一個 agent eval dashboard，顯示 task success、clarification rate、proxy benchmark score 與 context coverage。",
+            "把一個 agent workflow 拆成 prompt、skill、context file、評測腳本與人工 review gate，留下可追蹤 diff。",
+            "用 Codex 實作一個 minimal multi-agent queue，觀察 concurrent tasks 與交接失敗點。"
+          ],
+          learningPoint: "Codex 最值得花在把 workflow 與評測產品化，而不是只做一次性的內容摘要。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把每日掃描、網站更新、寄信與記憶整理變成 context-first 的固定節奏",
+          examples: [
+            "先判斷今天是模型更新、benchmark 進展還是 workflow 方法值得主打，再決定主軸。",
+            "同步更新 daily entry、weekly、automation memory 與 email，讓研究輸出形成可追溯上下文。",
+            "把 public-safe 規則、schema 與 section names 固定化，避免 agent 每天重新發明格式。"
+          ],
+          learningPoint: "Hermes / Phoebe 的價值，在於把分散任務串成可持續的個人 agent operating system。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude",
+          pattern: "拿來思考 search agent 何時該 ask clarification、何時該停手回報不確定",
+          examples: [
+            "為 knowledge agent 設計 ambiguity taxonomy，列出哪些類型必須先問再查。",
+            "把 deep search 任務分成直接回答、追問澄清、回報資料不足三種分流。",
+            "為長任務加入中途 checkpoint，避免 agent 在錯誤前提下越走越遠。"
+          ],
+          learningPoint: "成熟的 agent 產品要把『會問問題』視為能力，而不是把追問當成失敗。",
+          sources: [
+            {
+              label: "DiscoBench",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/2606.27669"
+            }
+          ]
+        },
+        {
+          tool: "其他 AI 工具",
+          pattern: "用 OpenWiki、data benchmark 與 proxy eval，補齊 agent 生態的文件與測量層",
+          examples: [
+            "用 OpenWiki 持續維護 repo 的 agent-facing documentation，而不是只靠人工 README。",
+            "用 AgenticDataBench 類資料工作流 benchmark 思考你的資料 agent 該怎麼驗收。",
+            "把 PACE 類 proxy benchmark 接進模型路由或 regression check，降低全面重跑成本。"
+          ],
+          learningPoint: "agent 生態正在補的，不只是新模型，而是 context、benchmark 與觀測工具。",
+          sources: [
+            {
+              label: "OpenWiki",
+              kind: "GitHub",
+              url: "https://github.com/langchain-ai/openwiki"
+            },
+            {
+              label: "AgenticDataBench",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/2607.01647"
+            },
+            {
+              label: "PACE",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/2607.02032"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "Codex Pro 額度今天最值得花在可重複跑的 agent eval 與 context 資產，而不是單次新聞整理。真正有長期價值的是能留下 dashboard、skills、評測腳本、context files 與驗收規則的專案。",
+        bestProjects: [
+          "Agent Eval Dashboard：做一個單頁儀表板，展示 task success、clarification rate、proxy score、cost 與 review outcomes。",
+          "Clarification Flow Demo：做一個 search / support agent 範例，讓模糊需求先進 clarification loop，再決定查找或回報。",
+          "Context Coverage Kit：盤點 repo 裡哪些規範存在 AGENTS.md、README、skills、tests，哪些是 agent 仍看不到的知識。"
+        ],
+        weeklyPlan: [
+          "40% 額度投入可公開展示的長期資產：eval dashboard、clarification demo、context coverage view。",
+          "35% 額度投入 repo 級工程任務：資料結構、檢查腳本、內容工作流、UI 微調。",
+          "25% 額度投入研究驗證：追 benchmark、代理成本、search interaction 與 context engineering。"
+        ],
+        avoid: [
+          "不要把額度只花在每天重寫 AI 新聞摘要。",
+          "不要只跑昂貴 full eval，卻沒有 proxy metrics 與日常 regression check。",
+          "不要堆更多 prompt，而沒有把規範寫成 agent 真正會讀的 context file。"
+        ],
+        sources: [
+          {
+            label: "PACE",
+            kind: "Hugging Face",
+            url: "https://huggingface.co/papers/2607.02032"
+          },
+          {
+            label: "OpenWiki",
+            kind: "GitHub",
+            url: "https://github.com/langchain-ai/openwiki"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Agent Eval Dashboard",
+          value: "把今天主軸直接做成作品，展示任務成功率、clarification 次數、proxy benchmark 與成本追蹤如何組成一個 agent 驗收台。",
+          codexTask: "請 Codex 建一個 public-safe 單頁 dashboard，包含任務表、clarification funnel、proxy score cards 與 review log。",
+          asset: "AI FDE agent evaluation 作品頁",
+          nextStep: "先定義 4 個指標：task success、clarification rate、proxy score、human intervention"
+        },
+        {
+          priority: "能力累積",
+          title: "Clarification Flow Demo",
+          value: "把模糊需求處理做成可示範的互動流程，這比單純展示檢索更有 enterprise 說服力。",
+          codexTask: "讓 Codex 產出一個 search/support agent mock flow，展示何時追問、何時回報資料不足、何時進入執行。",
+          asset: "AI FDE clarification-aware workflow demo",
+          nextStep: "先列出 6 種常見 ambiguity types 與對應問句"
+        },
+        {
+          priority: "長期資產",
+          title: "Context Coverage Kit",
+          value: "把你常用 repo 的 agent context 規範化，長期降低多代理協作混亂與重工。",
+          codexTask: "持續整理 AGENTS.md、README、skills、playbooks 與檢查清單，並做一個 context coverage 對照表。",
+          asset: "個人 AI repo context library",
+          nextStep: "先挑 1 個 repo，盤點現有 context files 與遺漏規範"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把 adoption、benchmark、context tool 三類訊號放在同一張圖上，不再只看單點新聞。",
+          evidence: "網站上的全球 AI 雷達與 2026-07-06 深讀主線"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 agent workflow 明確拆成 clarification、evaluation、context 三層設計。",
+          evidence: "今日練習、專案候選池與 deepDive 結構"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex Pro 產出 dashboard、mock flow、context coverage 表與檢查腳本。",
+          evidence: "GitHub Pages、commit、靜態 demo 或互動 prototype"
+        },
+        {
+          skill: "專業表達",
+          practice: "把 agent 成本、評測與 context discipline 翻成企業能採納的導入語言。",
+          evidence: "重要名詞、FDE 練習、weekly 回顧"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "真正可擴大的 agent 導入，不是再堆更強模型，而是把 clarification、proxy eval 與 context assets 做成標準配備。"
+        },
+        {
+          label: "疑慮風險",
+          text: "若企業只看到 24% PR uplift 這種 headline，卻沒有配套的評測、成本與 context 治理，導入很容易停在短期熱潮。"
+        },
+        {
+          label: "後續追蹤",
+          text: "值得追蹤哪些 benchmark、context tool 與代理觀測方法，能成為企業 agent 上線前的基本檢查表。"
+        }
+      ],
+      term: {
+        name: "Proxy Benchmark",
+        definition:
+          "Proxy Benchmark 是用一小組較便宜、較快跑的測試，去估計昂貴 agent benchmark 表現的方法，目的不是取代完整評測，而是讓日常模型選型、路由與 regression check 變得可負擔。",
+        example:
+          "例如正式 agent eval 要花數千美元與數天，你可以先用一組關鍵 atomic tasks、task routing cases 與 clarification tests，快速預估這次模型更新會不會退化。",
+        misunderstanding:
+          "Proxy Benchmark 不是隨便挑幾題當 smoke test；如果它和真實 workflow 沒有對齊，就只會給你錯誤安全感。"
+      },
+      fde: {
+        scenario: "客戶想導入一個企業內部 agent，協助資料查詢、簡報初稿與規範搜尋，但擔心需求常常不清楚、全面評測太貴、不同 team 的工作規範又分散在各處。",
+        questions: [
+          "哪些任務類型必須先 ask clarification，哪些可以直接執行或回報資料不足？",
+          "除了昂貴的 full benchmark，能不能定義日常可跑的 proxy metrics 與回歸檢查？",
+          "現有規範應該寫進哪些 context files、skills 或 playbooks，才能讓 agent 長期穩定使用？"
+        ],
+        exercise:
+          "畫一張企業 agent deployment gate，至少標出 clarification loop、proxy benchmark、context library、human review gate 與 audit log。",
+        interview:
+          "我會把 agent 導入拆成三個核心問題：它遇到模糊需求時會不會先問、它的能力能不能用可負擔的方法持續量測、以及團隊規範有沒有被沉澱成 agent 真正能讀的 context。這三件事比單看模型分數更接近可交付系統。"
+      }
+    },
+    {
       id: "2026-07-05",
       date: "2026-07-05",
       title: "AI coding agent 正在走向可插拔工具層與技能標準",
@@ -1858,15 +2235,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線很清楚：AI 正在從單看模型能力，走向完整的 agent 工作系統，包括 frontier agent 的治理、team-agent 與領域工作台的產品化，以及 skills、browser tools、MCP 與多代理 orchestration 這些工具層的標準化。"
+      text: "本週主線很清楚：AI 正在從單看模型能力，走向完整的 agent 工作系統。前半週是治理、team-agent 與工具層標準化，今天則更進一步落到 clarification、benchmark、proxy eval 與 context engineering，開始回答 agent 到底怎麼驗收、怎麼持續維護。"
     },
     {
       title: "本週名詞",
-      text: "Deployment Gate、Permission-Scoped Agent、Agent Skills。"
+      text: "Deployment Gate、Agent Skills、Proxy Benchmark。"
     },
     {
       title: "本週練習",
-      text: "把一個企業 agent 導入 PoC 拆成 skills layer、tool scope、任務編排、evaluation、人工覆核與回退方案。"
+      text: "把一個企業 agent 導入 PoC 拆成 clarification loop、context library、proxy evaluation、人工覆核與回退方案。"
     }
   ]
 };
