@@ -41,7 +41,7 @@ Do not add company confidential data, personal mailbox details, API keys, tokens
 
 ## GitHub Pages
 
-The project is published from the repository root using GitHub Pages. No build output directory is required.
+The project is published with a GitHub Actions Pages workflow. The workflow uploads the repository root directly, so no build output directory is required.
 
 ## Publish Verification
 
@@ -58,3 +58,5 @@ This checks three states:
 - public GitHub Pages content
 
 If raw GitHub matches local but Pages is still stale, treat it as a deploy problem rather than a content problem. Wait briefly and rerun the script. If it still reports stale Pages, retrigger the deploy instead of editing content blindly.
+
+The deploy workflow lives at `.github/workflows/deploy-pages.yml`.

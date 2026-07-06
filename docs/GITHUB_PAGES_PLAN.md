@@ -4,8 +4,9 @@
 
 - Repository: <https://github.com/zzzzzzzzzzphoebe/phoebe-ai-learning>
 - GitHub Pages: <https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/>
-- Source: `main` branch, repository root
-- Build mode: static files, no build step
+- Source: GitHub Actions workflow
+- Workflow: `.github/workflows/deploy-pages.yml`
+- Build mode: static files, no app build step; workflow uploads the repository root directly
 
 Keep the repository public-safe. Keep `index.html`, `styles.css`, `app.js`, `data/`, and `assets/` at the root level.
 
@@ -25,7 +26,7 @@ gh repo create phoebe-ai-learning --public --source=. --remote=origin --push
 Then enable GitHub Pages from:
 
 ```text
-Settings -> Pages -> Build and deployment -> Deploy from a branch -> main /(root)
+Settings -> Pages -> Build and deployment -> GitHub Actions
 ```
 
 ## Future Daily Automation Shape
@@ -50,7 +51,13 @@ cd /Users/ye/Desktop/Phoebe/04-Projects/10-ai-learning-journal
 
 - If local and raw GitHub match, but Pages is stale, the failure is in Pages deploy rather than site content.
 - Wait a few minutes and verify again.
-- If Pages is still stale, retrigger deploy instead of making unrelated content edits.
+- If Pages is still stale, rerun the `Deploy GitHub Pages` workflow or retrigger the Pages build instead of making unrelated content edits.
+
+## Actions Deploy Notes
+
+- The workflow is intentionally minimal because this site is static: checkout, configure Pages, upload the repo root, then deploy.
+- Keep the site public-safe and root-based. Do not move `index.html`, `styles.css`, `app.js`, `data/`, or `assets/` into a generated build folder unless the workflow is updated at the same time.
+- The main advantage over legacy branch deploy is observability: each run has explicit logs, rerun support, and a clear artifact/deploy split.
 
 This prevents a false fix loop where content keeps changing even though the real problem is a transient GitHub Pages deployment failure.
 
