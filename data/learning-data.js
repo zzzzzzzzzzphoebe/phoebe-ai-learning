@@ -1,6 +1,339 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-07",
+      date: "2026-07-07",
+      title: "Agent 越能自己做事，越需要成本、權限與安全 gate",
+      topic: "Agent Governance",
+      impact: "高",
+      memory: "今天要記住：agent 的價值不是讓它無限制地多跑，而是把高自主性放進可觀測、可限額、可暫停、可追責的工作系統。",
+      status: "未讀",
+      summary:
+        "2026-07-07 的主軸是 agent 成熟後的反面功課：它可以更像同事一樣完成長任務，也可能在背景重試、子代理、權限與安全邊界上製造不可見成本。Sysdig 對 JADEPUFFER 的研究把這件事推到安全層：攻擊者已能用 LLM agent 編排完整勒索流程；Business Insider 對 Codex quota 事件的報導則提醒，正常產品裡的 auto-review、subagents 與 retry 若沒有足夠監控，也會讓使用者覺得額度被消耗得不透明。今天該學的不是『少用 agent』，而是把 agent 設計成有 budget、permission、runtime telemetry、stop condition 與人工覆核的系統。",
+      tags: ["Agent", "安全治理", "成本控管", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "先抓一件事：agent 的下一個瓶頸不是會不會做，而是它在背景做了什麼、花了多少、拿到哪些權限、何時該停。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把 Sysdig 的 agentic ransomware、Codex 額度事件與 Codex 使用研究放在同一張圖：自主性提高後，安全、成本與可觀測性會變成同一個治理問題。"
+        },
+        {
+          label: "今日練習",
+          text: "為一個企業 agent workflow 設計四個 gate：token / compute budget、tool permission、runtime security alert、連續失敗停止條件。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把你從『會叫 agent 做事的人』升級成『會設計 agent 操作邊界的人』，這是企業會付錢的 AI FDE 能力。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 agent governance checklist，欄位包含額度、權限、背景任務、失敗重試、人工覆核與稽核紀錄。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent 成本控管、runtime security、權限設計、workflow stop condition、產品可觀測性。"
+        },
+        {
+          label: "下一步",
+          text: "把你的 Codex / Phoebe 工作流改成每次長任務都有上限、檢查點與清楚的完成紀錄，避免看起來自動化、實際上卡住或空轉。"
+        }
+      ],
+      signals: [
+        {
+          type: "安全/威脅研究",
+          priority: "高",
+          title: "Sysdig 公布 JADEPUFFER，將 agentic ransomware 推到安全治理主線",
+          text: "Sysdig Threat Research Team 於 2026-07-01 公布 JADEPUFFER，稱其為第一個被觀察到由 LLM agent 端到端驅動的勒索行動；重點不是攻擊技術多新，而是 agent 能自己偵查、修正錯誤、橫向移動與執行資料破壞。",
+          why: "這讓企業不能只把 agent 看成生產力工具，也必須把它納入攻擊面、權限、secret exposure 與 runtime defense 的設計。",
+          learningPoint: "AI FDE 做 agent PoC 時，要能說清楚最小權限、secret 掃描、工具 allowlist 與異常行為停機條件。",
+          sources: [
+            {
+              label: "JADEPUFFER: Agentic ransomware for automated database extortion",
+              kind: "Sysdig",
+              url: "https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion"
+            }
+          ]
+        },
+        {
+          type: "產品/成本",
+          priority: "高",
+          title: "Codex 額度事件提醒：背景 auto-review、subagents 與 retry 都需要監控",
+          text: "Business Insider 報導 OpenAI 已修正 Codex 使用額度異常，問題包含 auto-review、helper subagents 或 retry 行為比預期更頻繁，以及 dashboard 顯示與實際收費活動之間的透明度問題。",
+          why: "這件事很適合當作 agent 產品教訓：使用者不只在意結果，也在意背景工作是否可看見、可限制、可解釋。",
+          learningPoint: "設計 agent 工作流時，要把 token / compute budget、重試次數、子代理數量與人為確認點明確寫進規則。",
+          sources: [
+            {
+              label: "OpenAI explains why Codex burned through credits faster than usual",
+              kind: "Business Insider",
+              url: "https://www.businessinsider.com/openai-codex-usage-limit-warroom-fix-issue-2026-6"
+            }
+          ]
+        },
+        {
+          type: "產品/硬體",
+          priority: "中",
+          title: "Codex Micro 預告把 coding agent 操作推向實體控制介面",
+          text: "The Verge 報導 OpenAI 預告與 Work Louder 合作的 Codex-focused device，預計 2026-07-15 發表，外型接近可配置快捷鍵與控制器的 macro pad。",
+          why: "當 agent 變成日常工作流，實體快捷鍵與常用動作也可能變成控制面；這代表 agent 不只是聊天框，而會進入更固定的操作習慣。",
+          learningPoint: "工具設計要開始思考哪些 agent 動作值得變成一鍵操作，哪些必須保留確認與審核。",
+          sources: [
+            {
+              label: "OpenAI is teasing new hardware... for Codex",
+              kind: "The Verge",
+              url: "https://www.theverge.com/ai-artificial-intelligence/959174/openai-codex-hardware-work-louder"
+            }
+          ]
+        },
+        {
+          type: "研究/使用行為",
+          priority: "中高",
+          title: "Codex 使用研究顯示 agentic AI 正從開發者工具擴散成組織工作型態",
+          text: "OpenAI 相關研究以 Codex 使用資料觀察 agentic AI 的工作轉變，指出 2026 上半年活躍使用快速成長，且外部組織與非原始開發者受眾也在擴張。",
+          why: "當 agent 從少數工程師玩具變成組織工作方式，治理、訓練、成本分攤與驗收就會跟著變重要。",
+          learningPoint: "企業採用 agent 前，應先定義誰能開任務、哪些任務需審核、哪些結果能直接進入正式流程。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            }
+          ]
+        },
+        {
+          type: "研究/Benchmark",
+          priority: "中高",
+          title: "General AgentBench 指出通用 agent 會遇到 context ceiling 與 verification gap",
+          text: "General AgentBench 研究把 search、coding、reasoning、tool-use 放到統一環境，發現從專用 benchmark 走到通用 agent 場景後，效能會明顯下滑；順序擴展受 context ceiling 限制，平行擴展則有 verification gap。",
+          why: "這直接說明為什麼『多開幾個 agent』不等於品質更高，也可能只是更快消耗額度。",
+          learningPoint: "當你規劃 20 組、50 組或長任務自動化時，應先設計驗證機制，再提高並行或批量。",
+          sources: [
+            {
+              label: "Benchmark Test-Time Scaling of General LLM Agents",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2602.18998"
+            }
+          ]
+        },
+        {
+          type: "研究/安全評測",
+          priority: "中高",
+          title: "AgentLAB 把長任務 agent 的攻擊面做成 benchmark",
+          text: "AgentLAB 聚焦 long-horizon attacks，涵蓋 intent hijacking、tool chaining、task injection、objective drifting 與 memory poisoning 等攻擊型態，提醒多輪 agent 比單輪聊天有更複雜的安全失敗模式。",
+          why: "這讓 agent 安全不再只是 prompt safety，而是 workflow、memory、tool chain 與環境互動的完整問題。",
+          learningPoint: "真正的 agent governance 要測長任務中的漂移、記憶污染與工具串接風險，而不是只看單次回答是否安全。",
+          sources: [
+            {
+              label: "AgentLAB: Benchmarking LLM Agents against Long-Horizon Attacks",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2602.16901"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天的幾個訊號看起來分散，其實指向同一件事：agent 已經不只是模型能力，而是會消耗資源、呼叫工具、持有權限、在背景重試、甚至可能被惡意使用的工作系統。Sysdig 的 JADEPUFFER 把 agent 的自主性放到攻擊場景；Codex 額度事件把自主性放到日常產品成本；Codex Micro 則暗示 agent 操作會進入更固定、更頻繁的使用界面。",
+        whyNow:
+          "現在重要，因為 agent 的價值正在從 demo 進入日常流程。一旦使用者每天依賴它，『背景到底做了什麼』就會變成產品信任問題；一旦企業允許它碰資料、API、repo 或雲端環境，『它能做到哪裡』就會變成資安與治理問題。今天的學習重點，是不要把 agent 視為無成本的魔法自動化。",
+        technicalBackground:
+          "可管理的 agent workflow 至少需要五層控制。第一是 budget：限制 token、子代理、重試次數與批量規模。第二是 permission：明確 allowlist 可用工具、檔案範圍、網路與外部服務。第三是 telemetry：記錄每次工具呼叫、失敗重試、背景任務與成本估計。第四是 stop condition：連續失敗、未知 UI、異常權限要求或安全訊號出現時立即停。第五是 review gate：高風險輸出必須經人工確認才能進正式流程。",
+        enterpriseImpact:
+          "對企業來說，這會改變 agent PoC 的設計方式。以前 PoC 常問模型能不能完成任務；現在還要問能不能受控地完成任務。金融、法遵、客服、工程與資安團隊都需要看到 agent 的操作紀錄、成本上限、資料邊界與回退方案。能把這些做成 dashboard、runbook 與驗收指標的人，才是真正可交付的 AI FDE。",
+        watchNext:
+          "接下來觀察三件事：第一，主流 agent 產品是否提供更細的背景任務與額度透明度；第二，企業是否把 agent permission 與 secret exposure 納入標準風險評估；第三，agent benchmark 是否從答題能力擴張到長任務安全、成本與可驗證性。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把長任務拆成小批量、明確上限、可驗證產出",
+          examples: [
+            "每次只讓 Codex 處理 1 個明確目標，先讀現況、再修改、最後跑檢查與回報 diff。",
+            "對批量任務設定 max files、max generated items、max retry 與 stop condition，避免背景空轉。",
+            "要求 Codex 在每次長任務結束時列出成本敏感點、未驗證事項與下一步最小動作。"
+          ],
+          learningPoint: "Codex Pro 的核心不是一次開最大火力，而是把昂貴推理用在高價值決策與驗證上。",
+          sources: [
+            {
+              label: "OpenAI explains why Codex burned through credits faster than usual",
+              kind: "Business Insider",
+              url: "https://www.businessinsider.com/openai-codex-usage-limit-warroom-fix-issue-2026-6"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "讓每日排程有活性檢查、補跑路徑與 sidecar memory",
+          examples: [
+            "排程醒來後先寫入 started marker，完成後寫入 completed marker，避免只靠感覺判斷是否有跑。",
+            "如果 session preview 長時間為空、daily 檔不存在、memory 未更新，就視為卡住並走補跑。",
+            "每次補跑都保留來源、commit、寄信與記憶更新，讓自動化可追溯。"
+          ],
+          learningPoint: "好的自動化不是永遠不失敗，而是失敗時能快速定位、補跑並留下證據。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude / Claude Code",
+          pattern: "用於交叉審查 agent workflow 的安全與驗證缺口",
+          examples: [
+            "請另一個模型 review agent runbook，專門找權限過大、重試過多、驗證不足的地方。",
+            "把長任務 prompt 改成先問清楚，再執行，避免需求含糊時直接花大量額度。",
+            "用 review-only 模式檢查自動化是否有 secret exposure 或不可逆操作。"
+          ],
+          learningPoint: "多模型不是為了炫技，而是讓高風險流程有第二視角。",
+          sources: [
+            {
+              label: "AgentLAB",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2602.16901"
+            }
+          ]
+        },
+        {
+          tool: "Security / Observability stack",
+          pattern: "把 agent 執行視為需要監控的 production workload",
+          examples: [
+            "對 agent 可接觸的 repo、cloud、database 與 secret store 做最小權限設計。",
+            "記錄工具呼叫、異常重試、外部網路、檔案寫入與權限升級請求。",
+            "把連續失敗、未知 UI、非預期網路目標與大量資料讀取設成停機訊號。"
+          ],
+          learningPoint: "agent 上線不是只加 prompt，而是要接進企業既有的資安與可觀測性習慣。",
+          sources: [
+            {
+              label: "JADEPUFFER",
+              kind: "Sysdig",
+              url: "https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "把高額度用在判斷、驗證與整合，不要浪費在盲目重試、無界批量與沒有 stop condition 的背景任務。",
+        bestProjects: [
+          "Agent governance dashboard：整理每個 workflow 的 budget、permission、retry、status、last completed marker。",
+          "Nail Atlas 安全批量控制器：每日目標 20 組，但每輪限制小批量、遇到連續品質問題就停。",
+          "AI Learning 補跑與健康檢查：檢查 automation session、daily file、memory marker、commit 與 email 是否一致。"
+        ],
+        weeklyAllocation: [
+          "60%：高價值專案實作與驗證，例如批量控制器、dashboard、站台更新。",
+          "25%：研究與內容整理，優先產出可累積的文章、runbook、checklist。",
+          "15%：維護與偵錯，只做能避免後續浪費的健康檢查與補跑。"
+        ],
+        avoidWaste: [
+          "不要讓 agent 在同一個失敗圖像或未知 UI 上無限重試。",
+          "不要同時開太多子代理處理需要人工品質判斷的任務。",
+          "不要在沒有來源與驗證的情況下產生大量內容。"
+        ],
+        sources: [
+          {
+            label: "Codex usage limit issue",
+            kind: "Business Insider",
+            url: "https://www.businessinsider.com/openai-codex-usage-limit-warroom-fix-issue-2026-6"
+          },
+          {
+            label: "General AgentBench",
+            kind: "arXiv",
+            url: "https://arxiv.org/abs/2602.18998"
+          }
+        ]
+      },
+      projectIdeas: [
+        {
+          lane: "本週優先",
+          project: "Agent Run Health Panel",
+          why: "今天排程卡住正好說明，光有 cron 不夠，還要看 session 是否真的開始工作、是否產出、是否寄信、是否更新 memory。",
+          codexTask: "做一個讀取 automation.toml、session JSONL、daily content 與 sidecar memory 的健康檢查腳本。",
+          asset: "可放進 Phoebe 的 automation health report。",
+          next: "先支援每日 AI 學習與 Nail Atlas 兩條工作流。"
+        },
+        {
+          lane: "能力累積",
+          project: "Agent Governance Checklist",
+          why: "企業導入 agent 時，最常缺的是成本、權限、資料與停機條件的共同語言。",
+          codexTask: "把今天內容整理成一頁 checklist 與一個 JSON schema，未來每個 agent workflow 都能填。",
+          asset: "AI FDE 面試與客戶簡報都可用的治理模板。",
+          next: "用每日 AI 學習排程當第一個填寫案例。"
+        },
+        {
+          lane: "長期資產",
+          project: "Token-safe Batch Controller",
+          why: "不只 Nail Atlas，任何批量生成任務都需要小批量、品質 gate、失敗跳過與總量上限。",
+          codexTask: "抽象出 batch policy：target/day、max/run、max retries、skip rules、human stop states。",
+          asset: "可重用的批量自動化控制規格。",
+          next: "先用 Nail Atlas 的每日 20 組目標驗證。"
+        }
+      ],
+      skillFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把 JADEPUFFER、Codex quota 與 agent benchmark 串成同一個治理主題。",
+          evidence: "能說清楚不同來源如何共同指向成本、權限與安全 gate。"
+        },
+        {
+          skill: "系統設計",
+          practice: "為 agent workflow 畫出 budget、permission、telemetry、stop condition、review gate。",
+          evidence: "每一層都有可檢查欄位，而不是抽象原則。"
+        },
+        {
+          skill: "工程落地",
+          practice: "為自動排程加 started / completed marker 與補跑檢查。",
+          evidence: "能用檔案、session、git commit、email 四個證據確認任務是否完成。"
+        },
+        {
+          skill: "專業表達",
+          practice: "用『agent 不是無成本自動化』這句話說明企業導入風險。",
+          evidence: "能同時打動工程、資安、財務與業務決策者。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "更強的 agent 能把長任務變快、把繁瑣操作自動化，若搭配上限與監控，可以大幅提高個人與團隊產出。"
+        },
+        {
+          label: "疑慮風險",
+          text: "若沒有 budget、permission 與 stop condition，自動化會變成不可見成本、資安風險與難以追責的背景活動。"
+        },
+        {
+          label: "後續追蹤",
+          text: "觀察 Codex、Claude Code、企業 agent 平台是否提供更清楚的背景任務、子代理、額度與權限監控介面。"
+        }
+      ],
+      term: {
+        name: "Agent Governance",
+        definition:
+          "Agent governance 是管理 AI agent 能做什麼、花多少資源、能碰哪些工具與資料、何時必須停下來請人確認的一整套規則與監控。",
+        example:
+          "每日排程可以自動更新網站與寄信，但必須限制來源、驗證檔案、確認 git diff、寄出後寫 memory，且卡住時能補跑。",
+        misunderstanding:
+          "Agent governance 不是把 agent 綁死，而是讓高自主性可以被企業信任、追蹤與持續改善。"
+      },
+      fde: {
+        scenario:
+          "客戶想導入一個能自動讀資料、更新報表、寄信並開 issue 的 agent，但擔心成本失控、誤觸資料與無法稽核。",
+        questions: [
+          "這個 agent 每天、每次任務與每個使用者的 token / compute 上限是多少？",
+          "它可以碰哪些資料、API、repo 與外部網站？哪些操作需要人工核准？",
+          "如果連續失敗、遇到未知畫面、要求新權限或產生異常大量讀寫，系統要如何停下來？"
+        ],
+        exercise:
+          "把一個自動報表 agent 畫成流程圖，標出 budget gate、permission gate、security gate、human review gate 與 completion marker。",
+        interview:
+          "我不會只展示 agent 能自動完成任務；我會同時展示它的額度上限、權限邊界、執行紀錄、失敗停機條件與人工覆核點，讓客戶知道它能被安全地放進流程。"
+      }
+    },
+    {
       id: "2026-07-06",
       date: "2026-07-06",
       title: "AI agent 正在進入 benchmark、clarification 與 context engineering 時代",
@@ -2235,15 +2568,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線很清楚：AI 正在從單看模型能力，走向完整的 agent 工作系統。前半週是治理、team-agent 與工具層標準化，今天則更進一步落到 clarification、benchmark、proxy eval 與 context engineering，開始回答 agent 到底怎麼驗收、怎麼持續維護。"
+      text: "本週主線從 agent workflow 評測，進一步走到 agent governance：不只問 agent 會不會做，而是問它花多少、碰到什麼、何時停、如何被驗證。今天的 JADEPUFFER、Codex 額度事件與 agent benchmark 都提醒，成本、權限、安全與可觀測性正在變成同一個問題。"
     },
     {
       title: "本週名詞",
-      text: "Deployment Gate、Agent Skills、Proxy Benchmark。"
+      text: "Agent Governance、Runtime Telemetry、Stop Condition。"
     },
     {
       title: "本週練習",
-      text: "把一個企業 agent 導入 PoC 拆成 clarification loop、context library、proxy evaluation、人工覆核與回退方案。"
+      text: "把一個既有自動化拆成 budget gate、permission gate、runtime telemetry、stop condition 與 human review gate，並確認是否有 completed marker 可追溯。"
     }
   ]
 };
