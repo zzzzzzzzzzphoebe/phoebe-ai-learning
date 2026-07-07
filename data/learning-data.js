@@ -1,6 +1,354 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-08",
+      date: "2026-07-08",
+      title: "Always-on agent 需要交接、協調與衝突控管",
+      topic: "Agent Operations",
+      impact: "高",
+      memory: "今天要記住：agent 從桌面工具變成可跨裝置、可背景執行的工作層後，真正的瓶頸會從會不會做，轉成誰在做、做到哪裡、和誰衝突、何時交回給人。",
+      status: "未讀",
+      summary:
+        "2026-07-08 的主軸是 agent 操作型態正在變成 always-on workflow。Anthropic 的 Claude Cowork 行動與網頁版讓雲端 session、離線排程、手機通知與跨裝置續接成為產品訊號；同時，AI agent PR 衝突研究提醒，多個 coding agent 或多個任務同時推進時，生產力會伴隨 merge conflict、重複工作與交接成本。今天最該學的不是再追一個模型分數，而是把 agent 設計成有 owner、handoff、lock、queue、review 與 conflict policy 的工作系統。",
+      tags: ["Agent", "工作流", "協調機制", "AI FDE"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "抓住一件事：agent 一旦可以在手機、網頁與雲端背景持續跑，就不能只靠單次 prompt 管理，必須有任務狀態、交接與衝突規則。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把 Claude Cowork 行動化、AI agent PR 衝突研究、Claude J-Space 與 Meta Muse Image 放在同一張圖，理解 agent 正從聊天介面變成跨工具、跨裝置、跨媒體的工作層。"
+        },
+        {
+          label: "今日練習",
+          text: "為一個 agent 工作台設計 6 個欄位：task owner、current state、next checkpoint、blocked reason、conflict lock、human handoff。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把自己從會使用 agent 的人，升級成會設計 agent 協作系統的人；這比單純知道哪個模型最新更接近 AI FDE 的可交付能力。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 Agent Handoff Board 草圖，能展示多個 agent 任務如何排隊、交接、避免互相覆蓋。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent orchestration、handoff design、merge/conflict policy、background task observability、跨裝置工作流。"
+        },
+        {
+          label: "下一步",
+          text: "把 Phoebe 的每日 AI 學習流程補上一個簡單 run state 表：started、researched、edited、validated、committed、pushed、sent。"
+        }
+      ],
+      signals: [
+        {
+          type: "產品/Agent",
+          priority: "高",
+          title: "Claude Cowork 走向手機與網頁，agent 開始成為跨裝置背景工作層",
+          text: "The Verge 與 Wired 報導 Anthropic 將 Claude Cowork 擴展到行動與網頁，雲端 session 成為預設，任務可在筆電關閉時持續執行，並透過手機通知要求使用者介入。",
+          why: "這代表 agent 產品不再只是桌面 app 或 terminal，而是開始接近可隨時交辦、可背景等待、可跨裝置續接的工作系統。",
+          learningPoint: "企業導入 agent 時，要設計任務狀態、通知節點、離線執行邊界與交回人工的條件。",
+          sources: [
+            {
+              label: "Anthropic is launching Claude Cowork on mobile and web",
+              kind: "The Verge",
+              url: "https://www.theverge.com/ai-artificial-intelligence/961978/anthropic-claude-cowork-mobile-web"
+            },
+            {
+              label: "Shut Those Laptops! Anthropic Puts Its Claude Cowork Agent on Your Phone",
+              kind: "Wired",
+              url: "https://www.wired.com/story/shut-those-laptops-anthropic-puts-its-claude-cowork-agent-on-your-phone"
+            }
+          ]
+        },
+        {
+          type: "研究/AI Coding",
+          priority: "高",
+          title: "AI agent PR 研究量化了多代理協作的 merge conflict 成本",
+          text: "2026-07-06 的 arXiv 研究分析 AIDev-pop 資料集，指出大量 agent-authored PR 會在同一 repo 中同時活躍；跨 agent co-active PR 的文字衝突率高於同 agent pair。",
+          why: "這提醒團隊不能只追求多開 agent，還要管理 branch、owner、任務切分、鎖定範圍與整合順序。",
+          learningPoint: "AI FDE 在設計 coding agent workflow 時，要能提出 queue、file lock、PR size、review gate 與 integration owner。",
+          sources: [
+            {
+              label: "AI Agent Pull Requests on GitHub",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.04697"
+            }
+          ]
+        },
+        {
+          type: "研究/採用",
+          priority: "中高",
+          title: "Microsoft CLI agent rollout 研究補上採用與產出證據",
+          text: "Microsoft 早期導入 Claude Code 與 GitHub Copilot CLI 的研究顯示，採用主要透過社交網路擴散，採用者合併 PR 約比反事實情境高 24%。",
+          why: "這讓 agent rollout 從『大家覺得好用』進入更可量測的組織採用問題：誰會用、是否持續用、產出如何衡量。",
+          learningPoint: "企業導入時不要只買帳號，要設計 champion network、使用情境、產出指標與成本監控。",
+          sources: [
+            {
+              label: "Adoption and Impact of Command-Line AI Coding Agents",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01418"
+            }
+          ]
+        },
+        {
+          type: "研究/Interpretability",
+          priority: "中",
+          title: "Claude J-Space 討論讓 hidden planning 與可觀測性再次成為焦點",
+          text: "Axios 報導 Anthropic 研究指出 Claude 有一種內部工作區，可在不直接輸出給使用者的情況下處理與組織想法；相關討論聚焦在隱性推理、計畫能力與 misalignment 偵測。",
+          why: "當 agent 可以背景執行更長任務，使用者看到的文字不等於系統真正做過的每一步，trace 與 checkpoint 就更重要。",
+          learningPoint: "不要把 chain-of-thought 當成唯一可觀測性；企業 agent 更需要工具呼叫、檔案變更、狀態轉移與人工確認紀錄。",
+          sources: [
+            {
+              label: "Anthropic says Claude has carved out its own space to ponder",
+              kind: "Axios",
+              url: "https://www.axios.com/2026/07/06/anthropic-claude-ai-conscious"
+            }
+          ]
+        },
+        {
+          type: "產品/生成式媒體",
+          priority: "中",
+          title: "Meta Muse Image 顯示生成式 AI 也在往 agentic creative workflow 前進",
+          text: "Axios 與 The Verge 報導 Meta 推出 Muse Image，將影像生成接進 Instagram、WhatsApp 與 Meta AI，並強調可用於效果、設計、編輯與更複雜的 prompt planning。",
+          why: "生成式媒體不只是產圖，而會進入社群、品牌、廣告與內容生產流程；這和 coding agent 一樣需要權限、審稿與品牌安全。",
+          learningPoint: "AI FDE 可以把媒體生成流程拆成素材來源、人物授權、品牌規範、審核與發布 gate。",
+          sources: [
+            {
+              label: "Meta's AI catch-up effort gets a new look",
+              kind: "Axios",
+              url: "https://www.axios.com/2026/07/07/ai-meta-image-generator"
+            },
+            {
+              label: "Meta's new Muse Image model can pull other Instagram users into AI photos",
+              kind: "The Verge",
+              url: "https://www.theverge.com/tech/962485/meta-muse-image-ai-model-instagram"
+            }
+          ]
+        },
+        {
+          type: "Codex/Hermes",
+          priority: "中",
+          title: "近 24 小時未見 Codex 或 Hermes 值得單獨成篇的公開新公告",
+          text: "今天的 Codex / Hermes 學習重點不是新功能發布，而是把既有 Codex Pro 與 Phoebe automation 變成可追蹤的 agent operations：狀態、鎖定、驗證、推送與寄信都要有證據。",
+          why: "沒有新公告時更應該累積可展示資產，而不是為了追新聞硬寫工具更新。",
+          learningPoint: "把每日 automation 的 run state 做成小 dashboard，會比只摘要新聞更能展示 AI FDE 的系統能力。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            },
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天的訊號共同指向 agent 的下一個階段：它不再只是開在桌面上的互動工具，而是跨裝置、雲端、背景任務、多人協作與多媒體生成的工作層。Claude Cowork 的行動與網頁化把 agent 推向 always-on；AI agent PR 衝突研究則提醒，agent 越多、任務越平行，越需要明確協調。",
+        whyNow:
+          "時間點重要，是因為 agent 產品正在離開單人 demo，進入日常工作。只要任務能在使用者離線時繼續跑，就必須回答：誰批准它跑？它現在在哪個狀態？如果需要人，通知誰？如果兩個 agent 改到同一段程式，誰先合？如果輸出要進正式流程，誰負責最後驗收？",
+        technicalBackground:
+          "可落地的 always-on agent 系統至少需要六個構件。第一是 task state machine，明確標示 queued、running、blocked、review、done。第二是 ownership，讓每個任務有負責人與交接點。第三是 scope lock，限制 agent 同時修改的 repo、檔案或資料區域。第四是 integration queue，控制 PR、文件或報表進正式流程的順序。第五是 audit trace，記錄工具呼叫、檔案變更、通知與人工決策。第六是 conflict policy，定義重複工作、merge conflict、資料衝突與品牌審核失敗時怎麼處理。",
+        enterpriseImpact:
+          "企業會很快從『agent 能不能幫我做』問到『agent 能不能在我的流程裡安全協作』。金融、客服、工程、行銷與資料團隊都不缺單點 demo，缺的是能被主管、法遵、資安與一線使用者理解的操作規則。AI FDE 的價值，是把模型能力翻成任務板、權限表、交接紀錄、驗收標準與風險控管。",
+        watchNext:
+          "接下來觀察三件事：第一，主流 agent 產品是否提供更好的 cloud session、手機通知與背景任務透明度；第二，coding agent 平台是否內建 branch/file lock、PR queue 與 conflict detection；第三，生成式媒體工具是否把人物授權、品牌安全與發布審核變成標準流程。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "用 repo 級任務板管理多個 agent 工作，而不是同時丟多個模糊要求",
+          examples: [
+            "把每個 Codex 任務限制在單一 issue、單一 branch、單一可驗收輸出。",
+            "在長任務開始前列出可能碰到的檔案範圍，避免兩個 agent 同時改同一區。",
+            "要求每次結束回報 status、diff、tests、blocked reason 與下一個 handoff。"
+          ],
+          learningPoint: "Codex Pro 額度最適合用來建立可重複的 workflow，而不是平行開太多互相干擾的任務。",
+          sources: [
+            {
+              label: "AI Agent Pull Requests on GitHub",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.04697"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把自動化做成可恢復的 run lifecycle",
+          examples: [
+            "每日排程先寫 started，再依序標記 researched、edited、validated、pushed、sent。",
+            "如果某一步卡住，補跑時從 memory 與 git 狀態恢復，而不是整個流程重做。",
+            "把 GitHub Pages、Gmail 與 local validation 結果拆成獨立狀態，避免一個失敗掩蓋其他成功。"
+          ],
+          learningPoint: "真正好用的個人 AI 作業系統，重點是可追溯、可補跑、可交接。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude / Claude Cowork",
+          pattern: "把背景任務設計成會在正確時間把人叫回來",
+          examples: [
+            "讓 agent 先整理資料與草稿，但在寄出、刪除、付款、發布前通知人確認。",
+            "把手機通知用在 blocked decision，而不是每個小步驟都打斷使用者。",
+            "桌面 local access 只給必要資料夾，雲端 session 只跑不含敏感資料的整理任務。"
+          ],
+          learningPoint: "跨裝置 agent 的價值不是永遠自動，而是在該自動時自動、該交回時清楚交回。",
+          sources: [
+            {
+              label: "Claude Cowork on mobile and web",
+              kind: "The Verge",
+              url: "https://www.theverge.com/ai-artificial-intelligence/961978/anthropic-claude-cowork-mobile-web"
+            }
+          ]
+        },
+        {
+          tool: "Creative / Meta AI tools",
+          pattern: "把生成式影像當成需要授權與審稿的 production workflow",
+          examples: [
+            "先定義素材來源與人物授權，再讓 AI 產生社群素材變體。",
+            "用品牌規範檢查色彩、文案、人物使用與發布渠道。",
+            "把 AI 生成圖分成草稿、審核版、可發布版，避免直接進正式渠道。"
+          ],
+          learningPoint: "生成式 AI 的企業價值在工作流，不在單張圖片本身。",
+          sources: [
+            {
+              label: "Meta Muse Image",
+              kind: "Axios",
+              url: "https://www.axios.com/2026/07/07/ai-meta-image-generator"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "今天 Codex Pro 額度要用在建立 agent handoff 與 conflict policy，不要用在無界平行任務。先把流程變清楚，再提高自動化程度。",
+        bestProjects: [
+          "Agent Handoff Board：把每日 AI learning、Nail Atlas、repo 任務都放進同一套 run state。",
+          "AI PR Conflict Playbook：整理 branch、file lock、review queue 與 merge conflict 處理規則。",
+          "Automation Runbook Dashboard：用本機檔案、git、Pages、Gmail send result 組成可檢查狀態板。"
+        ],
+        weeklyPlan: [
+          "50% 用在可部署或可展示的 agent operations 小工具。",
+          "30% 用在研究判讀與學習網站內容維護。",
+          "20% 用在既有 repo 測試、文件化與重構，避免長期技術債。"
+        ],
+        avoid: [
+          "不要同時叫多個 agent 修改同一個 repo 區域。",
+          "不要讓背景任務缺少 owner、deadline 與 stop condition。",
+          "不要把生成式內容直接視為可發布版，尤其涉及品牌、人物或金融業泛化場景。"
+        ],
+        sources: [
+          {
+            label: "AI Agent Pull Requests on GitHub",
+            kind: "arXiv",
+            url: "https://arxiv.org/abs/2607.04697"
+          },
+          {
+            label: "Adoption and Impact of Command-Line AI Coding Agents",
+            kind: "arXiv",
+            url: "https://arxiv.org/abs/2607.01418"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Agent Handoff Board",
+          value: "把多個 agent 任務的 owner、state、handoff 與 conflict lock 做成可展示作品，直接對應企業導入痛點。",
+          codexTask: "建立一個靜態 dashboard prototype，讀取 JSON run records 並顯示 queued/running/blocked/review/done。",
+          asset: "AI FDE 作品集中的 agent operations demo。",
+          nextStep: "先用每日 AI learning automation 當第一筆真實案例。"
+        },
+        {
+          priority: "能力累積",
+          title: "AI PR Conflict Playbook",
+          value: "把研究中的 merge conflict 風險轉成工程團隊可用的 branch/PR 協作規則。",
+          codexTask: "整理一份 Markdown runbook，包含 file ownership、PR size、agent queue、review gate 與 conflict resolution checklist。",
+          asset: "面試與客戶簡報可用的 coding agent governance 文件。",
+          nextStep: "用目前 Phoebe repo 工作流寫一個範例。"
+        },
+        {
+          priority: "長期資產",
+          title: "Personal AI Ops Ledger",
+          value: "把每天的網站更新、Gmail、push、補跑與失敗原因變成長期可分析資料。",
+          codexTask: "把 automation memory 轉成結構化 JSONL，未來可生成週報與可靠性指標。",
+          asset: "個人 AI 作業系統的 observability layer。",
+          nextStep: "定義 run_id、date、topic、validation、publish、email、failure_reason 欄位。"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把產品新聞與 arXiv 研究放在一起看，不只問 agent 新功能，而是問協作成本與組織採用風險。",
+          evidence: "今天能同時引用 Cowork 行動化、AI PR 衝突研究與 Microsoft rollout 研究。"
+        },
+        {
+          skill: "系統設計",
+          practice: "設計 agent handoff board，讓任務狀態、owner、lock、queue、review gate 可視化。",
+          evidence: "能把 always-on agent 拆成 state machine、ownership、scope lock、audit trace。"
+        },
+        {
+          skill: "工程落地",
+          practice: "把每日 automation 的隱性流程轉成可讀寫的 run state，並用 node check、git status、send result 驗證。",
+          evidence: "網站每日更新本身就是可累積的測試場。"
+        },
+        {
+          skill: "專業表達",
+          practice: "用『agent 需要交接與衝突控管』向非工程主管解釋為什麼導入不是只買工具。",
+          evidence: "能把 merge conflict、手機通知、背景任務與合規審核講成同一個管理問題。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "Always-on agent 可以把等待、整理、查找、草稿與跨裝置交接變得更流暢，讓知識工作不再受限於單一桌面 session。"
+        },
+        {
+          label: "疑慮風險",
+          text: "如果沒有狀態管理、權限邊界與衝突規則，背景任務會變成不可見成本、重複工作、merge conflict 與責任不清。"
+        },
+        {
+          label: "後續追蹤",
+          text: "觀察 Claude Cowork、Codex、GitHub Copilot coding agent 與開源 agent 是否內建更清楚的 task board、PR queue、通知與審核機制。"
+        }
+      ],
+      term: {
+        name: "Agent Handoff",
+        definition:
+          "Agent handoff 是指 agent 在任務中把狀態、結果、阻塞原因、下一步與風險清楚交回給人或另一個 agent 的機制。",
+        example:
+          "每日 AI 學習流程中，agent 完成研究後要交接給內容更新步驟；完成更新後要交接給驗證、commit、push 與 Gmail 寄送，每一步都需要明確狀態。",
+        misunderstanding:
+          "Handoff 不是寫一句『完成了』，而是要讓接手者知道做了什麼、沒做什麼、哪些檔案改了、哪些檢查通過、哪裡還需要人判斷。"
+      },
+      fde: {
+        scenario:
+          "客戶想讓多個 AI agent 同時處理文件摘要、程式修補、報表更新與客服草稿，但擔心任務互相覆蓋、結果難追蹤、出錯時不知道誰負責。",
+        questions: [
+          "每個 agent 任務是否有 owner、範圍、截止時間與完成定義？",
+          "哪些資料、檔案或 repo 區域需要鎖定，避免兩個 agent 同時改？",
+          "任務卡住、需要核准、發生衝突或準備發布時，要通知誰、在哪裡留下紀錄？"
+        ],
+        exercise:
+          "畫一張 agent handoff board，欄位包含 task、owner、state、scope、last action、blocked reason、next human decision。",
+        interview:
+          "我會先把 agent 當成需要協作規則的新型同事來設計：任務要有 owner，改動要有範圍，背景執行要有 trace，交回人工要有明確 checkpoint，並用衝突政策保護正式流程。"
+      }
+    },
+    {
       id: "2026-07-07",
       date: "2026-07-07",
       title: "Agent 越能自己做事，越需要成本、權限與安全 gate",
@@ -2568,15 +2916,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線從 agent workflow 評測，進一步走到 agent governance：不只問 agent 會不會做，而是問它花多少、碰到什麼、何時停、如何被驗證。今天的 JADEPUFFER、Codex 額度事件與 agent benchmark 都提醒，成本、權限、安全與可觀測性正在變成同一個問題。"
+      text: "本週主線從 agent workflow 評測與 governance，進一步走到 agent operations：不只問 agent 會不會做，而是問它由誰負責、在哪個狀態、能碰哪些範圍、何時交回給人、如何避免多代理衝突。"
     },
     {
       title: "本週名詞",
-      text: "Agent Governance、Runtime Telemetry、Stop Condition。"
+      text: "Agent Governance、Runtime Telemetry、Stop Condition、Agent Handoff、Conflict Policy。"
     },
     {
       title: "本週練習",
-      text: "把一個既有自動化拆成 budget gate、permission gate、runtime telemetry、stop condition 與 human review gate，並確認是否有 completed marker 可追溯。"
+      text: "把一個既有自動化拆成 run state、owner、scope lock、review gate、conflict policy 與 human handoff，並確認每一步都有可追溯證據。"
     }
   ]
 };
