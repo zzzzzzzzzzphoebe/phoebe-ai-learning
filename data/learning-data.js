@@ -1,6 +1,352 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-09",
+      date: "2026-07-09",
+      title: "Frontier model 發布正在變成受控實驗",
+      topic: "Model Governance",
+      impact: "高",
+      memory: "今天要記住：高能力模型不只是更聰明的 API，而是需要分階段發布、外部測試、使用者分層、風險回報與回退機制的受控系統。",
+      status: "未讀",
+      summary:
+        "2026-07-09 的主軸是 GPT-5.6 從受限 rollout 走向更廣泛發布，代表 frontier model 的發布方式正在從單純產品上線，變成政府、供應商、企業與開發者共同參與的受控實驗。這件事對 AI FDE 的意義很直接：你不能只會說模型更強，還要會設計 preview、eval、risk gate、使用者溝通與 rollback。今天的其他訊號也指向同一件事：Claude Code 類 coding agent 的安全風險、CLI agent 採用研究、open-source agent traces 與 MCP/NLWeb 協定化，都在提醒 agent 能力越強，越需要可驗收的治理層。",
+      tags: ["模型治理", "Frontier AI", "AI FDE", "Agent Security"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "抓住一件事：GPT-5.6 的重點不只是新模型，而是 frontier model 發布開始需要分階段、可測試、可回退的 release governance。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把 GPT-5.6 rollout、Claude Code 安全事件、CLI agent 採用研究與 open-source agent census 放在一起看，理解企業導入 AI 的核心問題正在從功能展示轉成發布、權限、測量與責任。"
+        },
+        {
+          label: "今日練習",
+          text: "設計一張 frontier model preview checklist，欄位包含使用者範圍、資料等級、任務指標、風險門檻、人工覆核、回退方案與公開溝通。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把自己定位成會把 AI 新能力翻譯成受控導入方案的人，而不是只會追新模型名稱的人。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 Model Preview Governance Checklist，可放進 AI FDE 作品集或面試故事。"
+        },
+        {
+          label: "能力焦點",
+          text: "release governance、task-based eval、agent security、risk communication、enterprise rollout design。"
+        },
+        {
+          label: "下一步",
+          text: "把 Phoebe AI Learning 的每日內容也當成 release checklist 練習：每次更新都明確記錄來源、驗證、推送、寄信與失敗處理。"
+        }
+      ],
+      signals: [
+        {
+          type: "官方/模型發布",
+          priority: "高",
+          title: "GPT-5.6 從受限 rollout 轉向更廣泛發布，模型上線變成治理事件",
+          text: "Axios 報導 OpenAI 的 GPT-5.6 將於 2026-07-09 走向更廣泛公開；此前 rollout 曾因安全測試與政府溝通而受限。重點不是單一模型分數，而是 frontier model 發布正在被外部安全、政策與企業採用節奏共同塑形。",
+          why: "這讓 AI FDE 必須會設計 preview gate：誰先用、用什麼資料、測哪些任務、遇到風險如何停止、如何對利害關係人說明。",
+          learningPoint: "把模型上線看成受控實驗；先定義任務、風險、資料分級與回退，再談大規模導入。",
+          sources: [
+            {
+              label: "Trump administration lifts restrictions on OpenAI's GPT 5.6",
+              kind: "Axios",
+              url: "https://www.axios.com/2026/07/08/openai-gpt-trump-ban-lifted"
+            },
+            {
+              label: "GPT-5.6 buzz builds with launch imminent",
+              kind: "Axios",
+              url: "https://www.axios.com/2026/07/08/gpt-sol-ultra-openai-anthropic-grok"
+            }
+          ]
+        },
+        {
+          type: "安全/Agent",
+          priority: "高",
+          title: "Claude Code 類 coding agent 的 helpfulness 會放大供應鏈攻擊面",
+          text: "TechRadar 報導 Mozilla 0din 研究者揭露 Claude Code 可被看似正常的 Markdown 指令鏈誘導執行高風險行為；問題不只是單一工具漏洞，而是 agent 會為了完成任務主動串接 shell、DNS、repo 與本機環境。",
+          why: "企業導入 coding agent 時，不能只看產出速度，還要管理 command approval、repo trust、network access、secrets boundary 與 audit logs。",
+          learningPoint: "把 agent 的『願意幫忙』視為需要被約束的執行能力；每個外部 repo、指令與網路呼叫都應該有 trust gate。",
+          sources: [
+            {
+              label: "Security experts warn Claude Code can be exploited simply by trying to be helpful",
+              kind: "TechRadar",
+              url: "https://www.techradar.com/pro/security/agentic-coding-tools-have-access-to-everything-they-need-for-this-security-experts-warn-claude-code-can-be-exploited-simply-by-trying-to-be-helpful"
+            },
+            {
+              label: "Adoption and Impact of Command-Line AI Coding Agents",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01418"
+            }
+          ]
+        },
+        {
+          type: "研究/採用",
+          priority: "中高",
+          title: "Microsoft CLI agent rollout 研究把 agent 採用從感覺拉回可衡量指標",
+          text: "arXiv 研究分析 Microsoft 早期導入 Claude Code 與 GitHub Copilot CLI 的資料，指出採用擴散與社交網路相關，採用者合併 PR 約比反事實情境高 24%，但 merged PR 仍只是 proxy，不等於最終業務價值。",
+          why: "這是企業導入 AI 的好教材：工具採購不是結束，真正要設計的是 adoption cohort、retention、output proxy、cost control 與 quality review。",
+          learningPoint: "AI FDE 要能把『大家開始用』轉成可量測 rollout plan：誰是 champion、哪些任務先導入、怎麼看成本與品質。",
+          sources: [
+            {
+              label: "Adoption and Impact of Command-Line AI Coding Agents",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.01418"
+            }
+          ]
+        },
+        {
+          type: "研究/Open Source",
+          priority: "中高",
+          title: "Open-source agent traces 顯示單一 PR 訊號會低估 agent 真實滲透率",
+          text: "一篇 180M repositories 的 census 研究指出，若只看 bot account 或 PR census，會漏掉大量 commit-level、config-level 或 silent adoption 的 AI coding agent 使用痕跡。",
+          why: "企業或平台要治理 agent，不能只看明面上的 PR；local agent、IDE agent、commit attribution 與設定檔都可能影響供應鏈。",
+          learningPoint: "設計 AI adoption dashboard 時，要同時看 commit message、author identity、config files、PR metadata 與 review trail。",
+          sources: [
+            {
+              label: "Detecting AI Coding Agents in Open Source",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.24429"
+            }
+          ]
+        },
+        {
+          type: "協定/Agentic Web",
+          priority: "中",
+          title: "MCP / NLWeb 類協定讓網站開始為 agent 暴露可查詢介面",
+          text: "TechRadar 對 Microsoft NLWeb 的整理指出，網站可透過自然語言與 MCP endpoint 讓 AI agent 查詢內容與資料；這代表未來網站不只服務人類瀏覽器，也要服務 agent 工作流。",
+          why: "對 Phoebe AI Learning 這類學習站，長期可以思考如何把 daily entries、signals、projects 變成 agent 可查詢的結構化知識。",
+          learningPoint: "AI FDE 要懂得把內容網站、內部知識庫與業務系統整理成 agent-friendly data surface，而不是只做漂亮頁面。",
+          sources: [
+            {
+              label: "Developers need to know about the NLWeb Protocol",
+              kind: "TechRadar",
+              url: "https://www.techradar.com/pro/could-microsoft-kill-the-web-browser-at-build-everything-developers-need-to-know-about-the-nlweb-protocol"
+            }
+          ]
+        },
+        {
+          type: "Codex/Hermes",
+          priority: "中",
+          title: "近 24 小時未見 Codex 或 Hermes 值得單獨成篇的公開新公告",
+          text: "今天 Codex / Hermes 的重點不是新功能發布，而是把既有 Codex Pro 與 Phoebe automation 當成 model governance 練習場：每次 agent 產出都要有來源、diff、檢查、commit、push、寄信與可補跑紀錄。",
+          why: "沒有工具快訊時，最值得累積的是可展示的導入方法論與可驗證 workflow。",
+          learningPoint: "用 Codex Pro 做一個 Model Preview Governance Checklist，比單純摘要 GPT-5.6 新聞更能變成長期資產。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            },
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天最重要的不是 GPT-5.6 是否在某個 benchmark 又高幾分，而是 frontier model 的發布流程本身正在變成一個可觀察的治理事件。Axios 的報導顯示，GPT-5.6 先經歷受限 rollout、安全測試與政府溝通，再走向更廣泛公開。這讓模型發布不再只是 product launch，而是 release governance：能力、風險、測試、政策、企業採用與使用者期待同時被拉進同一個流程。",
+        whyNow:
+          "現在重要，是因為 AI agent 與高能力模型正在進入真正的工作流。模型若能做更長推理、更強 coding、更深研究或更主動地使用工具，發布失誤的成本也會上升。對企業來說，早用新模型可能取得效率優勢，但若沒有資料分級、任務評估、權限邊界與回退方案，preview 可能變成風險外溢。",
+        technicalBackground:
+          "一個健康的 frontier model preview 至少需要七層。第一是 cohort design，決定先開給哪些使用者與任務。第二是 data boundary，限制可用資料等級與敏感欄位。第三是 task-based eval，用真實但 public-safe 或去識別樣本測正確性、穩定性、延遲與成本。第四是 agent permission，限制 shell、browser、repo、email、付款、刪除與外部網路能力。第五是 audit trace，保留工具呼叫、檔案改動、人工核准與輸出版本。第六是 incident path，定義錯誤、幻覺、資安疑慮與越權行為如何回報。第七是 rollback，讓團隊能回到舊模型、舊 prompt 或人工流程。",
+        enterpriseImpact:
+          "金融業、醫療、法務、客服與工程團隊最需要的是把新模型變成可控能力，而不是把整個流程直接交給它。AI FDE 的價值在於把『模型更強』翻成『哪些任務能先試、哪些資料不能碰、什麼指標算通過、什麼情況要停、如何向主管與法遵說明』。這會比背模型名稱更接近企業真正願意付費的能力。",
+        watchNext:
+          "接下來觀察三件事：第一，OpenAI 是否提供更完整的 GPT-5.6 system card、API pricing、model behavior 與安全限制；第二，Anthropic、Google、Meta 與 Microsoft 是否採用類似的 staged release 與外部測試敘事；第三，開發者社群是否把新模型用在 agentic coding、long-context research、multi-agent orchestration 與 enterprise eval，而不是只比較主觀體感。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把新模型或新 agent 能力當成 preview branch 驗收，而不是直接接進正式流程",
+          examples: [
+            "建立一個 eval branch，讓 Codex 用同一組 bugfix、文件更新、測試補強任務比較新舊模型。",
+            "要求 Codex 每次 preview 任務都輸出 diff、tests、risk notes、rollback path。",
+            "把 high-risk action 設成需要人工 approval，例如刪檔、推送、寄信、外部下載與 secrets 相關操作。"
+          ],
+          learningPoint: "Codex Pro 額度最適合拿來建立可重複 eval harness，讓新能力變成證據，不是感覺。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把每日自動化當成 release governance 的生活版練習",
+          examples: [
+            "每次跑完都記錄 researched、edited、validated、committed、pushed、sent。",
+            "遇到 Gmail 或 GitHub 失敗時保留狀態，補跑只補缺口，不重做已完成步驟。",
+            "把 automation memory 當成 audit trail，讓下次 run 能接上而不是憑印象。"
+          ],
+          learningPoint: "個人作業系統也需要 preview、驗證、發布與補救流程；這正是企業 AI 導入的縮小版。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude / Claude Code",
+          pattern: "把 helpful coding agent 放進 zero-trust repo workflow",
+          examples: [
+            "陌生 repo 先用 read-only audit，確認 install scripts、Markdown 指令與 network calls。",
+            "讓 agent 先提出 command plan，再由人批准高風險命令。",
+            "把 shell、network、credentials 與本機資料夾權限拆開控管。"
+          ],
+          learningPoint: "越會自己執行的 agent，越需要清楚的工具權限與安全邊界。",
+          sources: [
+            {
+              label: "Claude Code security warning",
+              kind: "TechRadar",
+              url: "https://www.techradar.com/pro/security/agentic-coding-tools-have-access-to-everything-they-need-for-this-security-experts-warn-claude-code-can-be-exploited-simply-by-trying-to-be-helpful"
+            }
+          ]
+        },
+        {
+          tool: "Other AI / Agentic Web",
+          pattern: "把網站與知識庫整理成 agent-friendly endpoint",
+          examples: [
+            "為 learning journal 補上 structured JSON，讓 agent 可以查每天主題、來源與專案候選。",
+            "用 NLWeb / MCP 思維設計 /ask 與 /mcp 兩種入口：人看頁面，agent 查資料。",
+            "先做 public-safe content surface，再思考內部知識庫的權限與稽核。"
+          ],
+          learningPoint: "未來網站的價值不只在閱讀體驗，也在能不能被 agent 安全、準確、可追溯地使用。",
+          sources: [
+            {
+              label: "NLWeb Protocol explainer",
+              kind: "TechRadar",
+              url: "https://www.techradar.com/pro/could-microsoft-kill-the-web-browser-at-build-everything-developers-need-to-know-about-the-nlweb-protocol"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "今天 Codex Pro 額度要投入 model preview governance 與 eval harness，讓新模型發布事件沉澱成可展示的方法論，而不是只做一次性新聞摘要。",
+        bestProjects: [
+          "Model Preview Governance Checklist：一頁式檢核表，涵蓋使用者範圍、資料等級、任務指標、風險門檻、回退方案。",
+          "Agent Security Gate Demo：用陌生 repo / Markdown 指令情境示範 command approval、network boundary 與 audit trace。",
+          "Phoebe Learning API Surface：把 daily entries 轉成 agent 可查詢的 public-safe JSON endpoint 草圖。"
+        ],
+        weeklyPlan: [
+          "45% 用在可部署或可展示的 governance checklist / dashboard。",
+          "35% 用在 agent security 與 eval harness，累積工程證據。",
+          "20% 用在每日研究與學習站維護，保持長期輸出節奏。"
+        ],
+        avoid: [
+          "不要為了試新模型直接把敏感資料、寄信、付款、刪檔或發布權限交出去。",
+          "不要只用主觀體感比較模型，要有固定任務、固定資料、固定評分。",
+          "不要把 preview 結果包裝成 production-ready，除非已經有驗收與回退證據。"
+        ],
+        sources: [
+          {
+            label: "GPT-5.6 rollout reporting",
+            kind: "Axios",
+            url: "https://www.axios.com/2026/07/08/openai-gpt-trump-ban-lifted"
+          },
+          {
+            label: "Adoption and Impact of Command-Line AI Coding Agents",
+            kind: "arXiv",
+            url: "https://arxiv.org/abs/2607.01418"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Model Preview Governance Checklist",
+          value: "把 GPT-5.6 rollout 事件轉成企業可用的 preview / eval / rollback 檢核表，直接對應 AI FDE 面試與客戶導入場景。",
+          codexTask: "建立一頁 Markdown 或小型靜態頁，列出 cohort、data boundary、task eval、permission、incident、rollback 欄位。",
+          asset: "AI FDE 作品集中的 frontier model governance artifact。",
+          nextStep: "先用 GPT-5.6、Claude Code security、Phoebe automation 三個案例填第一版。"
+        },
+        {
+          priority: "能力累積",
+          title: "Agent Security Gate Demo",
+          value: "把 coding agent 安全風險做成可演示的 trust gate workflow，顯示你不只會用 agent，也懂得保護工作環境。",
+          codexTask: "做一個 public-safe demo repo，展示 read-only scan、command plan、approval gate、audit log 四步。",
+          asset: "工程與資安交界的 AI FDE demo。",
+          nextStep: "用假資料與 harmless commands 建立流程，不放任何真實 secret。"
+        },
+        {
+          priority: "長期資產",
+          title: "Phoebe Agent-Friendly Knowledge Surface",
+          value: "把每天的 learning entries 變成 agent 可查詢資料，讓學習站從網站升級成個人 AI 研究資料層。",
+          codexTask: "設計 `/data/learning-data.js` 的輕量 API 文件與查詢範例，未來可接 MCP / NLWeb 思維。",
+          asset: "個人研究情報台的可機器讀取基礎。",
+          nextStep: "先寫一份 schema README，說明 entries、signals、projects、sources 如何被 agent 使用。"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把新模型發布新聞讀成 release governance，而不是只讀成模型能力比較。",
+          evidence: "今天能用 GPT-5.6 rollout、Claude Code security 與 CLI agent adoption 共同說明企業風險。"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 model preview 拆成 cohort、data boundary、eval、permission、audit、incident、rollback。",
+          evidence: "能產出 Model Preview Governance Checklist 的欄位與流程。"
+        },
+        {
+          skill: "工程落地",
+          practice: "把 preview 想法落成可跑的 eval branch、static checklist 或 public-safe demo repo。",
+          evidence: "每日網站更新本身保留 source、diff、node check、git commit、push 與 email result。"
+        },
+        {
+          skill: "專業表達",
+          practice: "用『受控實驗』向主管解釋為什麼不能直接把最新模型接進正式流程。",
+          evidence: "能把政府測試、企業採用、agent 安全與回退方案講成同一套導入語言。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "分階段發布讓企業、政府與開發者有時間測試高能力模型，避免能力快速擴散時缺少安全與操作準備。"
+        },
+        {
+          label: "疑慮風險",
+          text: "如果 release governance 變得不透明，開發者可能只看到延後與權限不均，卻看不到明確測試標準與責任邊界。"
+        },
+        {
+          label: "後續追蹤",
+          text: "追蹤 GPT-5.6 的正式 system card、API 文件、使用限制、價格與開發者在 coding / research / agent workflow 的真實評測。"
+        }
+      ],
+      term: {
+        name: "Staged Rollout",
+        definition:
+          "Staged rollout 是把新模型、功能或系統分批開放給不同使用者與任務，先觀察表現、風險與回饋，再決定是否擴大發布。",
+        example:
+          "企業可以先讓 20 位內部 champion 用新模型處理 public-safe 文件摘要與測試任務，確認準確率、延遲、成本與錯誤類型後，再開放給更多團隊。",
+        misunderstanding:
+          "Staged rollout 不是單純拖延上線，而是用較小範圍換取更早發現問題、更清楚責任與更可控的回退。"
+      },
+      fde: {
+        scenario:
+          "客戶想在下週就把最新 frontier model 接進內部知識庫、客服草稿與程式修補流程，理由是競爭對手可能已經開始使用。",
+        questions: [
+          "哪些任務可以先用 public-safe 或去識別資料做 preview，哪些任務必須等法遵與資安確認？",
+          "你們目前有沒有固定 eval set，可以比較舊模型與新模型在正確性、成本、延遲與風險上的差異？",
+          "如果新模型輸出錯誤、越權呼叫工具或成本超標，誰能停用、如何回退、如何通知使用者？"
+        ],
+        exercise: "用 30 分鐘寫一份 Model Preview Governance Checklist，至少包含 7 欄：cohort、data class、task eval、permission、audit、incident、rollback。",
+        interview: "我會把 frontier model preview 當成受控實驗：先限定使用者與資料，建立任務型評估，再逐步開放；這樣既能抓住新能力，也能保留安全與回退證據。"
+      }
+    },
+    {
       id: "2026-07-08",
       date: "2026-07-08",
       title: "Always-on agent 需要交接、協調與衝突控管",
@@ -2916,15 +3262,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線從 agent workflow 評測與 governance，進一步走到 agent operations：不只問 agent 會不會做，而是問它由誰負責、在哪個狀態、能碰哪些範圍、何時交回給人、如何避免多代理衝突。"
+      text: "本週主線從 agent operations 進一步走到 frontier model release governance：不只問模型或 agent 會不會做，而是問誰能先用、用哪些資料、如何評估、哪些工具權限要被限制、出事時如何回退。"
     },
     {
       title: "本週名詞",
-      text: "Agent Governance、Runtime Telemetry、Stop Condition、Agent Handoff、Conflict Policy。"
+      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Conflict Policy、Staged Rollout、Model Preview。"
     },
     {
       title: "本週練習",
-      text: "把一個既有自動化拆成 run state、owner、scope lock、review gate、conflict policy 與 human handoff，並確認每一步都有可追溯證據。"
+      text: "把一個新模型或 agent 導入拆成 cohort、data boundary、task eval、permission、audit、incident path 與 rollback，並用一頁 checklist 說清楚。"
     }
   ]
 };
