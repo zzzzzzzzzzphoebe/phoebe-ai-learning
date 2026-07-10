@@ -1,6 +1,379 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-11",
+      date: "2026-07-11",
+      title: "Agent 產出正在從完成任務走向可驗證證據",
+      topic: "Agent Evidence",
+      impact: "高",
+      memory: "今天要記住：agent 會做事已經不夠，真正可交付的是來源可驗證、成本可控、權限可限制、結果可重跑的 evidence trail。",
+      status: "未讀",
+      summary:
+        "2026-07-11 的主軸是 agentic workflow 正在從『幫我做完』升級成『留下可驗證證據』。Paper-replication 研究把 coding agent 複現論文的每個 claim 變成 target、provenance、comparison 與 validation gate；Prismata 則把 web agent 面對第三方內容時的 prompt injection 問題拆成 contextual least privilege。今天的其他訊號也在補同一條線：HalluSquatting 顯示 agent 不能把幻覺 repo / package 當成可執行事實，HN 上的 MCP quote-action demo 顯示企業開始把 agent 接到真實 CRM 動作，而 Gemini 2.5 Flash 停用討論提醒成本、延遲與穩定版本也是 production adoption 的一部分。",
+      tags: ["Agent Evidence", "AI FDE", "安全治理", "Codex Pro"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "抓住一件事：agent 產出的價值不在最後一句『完成了』，而在每一步是否有來源、證據、驗證與回退。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把 Paper-replication、Prismata、HalluSquatting、MCP quote-action 與 Gemini Flash 討論放在一起看，理解 agent 導入正在同時需要 evidence、security、cost routing 與 human handoff。"
+        },
+        {
+          label: "今日練習",
+          text: "設計一張 Agent Evidence Trail Checklist，欄位包含 task target、source URL、tool call、generated artifact、validation command、risk note、human approval 與 rollback。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把自己訓練成能把 agent excitement 轉成可驗收工作系統的人，而不是只會說某個 agent 很會做事。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 Agent Evidence Trail Checklist，可放進 AI FDE 作品集，對應企業導入與面試案例。"
+        },
+        {
+          label: "能力焦點",
+          text: "evidence-based delivery、agent security、source verification、cost routing、human-in-the-loop operation。"
+        },
+        {
+          label: "下一步",
+          text: "把自己的 Codex 任務也改成 evidence-first：每次不是只看 final answer，而是看 diff、tests、sources、run log 與可補跑紀錄。"
+        }
+      ],
+      signals: [
+        {
+          type: "研究/Agent Workflow",
+          priority: "高",
+          title: "Paper-replication 把 coding agent 複現論文變成證據導向流程",
+          text: "arXiv 新文提出 Paper-replication workflow，要求 agent 將論文 claims 拆成 targets，重建方法、執行實驗、連結 provenance 與比較結果，最後通過 validation checks 才算完成。重點不是 agent 能不能產生一篇報告，而是每個 claim 是否被 evidence 覆蓋。",
+          why: "這是 AI FDE 很好的方法論：企業 PoC 不能只交付 demo，要交付 claim、evidence、validation 與 limitations。",
+          learningPoint: "把任何 AI 專案承諾拆成可驗證 targets；每個 target 都要有來源、產出、檢查與接受標準。",
+          sources: [
+            {
+              label: "Coding-agents can replicate scientific machine learning papers",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.02134"
+            }
+          ]
+        },
+        {
+          type: "安全/Web Agent",
+          priority: "高",
+          title: "Prismata 把 web agent prompt injection 轉成 contextual least privilege 問題",
+          text: "Prismata 論文指出，web agent 會把自然語言內容當成指令，讓第三方或使用者產生的內容有機會劫持 agent。研究提出以動態 trust label、內容遮蔽與能力限制來降低跨站 prompt injection 風險。",
+          why: "當 agent 開始操作瀏覽器、表單、CRM 或內部系統時，企業需要的是 least privilege 與內容信任分層，不是只靠 prompt 說『不要被騙』。",
+          learningPoint: "把頁面內容分成 trusted instruction、untrusted content、user data 與 action surface；agent 只應看到與執行任務必要的最低權限內容。",
+          sources: [
+            {
+              label: "Prismata: Confining Cross-Site Prompt Injection in Web Agents",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.08147"
+            },
+            {
+              label: "Prismata Hacker News discussion",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/item?id=48865238"
+            }
+          ]
+        },
+        {
+          type: "安全/供應鏈",
+          priority: "高",
+          title: "HalluSquatting 顯示 agent 不能把幻覺出來的 repo 當成安裝來源",
+          text: "Tom's Hardware 報導 HalluSquatting 攻擊會利用模型對新 repo、package 或 URL 的幻覺，讓攻擊者註冊相似名稱並誘導 agent 抓取惡意程式碼。這把 LLM hallucination 從答案品質問題變成供應鏈風險。",
+          why: "Coding agent 若有 shell、network 與 repo 權限，就不能直接執行模型猜出的 install 指令或 GitHub URL；來源驗證要成為 workflow gate。",
+          learningPoint: "所有 package、repo、script 與 model artifact 都要先做 source verification：官方文件、已知 maintainer、hash、release history、dependency risk。",
+          sources: [
+            {
+              label: "HalluSquatting is the latest agentic AI exploit",
+              kind: "Tom's Hardware",
+              url: "https://www.tomshardware.com/tech-industry/cyber-security/hallusquatting-is-the-latest-agentic-ai-exploit-where-models-dream-up-potentially-malicious-urls-in-tool-calls-attack-exploits-a-fundamental-weakness-in-every-available-model"
+            }
+          ]
+        },
+        {
+          type: "社群/MCP",
+          priority: "中高",
+          title: "HN 出現商業服務把 MCP endpoint 接到 CRM lead action 的早期案例",
+          text: "Hacker News 上有保險業者展示 MCP server，讓 AI agents 讀取公開知識並提交 quote request 到 CRM；作者也承認目前尚未證明是否會帶來有效 lead，但這代表 agent-callable business action 正在進入小型企業實驗。",
+          why: "這類案例對金融業泛化場景很有參考價值：read-only knowledge tools 與 write action 必須分層，action 後仍應回到 licensed human follow-up 或人工審核。",
+          learningPoint: "設計 MCP / agent action 時，先把 public knowledge、rate limit、CRM tagging、人工作業接續與 abuse handling 拆清楚。",
+          sources: [
+            {
+              label: "Show HN: An MCP server that lets AI agents request disability insurance quotes",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/item?id=48865825"
+            },
+            {
+              label: "seaworthy-io/seaworthy-mcp",
+              kind: "GitHub",
+              url: "https://github.com/seaworthy-io/seaworthy-mcp"
+            }
+          ]
+        },
+        {
+          type: "社群/模型成本",
+          priority: "中",
+          title: "Gemini 2.5 Flash 停用討論提醒開發者在意穩定、便宜、可預期的模型層",
+          text: "Hacker News 前排出現 Google AI Developer Forum 的 Gemini 2.5 Flash 停用疑慮討論。這類討論不是單純懷舊，而是開發者在意低成本、低延遲、可預期行為與 migration runway。",
+          why: "企業 AI 導入常常不需要最強模型，而需要可持續營運的模型層；模型 lifecycle、成本與替換策略會直接影響 production 可靠性。",
+          learningPoint: "AI FDE 要會設計 model routing：高風險任務用強模型，低風險高頻任務用便宜穩定模型，並保留 migration plan。",
+          sources: [
+            {
+              label: "Don't discontinue Gemini 2.5 Flash",
+              kind: "Google AI Developer Forum",
+              url: "https://discuss.ai.google.dev/t/please-dont-discontinue-gemini-2-5-flash/174246"
+            },
+            {
+              label: "Hacker News discussion",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/item?id=48864507"
+            }
+          ]
+        },
+        {
+          type: "社群/Model Evaluation",
+          priority: "中",
+          title: "HN 熱議多模型 build-off，真正可學的是固定任務比較而非主觀排名",
+          text: "Hacker News 前排討論 GPT-5.6、Grok 4.5、Claude 與 Muse Spark 建同樣 4 個 app 的 build-off。這種比較容易變成模型迷因，但若任務固定、輸出可檢查，就能轉成實用 eval habit。",
+          why: "AI FDE 面對模型選型時，應該把 subjective vibe 變成固定任務、固定資料、固定評分與成本紀錄。",
+          learningPoint: "用 Codex Pro 建一套 mini build-off：同一個小 app、同一組 acceptance tests、同一個成本表，比較模型與 agent 的真實交付品質。",
+          sources: [
+            {
+              label: "GPT-5.6, Grok 4.5, Claude, and Muse Spark build the same 4 apps",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/item?id=48865093"
+            }
+          ]
+        },
+        {
+          type: "Codex/Hermes",
+          priority: "中",
+          title: "近 24 小時未見 Codex 或 Hermes 值得單獨成篇的公開新公告",
+          text: "今天 Codex / Hermes 的重點不是新功能發布，而是把 Codex Pro 與 Phoebe automation 用成 evidence-first workflow：來源掃描、資料更新、node check、git diff、commit、push、Gmail 與 memory 都要留下清楚狀態。",
+          why: "沒有工具快訊時，最值得累積的是可展示的工作方法：如何讓 AI agent 的產出可驗證、可追溯、可補跑。",
+          learningPoint: "今天的 Codex Pro 額度應投入 Agent Evidence Trail Checklist 與 mini eval harness，讓日常使用變成作品集證據。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            },
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天的共同訊號是：agent 已經不只是在聊天視窗裡給建議，而是開始讀 repo、跑指令、複現研究、操作網頁、提交表單、接 CRM，甚至可能抓取外部 package。當 agent 的能力從文字輸出變成行動能力，交付標準也必須跟著升級。真正有價值的不是 agent 說『我完成了』，而是它留下什麼證據能讓人驗收。",
+        whyNow:
+          "現在重要，是因為 agentic workflow 正在進入真實業務與工程流程。Paper-replication 顯示研究複現可以被拆成 claim targets 與 validation gates；Prismata 顯示 web agent 必須面對 untrusted page content；HalluSquatting 顯示模型幻覺可以變成供應鏈攻擊；HN 的 MCP quote-action 則顯示小型企業已經開始讓 agent 觸發 CRM 動作。這些訊號合在一起，代表企業導入 AI 的問題不再是『agent 能不能做』，而是『做的過程是否可信』。",
+        technicalBackground:
+          "一個 evidence-first agent workflow 至少有八層。第一是 task target，把需求拆成可驗收 claims 或 acceptance criteria。第二是 source verification，確認引用的 repo、package、文件、模型與資料集是真實且可信的。第三是 tool boundary，限制 shell、browser、network、email、CRM、filesystem 等工具能力。第四是 provenance，記錄每個輸入、來源、命令、artifact 與產出路徑。第五是 validation，使用 tests、linters、checks、comparison tables 或人工抽查驗證。第六是 cost routing，讓高風險任務使用強模型，低風險高頻任務使用穩定便宜模型。第七是 human approval，對寫入、寄送、上傳、刪除、付款與客戶互動做 gating。第八是 rollback，讓錯誤輸出或錯誤動作能停止、回復與補救。",
+        enterpriseImpact:
+          "金融業泛化場景尤其需要這套思維。若 agent 用於授信文件整理、客服草稿、內部知識查詢、法遵初篩或開發流程，企業不會只問它能不能產生答案，而會問答案根據哪裡、是否引用正確資料、是否觸碰敏感欄位、是否有人工覆核、錯誤時能否追溯。AI FDE 的價值，就是把這些問題轉成可執行的 workflow、dashboard、checklist 與 demo。",
+        watchNext:
+          "接下來觀察四件事：第一，coding agent 是否開始內建 source verification 與 dependency trust gate；第二，web agent 防護是否從 prompt 層走向 browser/runtime 層；第三，MCP / agent action 是否會出現更清楚的 read/write permission pattern；第四，模型供應商是否提供更穩定的便宜模型層與 migration runway，讓企業可以做長期成本規劃。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把每個任務改成 evidence trail，而不是只收 final answer",
+          examples: [
+            "要求 Codex 在修改 repo 前列出 target files、acceptance criteria、risk notes。",
+            "每次完成後保留 git diff、node check、test output、manual verification 與 rollback note。",
+            "用同一個小型 app 任務比較不同模型或 prompt，建立 mini build-off table。"
+          ],
+          learningPoint: "Codex Pro 額度最適合拿來建立可重複驗收的工作流，讓每次使用都累積成作品集證據。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把自動化任務當成小型 production runbook",
+          examples: [
+            "每日 AI 學習站固定記錄 researched、edited、validated、committed、pushed、sent。",
+            "補跑時先讀 automation memory 與 git log，只補缺口，避免重複寄信或覆寫內容。",
+            "把 public-safe、來源連結、email link-only 與 Gmail result 寫進同一個 run record。"
+          ],
+          learningPoint: "個人自動化若能留下清楚 runbook，就能轉成企業 agent ops 的展示案例。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude / Claude Code",
+          pattern: "用 Claude 做高層推理與草稿，但用 evidence gate 限制執行",
+          examples: [
+            "讓 Claude 先拆解研究 claim 或產品需求，再交給 Codex 落地成可驗證檔案。",
+            "陌生 package 或 repo 一律要求來源確認，不能直接採用模型猜出的安裝指令。",
+            "對 web / CRM / email action 加上人工確認與 rate limit。"
+          ],
+          learningPoint: "Claude 類工具很適合拆任務與寫策略，但越接近外部動作，越需要 source verification 與 approval gate。",
+          sources: [
+            {
+              label: "HalluSquatting is the latest agentic AI exploit",
+              kind: "Tom's Hardware",
+              url: "https://www.tomshardware.com/tech-industry/cyber-security/hallusquatting-is-the-latest-agentic-ai-exploit-where-models-dream-up-potentially-malicious-urls-in-tool-calls-attack-exploits-a-fundamental-weakness-in-every-available-model"
+            }
+          ]
+        },
+        {
+          tool: "Other AI / MCP / Web agents",
+          pattern: "先做 read-only tools，再小心開放 write action",
+          examples: [
+            "MCP endpoint 先提供公開知識查詢、產品比較與 FAQ，不直接觸碰敏感資料。",
+            "需要寫入 CRM 或提交表單時，加入 tagging、rate limit、duplicate suppression 與人工 follow-up。",
+            "web agent 對第三方頁面內容採 least privilege，只讓 agent 看到任務必要資訊。"
+          ],
+          learningPoint: "MCP 和 web agent 的商業價值來自 action，但可控性來自 read/write 分層與信任邊界。",
+          sources: [
+            {
+              label: "Show HN MCP quote action",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/item?id=48865825"
+            },
+            {
+              label: "Prismata",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2607.08147"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "今天 Codex Pro 額度要投入 Agent Evidence Trail 與 source-verification demo，讓 agent 使用變成長期可展示資產，而不是一次性問答。",
+        bestProjects: [
+          "Agent Evidence Trail Checklist：一頁式檢核表，涵蓋 target、source、tool call、artifact、validation、approval、rollback。",
+          "Source Verification Gate Demo：用假 package / repo 名稱示範如何阻止 HalluSquatting 類風險。",
+          "Mini Build-off Eval Harness：同一個小 app、同一組 acceptance tests、同一張 cost / quality table，比較模型與 agent。"
+        ],
+        weeklyPlan: [
+          "45% 用在 evidence-first dashboard / checklist，形成 AI FDE 作品集。",
+          "35% 用在 agent security 與 source verification demo，累積工程與治理能力。",
+          "20% 用在每日研究、網站維護、Gmail 提醒與 automation memory，保持長期輸出節奏。"
+        ],
+        avoid: [
+          "不要讓 agent 直接安裝模型猜出的 package、repo 或 script。",
+          "不要只相信 agent 的完成宣稱；沒有 diff、測試、來源與驗證，就不要當成完成。",
+          "不要把高頻低風險任務全部丟給最貴模型；要練習 model routing 與成本紀錄。"
+        ],
+        sources: [
+          {
+            label: "Paper-replication workflow",
+            kind: "arXiv",
+            url: "https://arxiv.org/abs/2607.02134"
+          },
+          {
+            label: "HalluSquatting report",
+            kind: "Tom's Hardware",
+            url: "https://www.tomshardware.com/tech-industry/cyber-security/hallusquatting-is-the-latest-agentic-ai-exploit-where-models-dream-up-potentially-malicious-urls-in-tool-calls-attack-exploits-a-fundamental-weakness-in-every-available-model"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Agent Evidence Trail Checklist",
+          value: "把今天的研究訊號轉成企業可懂、可展示、可面試表述的一頁式 agent 驗收方法。",
+          codexTask: "建立 Markdown / 靜態頁，列出 target、source、tool call、artifact、validation、approval、rollback 欄位與範例。",
+          asset: "AI FDE 作品集中的 agent delivery governance artifact。",
+          nextStep: "先用 Phoebe AI Learning automation 這個公開安全案例填第一版。"
+        },
+        {
+          priority: "能力累積",
+          title: "Source Verification Gate Demo",
+          value: "把 HalluSquatting 類風險做成可演示的安全 gate，顯示你能把 AI 幻覺轉成工程防護。",
+          codexTask: "做一個 public-safe demo script，對 repo/package URL 做 allowlist、official-doc check、release check 與人工 approval。",
+          asset: "Agent supply-chain safety demo。",
+          nextStep: "用假資料與 harmless URLs 建立流程，不碰任何真實 secret 或內部套件。"
+        },
+        {
+          priority: "長期資產",
+          title: "Mini Build-off Eval Harness",
+          value: "把 HN 的多模型 build-off 討論轉成自己的固定評估框架，長期累積模型選型證據。",
+          codexTask: "設計一個小 app 任務、acceptance tests、成本紀錄表與模型輸出比較格式。",
+          asset: "可重複使用的 AI FDE model selection template。",
+          nextStep: "先用靜態網站小功能或 RAG demo 作為第一個比較任務。"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把 agent 論文、HN demo 與安全報導整理成同一條 evidence-first 主線。",
+          evidence: "能用 Paper-replication、Prismata、HalluSquatting 與 MCP action 說明 agent 導入風險。"
+        },
+        {
+          skill: "系統設計",
+          practice: "把 agent workflow 拆成 target、source、tool、artifact、validation、approval、rollback。",
+          evidence: "能產出 Agent Evidence Trail Checklist。"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex 建立 source verification demo 或 mini eval harness，並跑實際 checks。",
+          evidence: "有 repo、測試、diff、README 與 public-safe demo。"
+        },
+        {
+          skill: "專業表達",
+          practice: "用『可驗證證據』向非技術主管解釋為什麼 agent 導入不能只看速度。",
+          evidence: "能在面試中說清楚 agent 完成宣稱、驗證證據與企業風險控管的差異。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "如果 agent 能把任務、來源、工具呼叫、產出與檢查全部留下來，它會比傳統手工作業更可追溯，也更容易持續改善。"
+        },
+        {
+          label: "疑慮風險",
+          text: "如果 agent 可以自行瀏覽、安裝、提交表單或寫入系統，幻覺、prompt injection 與權限過大會把小錯誤放大成流程風險。"
+        },
+        {
+          label: "後續追蹤",
+          text: "觀察 coding agent、browser agent 與 MCP tools 是否開始內建 source verification、least privilege、action approval 與 cost routing。"
+        }
+      ],
+      term: {
+        name: "Evidence Trail",
+        definition:
+          "Evidence trail 是 agent 完成任務時留下的可驗證紀錄，包含需求拆解、來源、工具呼叫、產出檔案、檢查結果、人工批准與回退方式。",
+        example:
+          "Codex 更新網站時，不只回報完成，還要有資料來源、修改檔案、node --check 結果、git diff、commit hash、push 狀態與 Gmail send result。",
+        misunderstanding:
+          "Evidence trail 不是把 log 全部丟給人看，而是留下能回答『為什麼可信、如何重跑、錯了怎麼補救』的最小必要證據。"
+      },
+      fde: {
+        scenario:
+          "客戶想讓 AI agent 自動讀取公開資料、更新內部知識庫，並在符合條件時把 lead 或案件送進 CRM，但資安與法遵擔心 agent 被網頁內容誘導或引用錯誤來源。",
+        questions: [
+          "哪些工具是 read-only，哪些工具會寫入 CRM、寄信、建立案件或觸發外部動作？",
+          "agent 引用的 repo、package、文件與網站來源要如何驗證，是否有 allowlist 或人工批准？",
+          "每次 agent action 是否能保留 task target、source、tool call、artifact、validation 與 rollback 紀錄？"
+        ],
+        exercise:
+          "用 30 分鐘寫一張 Agent Evidence Trail Checklist，並拿一個 public-safe 流程測試：例如更新學習站、建立 FAQ、或提交模擬 lead。",
+        interview:
+          "我不會只把 agent 接進業務系統，而會先把 read-only knowledge、write action、source verification、least privilege、人工覆核與 evidence trail 設計出來；這樣 agent 做得越多，系統反而越可追溯。"
+      }
+    },
+    {
       id: "2026-07-09",
       date: "2026-07-09",
       title: "Frontier model 發布正在變成受控實驗",
@@ -3262,15 +3635,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線從 agent operations 進一步走到 frontier model release governance：不只問模型或 agent 會不會做，而是問誰能先用、用哪些資料、如何評估、哪些工具權限要被限制、出事時如何回退。"
+      text: "本週主線從 agent operations、frontier model governance 進一步走到 evidence-first agent delivery：不只問模型或 agent 會不會做，而是問來源是否可信、工具權限是否最小化、成本是否可控、產出是否有驗證證據、出事時能否回退。"
     },
     {
       title: "本週名詞",
-      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Conflict Policy、Staged Rollout、Model Preview。"
+      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Conflict Policy、Staged Rollout、Model Preview、Evidence Trail、Source Verification。"
     },
     {
       title: "本週練習",
-      text: "把一個新模型或 agent 導入拆成 cohort、data boundary、task eval、permission、audit、incident path 與 rollback，並用一頁 checklist 說清楚。"
+      text: "把一個 agent 導入拆成 task target、source verification、tool boundary、provenance、validation、human approval、cost routing 與 rollback，並用一頁 checklist 說清楚。"
     }
   ]
 };
