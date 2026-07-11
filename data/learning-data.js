@@ -1,6 +1,349 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-12",
+      date: "2026-07-12",
+      title: "Agent 開始需要管理層，而不是更多單點工具",
+      topic: "Agent Management",
+      impact: "高",
+      memory: "今天要記住：企業不缺會執行的 agent，缺的是能分派任務、限制權限、管理記憶、追蹤成本、驗收成果的 agent management layer。",
+      status: "未讀",
+      summary:
+        "2026-07-12 的主軸是 agent 生態正在從單一工具能力，轉向誰來管理多個 agent 的工作系統。Hacker News 前排討論「Who manages the agents?」反映開發者開始關心 agent supervisor、handoff、ownership 與可觀測性；Hugging Face Daily Papers 同時出現 proactive agent benchmark、long-horizon memory agent 與 data-science causal reasoning agent，代表研究面也在補 agent 管理與驗收；GitHub Trending 上 Claude Code、Langflow、Skyvern、awesome-llm-apps 與 Reame 則把 agent workflow、瀏覽器自動化、本地推論成本與可部署樣板推到更實務的一層。",
+      tags: ["Agent Management", "AI FDE", "Workflow Ops", "Codex Pro"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "抓住一件事：agent 越會做事，越需要一層管理系統決定誰做、用什麼工具、花多少成本、留下什麼證據。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "把 HN 的 agent management 討論、HF 的 proactive / memory / data-science agent 研究、GitHub 上的 agent workflow 工具與 Reame 的 CPU-first inference 放在一起看。"
+        },
+        {
+          label: "今日練習",
+          text: "畫一張 Agent Management Console 草圖，欄位包含任務佇列、agent owner、tool permissions、memory policy、cost route、validation status、human approval 與 rollback note。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把自己定位成會設計 agent operating system 的 AI FDE，而不是只會試用新 agent 工具的人。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 Agent Management Console blueprint，可作為企業導入、多代理協作與面試作品集素材。"
+        },
+        {
+          label: "能力焦點",
+          text: "agent orchestration、memory governance、workflow observability、cost routing、human approval design。"
+        },
+        {
+          label: "下一步",
+          text: "把自己常用的 Codex / Phoebe 自動化任務拆成 task queue、agent role、verification gate 與 run record，形成可展示的作業系統。"
+        }
+      ],
+      signals: [
+        {
+          type: "社群/Agent Ops",
+          priority: "高",
+          title: "HN 前排討論 Who manages the agents，焦點從 agent 能力轉向管理責任",
+          text: "Hacker News 今日前排出現「Who manages the agents?」討論，代表社群開始把問題從單一 agent 能否完成任務，推進到多 agent 情境下的分工、監督、責任歸屬與管理介面。",
+          why: "企業導入 agent 時，真正難題常不是模型能力，而是誰批准工具、誰接手失敗、誰看成本、誰驗收產出。",
+          learningPoint: "AI FDE 要會把 agent 設計成有 owner、permission、run log、approval gate 與 escalation path 的工作系統。",
+          sources: [
+            {
+              label: "Hacker News front page: Who manages the agents?",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/news"
+            }
+          ]
+        },
+        {
+          type: "研究/Agent Benchmark",
+          priority: "高",
+          title: "UniClawBench 把 proactive agents 放進真實任務驗收框架",
+          text: "Hugging Face Daily Papers 收錄 UniClawBench，主題是用真實世界任務測 proactive agents。這代表研究焦點不只是 agent 回答是否正確，而是能否在長流程中主動判斷、操作與交付。",
+          why: "金融業泛化場景中，agent 不能只被動回答；它可能要追蹤案件、提示缺件、建議下一步，但每一步都要可控。",
+          learningPoint: "設計 agent PoC 時要同時測 proactive trigger、任務完成率、誤觸發、人工覆核與失敗回報。",
+          sources: [
+            {
+              label: "UniClawBench on Hugging Face Daily Papers",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/date/2026-07-10"
+            }
+          ]
+        },
+        {
+          type: "研究/Agent Memory",
+          priority: "中高",
+          title: "Proactive Memory Agent 顯示長流程 agent 需要可治理記憶",
+          text: "Hugging Face Daily Papers 同日收錄 Remember When It Matters，聚焦 long-horizon agents 的 proactive memory。這提醒 agent 管理層必須處理何時記、記什麼、何時忘、誰可讀取與如何避免錯誤記憶污染流程。",
+          why: "企業 agent 若把暫時資訊、個資、過期規則或錯誤推論長期保存，記憶本身就會變成風險來源。",
+          learningPoint: "把 memory policy 寫進 agent workflow：來源、保存期限、敏感等級、更新條件、引用方式與人工修正入口。",
+          sources: [
+            {
+              label: "Remember When It Matters on Hugging Face Daily Papers",
+              kind: "Hugging Face",
+              url: "https://huggingface.co/papers/date/2026-07-10"
+            }
+          ]
+        },
+        {
+          type: "GitHub/Agent Tools",
+          priority: "中高",
+          title: "GitHub Trending 仍由 agent workflow、Claude Code 與可跑樣板佔據注意力",
+          text: "GitHub Trending Python 今日可見 Langflow、Claude Code、Skyvern、awesome-llm-apps 等 agent / RAG / browser workflow 相關專案。這代表開發者仍在找可部署、可改造、能串工具的 agent building blocks。",
+          why: "AI FDE 的作品集不應只展示聊天頁面，而要展示能串資料、瀏覽器、任務佇列、驗收與權限控管的 workflow。",
+          learningPoint: "用 Codex Pro 做一個小型 agent workflow demo：read-only knowledge tool、browser task、validation check、human approval 四段都要有。",
+          sources: [
+            {
+              label: "GitHub Trending Python",
+              kind: "GitHub",
+              url: "https://github.com/trending/python?since=daily"
+            }
+          ]
+        },
+        {
+          type: "開源/Local Inference",
+          priority: "中",
+          title: "Reame 把 CPU-first inference、KV cache 與成本控制變成 agent infra 訊號",
+          text: "Reame 在 HN 與 GitHub 出現，主打 CPU-first LLM inference server、persistent shared-prefix KV cache、OpenAI-compatible API 與窄任務批次處理。它不是取代 frontier model，而是提醒 agent 系統需要便宜、私有、可控的推論層。",
+          why: "企業導入常常需要把高風險推理交給強模型，把大量重複分類、擷取、批次處理交給低成本本地或私有模型。",
+          learningPoint: "設計 model routing：frontier model 處理規劃與高風險判斷，CPU/local model 處理可驗收、重複、資料留在本地的窄任務。",
+          sources: [
+            {
+              label: "swellweb/reame",
+              kind: "GitHub",
+              url: "https://github.com/swellweb/reame"
+            },
+            {
+              label: "Hacker News front page: Reame",
+              kind: "Hacker News",
+              url: "https://news.ycombinator.com/news"
+            }
+          ]
+        },
+        {
+          type: "Codex/Hermes",
+          priority: "中",
+          title: "近 24 小時未見 Codex 或 Hermes 值得單獨成篇的公開新公告",
+          text: "今天沒有看到足以作為主軸的 Codex / Hermes 公開功能發布；更值得累積的是把 Codex Pro、Phoebe automation 與每日學習站用成 agent management runbook。",
+          why: "沒有工具快訊時，日常使用本身就是作品集：任務分派、資料更新、驗證、commit、push、Gmail 與 memory 都可成為 agent ops 證據。",
+          learningPoint: "把今天的 Codex Pro 額度投入 Agent Management Console blueprint 與一個可執行 mini demo，而不是只追新模型。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            },
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "今天的共同訊號不是某個單一模型突破，而是 agent 生態開始遇到管理問題。當 agent 可以讀檔、改碼、操作瀏覽器、保留記憶、呼叫工具、提交 PR 或觸發業務動作，企業要面對的問題會變成：誰分派任務、誰批准工具、誰限制資料、誰負責成本、誰驗收結果、失敗時誰接手。",
+        whyNow:
+          "這在現在重要，是因為社群和研究都開始從「agent 能做什麼」轉向「agent 怎麼被管理」。HN 的 Who manages the agents 討論凸顯 ownership 與 supervision；HF 的 UniClawBench、Proactive Memory Agent、CausalDS 顯示研究界正在測 proactive behavior、memory 與 data-science reasoning；GitHub Trending 上 agent workflow、browser automation、Claude Code 與可跑樣板持續熱門；Reame 則提醒 production agent 不可能每一步都用最貴模型。",
+        technicalBackground:
+          "一個 agent management layer 至少要有七個模組。第一是 task queue，把需求拆成可追蹤工作項。第二是 agent registry，定義每個 agent 的角色、能力與可用工具。第三是 permission boundary，區分 read-only、write action、external send、delete、payment、customer-facing 等權限。第四是 memory policy，處理保存、引用、修正與遺忘。第五是 model routing，把 frontier model、便宜模型、本地模型與規則引擎分工。第六是 observability，記錄 tool call、成本、latency、error、validation 與 human approval。第七是 escalation / rollback，確保 agent 失敗時可以停、轉人工、重跑或回復。",
+        enterpriseImpact:
+          "金融業泛化場景很適合用這個框架說服客戶。內部知識助理、授信文件整理、客服草稿、法遵初篩、交易監控摘要或開發自動化，都不應一開始追求全自動。更穩健的導入方式，是先建立 agent management console：每個任務有 owner，每個工具有權限，每個答案有來源，每個外部動作有人批准，每個模型路由有成本理由，每個失敗有接手流程。",
+        watchNext:
+          "接下來觀察四件事：第一，Codex、Claude Code、Copilot CLI 是否內建更多 supervisor / handoff / run log；第二，MCP 工具是否走向更細緻的權限與審計；第三，agent memory 是否出現可操作的政策語言；第四，local inference 與 CPU-first serving 是否成為企業 agent 成本控制的一部分。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "用 Codex 建 Agent Management Console 的可驗收原型",
+          examples: [
+            "請 Codex 先建立 task queue、agent role、permission policy、validation log 的資料模型。",
+            "把一個現有 repo 任務拆成 plan、edit、check、review、commit 五個狀態，做成小 dashboard。",
+            "要求每次 agent 執行都輸出 cost estimate、files changed、commands run、sources used 與 residual risk。"
+          ],
+          learningPoint: "Codex Pro 最適合投入會留下 repo、測試、文件與 demo 的管理層作品，而不是一次性問答。",
+          sources: [
+            {
+              label: "The Shift to Agentic AI: Evidence from Codex",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2606.26959"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "把每日自動化任務變成 agent ops runbook",
+          examples: [
+            "每日任務先讀 memory 與 git status，再決定是否新增 entry、commit、push、寄信。",
+            "把 researched、edited、validated、pushed、sent 分開記錄，避免把已開始誤報成已完成。",
+            "用 public-safe 規則、來源格式、email link-only 與 Gmail result 做成固定驗收欄位。"
+          ],
+          learningPoint: "Phoebe automation 本身就是個人 agent management 的展示案例：有節奏、有狀態、有驗證、有回報。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude / Claude Code",
+          pattern: "用 Claude 類工具做推理與拆解，但放進 supervisor gate",
+          examples: [
+            "先讓 Claude 拆解 agent management 模組，再交給 Codex 實作 repo 級 demo。",
+            "把 Claude Code 產出的 PR 放進固定 review checklist：測試、風險、變更範圍、rollback。",
+            "對長流程任務要求中途 checkpoint，避免單次長跑後才發現方向錯。"
+          ],
+          learningPoint: "Claude 類工具適合做高層拆解，但企業落地需要 supervisor、checkpoint 與驗收證據。",
+          sources: [
+            {
+              label: "GitHub Trending Python: anthropics/claude-code",
+              kind: "GitHub",
+              url: "https://github.com/trending/python?since=daily"
+            }
+          ]
+        },
+        {
+          tool: "Other AI / Local inference",
+          pattern: "用 Reame 類 CPU/local inference 承接窄任務與成本敏感流程",
+          examples: [
+            "把批次文件分類、欄位擷取、固定格式摘要交給本地小模型，強模型只負責例外判斷。",
+            "用 OpenAI-compatible API 包裝本地模型，讓 agent workflow 可以依任務切換模型。",
+            "把每個 route 的成本、延遲、準確率與資料敏感等級放進 routing table。"
+          ],
+          learningPoint: "agent 管理層不能只管工具，也要管模型路由；成本控制本身就是 enterprise adoption 能力。",
+          sources: [
+            {
+              label: "swellweb/reame",
+              kind: "GitHub",
+              url: "https://github.com/swellweb/reame"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "今天的 Codex Pro 額度要投入可展示的 agent management layer：資料模型、流程圖、demo、測試與文件，而不是把額度消耗在反覆詢問同一批新聞。",
+        bestProjects: [
+          "Agent Management Console prototype：任務佇列、角色、權限、記憶、成本與驗收狀態。",
+          "Model Routing Table demo：frontier / cheap / local model 的任務分工與成本比較。",
+          "Agent Runbook Template：把每日 Phoebe automation 的 researched / edited / checked / pushed / sent 變成通用模板。"
+        ],
+        weeklyPlan: [
+          "第 1 段：用 Codex 建立資料結構與靜態 dashboard。",
+          "第 2 段：補 2-3 個 mock agent run records，展示驗收與 escalation。",
+          "第 3 段：寫一頁 AI FDE 面試說明，解釋為何 agent management 比單點 agent demo 更重要。"
+        ],
+        avoid: [
+          "不要只拿額度比較模型聊天手感。",
+          "不要讓 agent 有 write / send / delete 權限卻沒有 approval gate。",
+          "不要做沒有測試、沒有來源、沒有 run log 的一次性 demo。"
+        ],
+        sources: [
+          {
+            label: "Hacker News front page",
+            kind: "Hacker News",
+            url: "https://news.ycombinator.com/news"
+          },
+          {
+            label: "GitHub Trending Python",
+            kind: "GitHub",
+            url: "https://github.com/trending/python?since=daily"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Agent Management Console",
+          value: "把多 agent 任務管理、權限、記憶、成本與驗收做成 AI FDE 作品集核心頁。",
+          codexTask: "建立靜態 dashboard 或小型 React prototype，包含 task queue、agent roles、permission matrix、validation log。",
+          asset: "可部署 demo + README + 一頁導入說明。",
+          nextStep: "先做資料 schema 與 wireframe，再用 mock data 呈現 3 個 agent run。"
+        },
+        {
+          priority: "能力累積",
+          title: "Model Routing Table Kit",
+          value: "訓練自己把模型選型從感覺轉成成本、風險、資料敏感度與任務難度的決策表。",
+          codexTask: "做一個 JSON / CSV driven routing table，輸入任務類型後輸出建議模型層與驗收方式。",
+          asset: "routing table、範例任務、成本比較、面試說法。",
+          nextStep: "先列 10 個金融業泛化任務，標記資料敏感度、錯誤成本與可用模型層。"
+        },
+        {
+          priority: "長期資產",
+          title: "Phoebe Agent Ops Runbook",
+          value: "把每日網站更新、Gmail、GitHub Pages、memory 與驗證流程沉澱成可重複的 agent ops 方法論。",
+          codexTask: "整理 automation runbook，抽出通用欄位：source scan、edit scope、checks、publish、send、memory。",
+          asset: "個人 AI 作業系統文件，可轉成履歷與顧問方法論。",
+          nextStep: "把本次 2026-07-12 run record 轉成一頁模板。"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把 HN、HF、GitHub Trending 分成社群痛點、研究方向與可落地工具三層。",
+          evidence: "今日 signals 與 deep dive 都以 agent management layer 串起，而不是逐條摘要。"
+        },
+        {
+          skill: "系統設計",
+          practice: "設計 task queue、agent registry、permission boundary、memory policy、model routing、observability。",
+          evidence: "Agent Management Console blueprint。"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex Pro 做一個可部署 prototype，包含 mock runs、validation status 與 approval gate。",
+          evidence: "可部署 demo、README、node check / tests。"
+        },
+        {
+          skill: "專業表達",
+          practice: "把 agent 工具熱潮轉成企業導入語言：責任、成本、權限、稽核、回退。",
+          evidence: "面試可用表述與 AI FDE 練習。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "agent management layer 能讓企業把多個 AI 工具整合成可治理的工作系統，降低單點工具擴散造成的混亂。"
+        },
+        {
+          label: "疑慮風險",
+          text: "管理層若太早過度設計，可能變成昂貴 dashboard；若沒有真實任務、驗收資料與使用者行為，就只是在包裝空殼。"
+        },
+        {
+          label: "後續追蹤",
+          text: "觀察 Codex、Claude Code、Copilot、MCP 生態是否推出更清楚的 supervisor、permission、memory 與 audit primitives。"
+        }
+      ],
+      term: {
+        name: "Agent Management Layer",
+        definition:
+          "Agent management layer 是位在模型、工具與業務流程之上的管理層，用來分派任務、限制權限、管理記憶、選擇模型、追蹤成本、驗收結果與處理失敗。",
+        example:
+          "例如客服草稿 agent 可以讀知識庫與產生回覆，但寄出前需要人工批准；授信文件 agent 可以擷取欄位，但不能自行修改客戶資料。",
+        misunderstanding:
+          "它不是再做一個聊天介面，也不是把所有 agent 接在一起就好；重點是責任、權限、記錄與驗收。"
+      },
+      fde: {
+        scenario:
+          "客戶已經有多個 AI 工具：客服摘要、文件分類、程式碼助理、瀏覽器自動化與內部知識問答，但主管擔心成本、權限與輸出品質難以控管。",
+        questions: [
+          "哪些任務需要 read-only，哪些任務會觸發 write action 或對外送出？",
+          "每個 agent 的 owner、資料範圍、模型路由、成本上限與驗收標準是什麼？",
+          "失敗時要自動重試、轉人工、回退，還是禁止再次執行？"
+        ],
+        exercise:
+          "設計一張 Agent Management Console 的資料表，至少包含 task_id、agent_role、tool_scope、memory_policy、model_route、validation_status、approval_required、rollback_note。",
+        interview:
+          "我不會先建議企業一次導入很多 agent，而會先做 agent management layer，把任務、權限、成本、記憶與驗收標準定清楚，讓每個 agent 都能被追蹤與接手。"
+      }
+    },
+    {
       id: "2026-07-11",
       date: "2026-07-11",
       title: "Agent 產出正在從完成任務走向可驗證證據",
@@ -3635,15 +3978,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線從 agent operations、frontier model governance 進一步走到 evidence-first agent delivery：不只問模型或 agent 會不會做，而是問來源是否可信、工具權限是否最小化、成本是否可控、產出是否有驗證證據、出事時能否回退。"
+      text: "本週主線從 agent operations、evidence-first delivery 進一步走到 agent management layer：不只問 agent 會不會做，而是問誰分派、誰批准、誰管理記憶、誰追蹤成本、誰驗收、失敗時誰接手。"
     },
     {
       title: "本週名詞",
-      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Conflict Policy、Staged Rollout、Model Preview、Evidence Trail、Source Verification。"
+      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Evidence Trail、Source Verification、Agent Management Layer、Memory Policy、Model Routing。"
     },
     {
       title: "本週練習",
-      text: "把一個 agent 導入拆成 task target、source verification、tool boundary、provenance、validation、human approval、cost routing 與 rollback，並用一頁 checklist 說清楚。"
+      text: "把一個 agent 導入拆成 task queue、agent registry、permission boundary、memory policy、model routing、observability、human approval 與 rollback，並畫成 Agent Management Console blueprint。"
     }
   ]
 };
