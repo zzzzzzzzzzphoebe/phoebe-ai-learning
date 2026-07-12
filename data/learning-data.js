@@ -1,6 +1,359 @@
 window.AI_LEARNING_DATA = {
   entries: [
     {
+      id: "2026-07-13",
+      date: "2026-07-13",
+      title: "Skills 正在成為 agent 的工作單位，也成為新的供應鏈邊界",
+      topic: "Agent Skills Supply Chain",
+      impact: "高",
+      memory: "今天要記住：SKILL.md 不只是提示詞；只要 skills 能帶來腳本、依賴、檔案與工具權限，它就必須像第三方套件一樣被審查、分級、測試與持續追蹤。",
+      status: "未讀",
+      summary:
+        "2026-07-13 的主軸是 agent skills 正從零散提示詞走向跨工具的可攜工作單位。GitHub Trending 可見 Stitch Skills、Superpowers、Claude Code templates、DesktopCommanderMCP 與 Claude cookbooks，顯示開發者正把流程、領域知識與工具操作封裝為可重用 skills；但 NVIDIA 的 SkillSpector 與其引用研究也提醒，掃描的 42,447 個 skills 中有 26.1% 至少含一種弱點、5.2% 出現高度疑似惡意模式，且含可執行腳本者更容易出問題。今天真正該學的是建立 Skill Intake Gate：先確認來源與內容，再限縮權限、隔離試跑、留下掃描與驗收紀錄，最後才准入正式 workflow。",
+      tags: ["Agent Skills", "Supply Chain Security", "AI FDE", "Codex Pro"],
+      readingPath: [
+        {
+          label: "3 分鐘快讀",
+          text: "skills 讓 agent 能重用流程，但它們同時帶進指令、腳本、依賴與權限；安裝 skill 應視同引入第三方套件。"
+        },
+        {
+          label: "10 分鐘深讀",
+          text: "對照 GitHub Trending 的跨工具 skills 生態、Superpowers 的工程流程封裝，以及 SkillSpector / 論文的弱點資料，理解為何 skill adoption 必須有 intake、sandbox、allowlist 與 provenance。"
+        },
+        {
+          label: "今日練習",
+          text: "做一張 Skill Intake Gate 表：skill name、publisher、commit / release、permissions、scripts、network、data scope、scanner result、test sandbox、owner、approval、rollback。"
+        }
+      ],
+      lifeOS: [
+        {
+          label: "人生方向",
+          text: "把自己定位成能讓企業安全擴充 agent 能力的 AI FDE：既懂 workflow 模組化，也懂供應鏈與權限治理。"
+        },
+        {
+          label: "今日產出",
+          text: "完成一頁 Skill Intake Gate 與一份 allowlist 範例，成為可展示的 agent adoption 安全方法論。"
+        },
+        {
+          label: "能力焦點",
+          text: "skill provenance、least privilege、static review、sandbox validation、software supply chain governance。"
+        },
+        {
+          label: "下一步",
+          text: "盤點自己常用的 Codex / Phoebe skills，先分成 instruction-only、read-only tool、scripted tool、external-write 四級，再為後兩級補 owner 與驗收 gate。"
+        }
+      ],
+      signals: [
+        {
+          type: "GitHub/Agent Skills",
+          priority: "高",
+          title: "GitHub Trending 顯示 Agent Skills 正走向跨 coding agent 的可攜標準",
+          text: "GitHub Trending 中的 google-labs-code/stitch-skills 將 skills 描述為可配合 Stitch MCP server 的 library，並宣示相容多種 coding agents；MicrosoftDocs/Agent-Skills 也採用 SKILL.md open standard。這代表 skills 正變成封裝工具流程與領域知識的共同介面。",
+          why: "企業不會想為每個 agent 重寫同一套流程；可攜 skill 能降低重工，但也會讓同一份不安全內容跨更多 agent 擴散。",
+          learningPoint: "AI FDE 應把 skill 當成受版本控管的交付物：有來源、用途、權限、測試與擁有者，而不是聊天室裡的一段提示詞。",
+          sources: [
+            {
+              label: "GitHub Trending",
+              kind: "GitHub",
+              url: "https://github.com/trending"
+            },
+            {
+              label: "google-labs-code/stitch-skills",
+              kind: "GitHub",
+              url: "https://github.com/google-labs-code/stitch-skills"
+            },
+            {
+              label: "MicrosoftDocs/Agent-Skills",
+              kind: "GitHub",
+              url: "https://github.com/MicrosoftDocs/Agent-Skills"
+            }
+          ]
+        },
+        {
+          type: "安全/供應鏈",
+          priority: "高",
+          title: "SkillSpector 把 agent skills 的風險從抽象提醒變成可掃描的 intake 問題",
+          text: "NVIDIA 的 SkillSpector README 引用大規模研究：42,447 個 marketplace skills 中，26.1% 至少有一種弱點、5.2% 出現高度疑似惡意模式；含可執行腳本的 skills 更容易含弱點。工具可輸出風險分數、嚴重度與 finding，適合作為安裝前的第一道篩選。",
+          why: "當 agent 能讀檔、跑 shell、連網或使用憑證時，skill 不再只是文字內容，而是權限與供應鏈入口。",
+          learningPoint: "建立兩段式 gate：先以靜態掃描與人工讀檔排除高風險，再在最小權限 sandbox 試跑；掃描通過不等於可直接給 production 權限。",
+          sources: [
+            {
+              label: "NVIDIA SkillSpector",
+              kind: "GitHub",
+              url: "https://github.com/nvidia/skillspector"
+            },
+            {
+              label: "Agent Skills in the Wild",
+              kind: "arXiv",
+              url: "https://arxiv.org/abs/2601.10338"
+            }
+          ]
+        },
+        {
+          type: "GitHub/Engineering Workflow",
+          priority: "中高",
+          title: "Superpowers 的高熱度說明：skills 的價值在可驗收工程流程，不是神奇提示",
+          text: "GitHub Trending 的 obra/superpowers 將 brainstorming、planning、TDD、debugging、code review 與 branch finishing 封裝成可組合 skills，且支援 Codex、Claude Code、Gemini CLI、Cursor 等多種 harness。其重要性在於把 agent 工作拆成帶驗證點的流程。",
+          why: "這是技能封裝的正面範例：每個 workflow 有明確目的、輸入、驗證與交接，不必把所有信任交給單次 agent 回答。",
+          learningPoint: "自己的 skills 也要寫清楚 trigger、scope、read/write boundary、驗證命令、失敗處理與不可做事項。",
+          sources: [
+            {
+              label: "obra/superpowers",
+              kind: "GitHub",
+              url: "https://github.com/obra/superpowers"
+            },
+            {
+              label: "GitHub Trending",
+              kind: "GitHub",
+              url: "https://github.com/trending"
+            }
+          ]
+        },
+        {
+          type: "工具/MCP",
+          priority: "中高",
+          title: "DesktopCommanderMCP 的熱度提醒：terminal 與檔案能力需要比文字技能更嚴格的授權",
+          text: "GitHub Trending 中的 DesktopCommanderMCP 讓 Claude 透過 MCP 取得 terminal、檔案搜尋與 diff 編輯能力。這類能力能大幅提升 agent 的實作力，也意味著 skill 的可執行內容、檔案範圍與網路權限不能只靠使用者信任。",
+          why: "企業 agent 最常出事的地方不是生成一段文字，而是接到真實 file system、command、browser 與 external action。",
+          learningPoint: "對 tool-bearing skills 採 capability 分級：read-only 預設可用；write、network、credential、external-send 逐級要求更高核准與可觀測性。",
+          sources: [
+            {
+              label: "DesktopCommanderMCP",
+              kind: "GitHub",
+              url: "https://github.com/wonderwhy-er/DesktopCommanderMCP"
+            },
+            {
+              label: "GitHub Trending",
+              kind: "GitHub",
+              url: "https://github.com/trending"
+            }
+          ]
+        },
+        {
+          type: "Codex/Hermes",
+          priority: "中",
+          title: "近 24 小時未見值得單獨成篇的 Codex 或 Hermes 公開新公告",
+          text: "今天沒有觀察到足以取代主軸的 Codex / Hermes 公開功能發布；但 skills 的跨工具化正好可直接轉成 Codex Pro 與 Phoebe automation 的工作規範：先讀規則與 memory、限縮範圍、驗證、記錄，再做外部動作。",
+          why: "沒有新功能公告時，最有價值的進步是把已具備的 agent 能力用成可複製、可審計的工作系統。",
+          learningPoint: "將個人工作流視為小型企業導入：把每個 skill 的 trust level、權限與驗收條件寫成可檢查規則。",
+          sources: [
+            {
+              label: "OpenAI: Running Codex safely at OpenAI",
+              kind: "OpenAI",
+              url: "https://openai.com/index/running-codex-safely/"
+            },
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        }
+      ],
+      deepDive: {
+        context:
+          "Agent skills 正在成為新的軟體分發層。它們把提示、流程、工具設定、腳本與依賴包成可重用單位，使同一套工作方法能跨 Codex、Claude Code、Gemini CLI、Copilot 或其他 agent harness 複用。GitHub Trending 的 skills、workflow framework、MCP terminal 工具與 cookbook 共同顯示，開發者正在把 agent 從單次聊天拉向可組裝的工作系統。",
+        whyNow:
+          "現在重要，是因為可攜性會放大價值，也會放大風險。一份有問題的 skill 若能被多種 agent 直接安裝，可能攜帶 prompt injection、資料外洩、權限提升、惡意 script 或供應鏈依賴。SkillSpector 所引用的大規模研究讓這不是理論問題：弱點與高風險模式已經能在 public marketplace 被觀察到。",
+        technicalBackground:
+          "一個 Skill Intake Gate 至少有六步。第一，provenance：確認 publisher、repo、release / commit、維護狀態與授權。第二，content review：讀 SKILL.md、腳本、依賴、下載器、base64 / obfuscation 與外部 URL。第三，capability inventory：標記 file read、write、shell、network、credential、browser、external send。第四，static scan：以 SkillSpector 類工具和人工規則產出 finding。第五，sandbox trial：用假資料與最小權限測試實際行為。第六，approval and observability：指定 owner、允許範圍、版本 pin、run log、revocation 與回退路徑。",
+        enterpriseImpact:
+          "金融業泛化場景中，agent skills 可能把文件整理、知識查詢、客服草稿、報表生成或開發自動化快速複用到多個團隊。正確做法不是禁止 skills，而是分級導入：instruction-only 與 read-only retrieval 可較快試驗；含 script、network、write action、customer-facing 或敏感資料存取的 skills 必須進入 allowlist、sandbox、approval 與 log。這讓速度與稽核不必二選一。",
+        watchNext:
+          "接下來觀察四件事：第一，SKILL.md / Agent Skills open standard 是否加入更結構化的 permission manifest；第二，Codex、Claude Code、Copilot、Gemini CLI 是否提供原生 provenance 與掃描；第三，MCP server 與 skills 的權限模型能否一致；第四，市場是否出現可機讀的 SBOM、signature、risk score 與 revocation feed。"
+      },
+      toolUseRadar: [
+        {
+          tool: "Codex",
+          pattern: "把 skills 當作受測試與受限權限的工程資產",
+          examples: [
+            "要求 Codex 先列出一個 skill 所讀寫的檔案、命令、網路端點與外部動作，再決定是否執行。",
+            "用獨立 sandbox repo 跑新 skill，驗證它只改預期檔案並能通過既有檢查。",
+            "讓 Codex 生成 skill manifest 與驗收 checklist，再把版本 pin 到具體 commit。"
+          ],
+          learningPoint: "Codex Pro 最值得投入在把 workflow 做成有 manifest、測試、README 與 revocation 的資產，而不是大量盲裝插件。",
+          sources: [
+            {
+              label: "OpenAI: Running Codex safely at OpenAI",
+              kind: "OpenAI",
+              url: "https://openai.com/index/running-codex-safely/"
+            }
+          ]
+        },
+        {
+          tool: "Hermes / Phoebe",
+          pattern: "將 automation 規則視為有 trust boundary 的個人 agent operating system",
+          examples: [
+            "每次自動化先讀最近 memory、Git 狀態與最接近的規則檔，再決定可做的變更。",
+            "把 researched、edited、validated、pushed、sent 分開記錄，外部動作只在驗收後進行。",
+            "把公開內容、安全限制與收件人範圍寫成固定 gate，而不是臨時憑模型記憶。"
+          ],
+          learningPoint: "Phoebe 的每日流程本身就是 Skill Intake Gate 的雛形：清楚 scope、可驗證、可回報、可追溯。",
+          sources: [
+            {
+              label: "Phoebe AI Learning",
+              kind: "站內",
+              url: "https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/"
+            }
+          ]
+        },
+        {
+          tool: "Claude / Claude Code",
+          pattern: "用 cookbook 與 templates 加速，但先審核工具與 script 範圍",
+          examples: [
+            "從 Claude cookbook 擷取可重用流程時，保留資料來源與安全假設，不直接搬用未讀過的 helper script。",
+            "對 Claude Code template 做一次檔案與命令 diff，將 write 或 network action 改成顯式核准。",
+            "把 repo 級任務固定放進 plan、implementation、test、review 四段，避免 skill 直接跳到高權限動作。"
+          ],
+          learningPoint: "跨工具 templates 能縮短啟動時間，但可移植不等於可信；越接近 terminal 與憑證，越要有最小權限。",
+          sources: [
+            {
+              label: "anthropics/claude-cookbooks",
+              kind: "GitHub",
+              url: "https://github.com/anthropics/claude-cookbooks"
+            },
+            {
+              label: "davila7/claude-code-templates",
+              kind: "GitHub",
+              url: "https://github.com/davila7/claude-code-templates"
+            }
+          ]
+        },
+        {
+          tool: "Other AI / SkillSpector",
+          pattern: "在安裝前對 skills 做靜態風險分流",
+          examples: [
+            "掃描 SKILL.md、scripts 與依賴後，把 finding 輸出成 JSON 或 SARIF 供 review。",
+            "高風險 skill 一律先在假資料與無憑證 sandbox 試跑。",
+            "將 approved skill 建成版本 pin 的 allowlist，掃描有新 finding 時可快速 revoke。"
+          ],
+          learningPoint: "scanner 是 intake 的第一層訊號，不是放行章；最後仍要靠權限設計、sandbox 與 run log 防守。",
+          sources: [
+            {
+              label: "NVIDIA SkillSpector",
+              kind: "GitHub",
+              url: "https://github.com/nvidia/skillspector"
+            }
+          ]
+        }
+      ],
+      quotaStrategy: {
+        principle:
+          "今天把 Codex Pro 額度投入可長期複用的 Skill Intake Gate：manifest、掃描整合、sandbox 測試、allowlist 與文件；不要把額度花在未驗證 skills 的反覆試跑。",
+        bestProjects: [
+          "Skill Intake Gate Dashboard：顯示 publisher、permission、scan finding、approval、owner 與 expiry。",
+          "Agent Capability Manifest Kit：以 JSON 定義每個 skill 的檔案、網路、shell、credential 與 external action 邊界。",
+          "Sandboxed Skill Test Harness：用 fixture repo 和假資料驗證 skill 的實際檔案、命令與網路行為。"
+        ],
+        weeklyPlan: [
+          "第 1 段：用 Codex 定義 capability manifest 與四級 trust model。",
+          "第 2 段：做一個 mock skill 掃描結果頁，加入 allow / review / reject 決策。",
+          "第 3 段：補 README、threat model、測試案例與 AI FDE 面試說明。"
+        ],
+        avoid: [
+          "不要因為 repo 熱度高就直接給 skill shell、network 或 credential 權限。",
+          "不要把 scanner 無 finding 解讀為 production-safe。",
+          "不要讓不明 skill 直接操作真實 repo、信箱、客戶資料或外部系統。"
+        ],
+        sources: [
+          {
+            label: "NVIDIA SkillSpector",
+            kind: "GitHub",
+            url: "https://github.com/nvidia/skillspector"
+          },
+          {
+            label: "Agent Skills in the Wild",
+            kind: "arXiv",
+            url: "https://arxiv.org/abs/2601.10338"
+          }
+        ]
+      },
+      projectPipeline: [
+        {
+          priority: "本週優先",
+          title: "Skill Intake Gate Dashboard",
+          value: "把 agent skill 的來源、權限、掃描、owner 與批准流程做成 AI FDE 作品集的安全導入案例。",
+          codexTask: "建立靜態 dashboard，呈現 skills inventory、capability matrix、risk finding、approval queue 與 revocation status。",
+          asset: "可部署 demo + threat model + README + mock review records。",
+          nextStep: "先定義 8 個欄位與四級 trust model，再做 3 個 mock skills 的 allow / review / reject 狀態。"
+        },
+        {
+          priority: "能力累積",
+          title: "Agent Capability Manifest Kit",
+          value: "訓練自己將模糊的 agent 功能轉成可稽核、可執行的權限契約。",
+          codexTask: "設計 JSON schema 和表單，描述 file scope、commands、network hosts、secrets、data class、approval 及 rollback。",
+          asset: "manifest schema、範例 skills、validation rules、面試說法。",
+          nextStep: "挑 3 種 skills：instruction-only、read-only retrieval、scripted external-write，分別填寫 manifest。"
+        },
+        {
+          priority: "長期資產",
+          title: "Personal Trusted Skills Registry",
+          value: "把自己的 Codex / Phoebe workflow 沉澱成已驗證、可版本控制、可撤銷的個人 skills library。",
+          codexTask: "整理 skills registry，記錄版本、來源、權限、測試、owner、last review 與使用案例。",
+          asset: "個人 agent operating system 文件與可持續更新的 allowlist。",
+          nextStep: "先替目前常用的三個 workflow 建 registry entry，並標示下一次 review 日期。"
+        }
+      ],
+      capabilityFlywheel: [
+        {
+          skill: "研究判讀",
+          practice: "把 Trending repo、研究統計與工具 README 分成 adoption signal、風險證據與可落地控制。",
+          evidence: "今日以 skills 的跨工具化與 SkillSpector 的掃描資料串成同一條供應鏈主線。"
+        },
+        {
+          skill: "系統設計",
+          practice: "設計 provenance、capability inventory、scan、sandbox、approval、observability、revocation 七段 intake flow。",
+          evidence: "Skill Intake Gate 與四級 trust model。"
+        },
+        {
+          skill: "工程落地",
+          practice: "用 Codex 建 manifest schema、mock dashboard、fixture sandbox 與 validation rules。",
+          evidence: "可部署 dashboard、JSON schema、README 與測試案例。"
+        },
+        {
+          skill: "專業表達",
+          practice: "將 plugin / skills 熱潮翻成企業語言：供應鏈、權限、責任、稽核、撤銷與導入節奏。",
+          evidence: "AI FDE 場景與可用面試表述。"
+        }
+      ],
+      debate: [
+        {
+          label: "支持觀點",
+          text: "共通 skills 標準能把成熟流程跨 agent 重用，降低團隊從零提示與重複建置的成本。"
+        },
+        {
+          label: "疑慮風險",
+          text: "若 marketplace 缺少 provenance、權限宣告與撤銷機制，skills 可能把 prompt injection、惡意腳本與資料外洩有效率地擴散。"
+        },
+        {
+          label: "後續追蹤",
+          text: "追蹤各 agent 平台是否建立 permission manifest、signature、SBOM、scanner integration、allowlist 與 policy-as-code。"
+        }
+      ],
+      term: {
+        name: "Skill Intake Gate",
+        definition:
+          "Skill Intake Gate 是在安裝或啟用 agent skill 前，依序確認來源、內容、權限、掃描、sandbox、核准與可觀測性的控制流程。",
+        example:
+          "一個報表摘要 skill 可以先在假資料與 read-only 權限下試跑；若它要執行 shell、下載依賴或寄出郵件，就必須額外申請 network、external-send 與人為批准。",
+        misunderstanding:
+          "它不是單一安全掃描工具；掃描只是其中一關，仍需要最小權限、版本 pin、run log 與撤銷機制。"
+      },
+      fde: {
+        scenario:
+          "客戶想讓多個團隊直接從 public marketplace 安裝 agent skills，以加速文件整理、資料查詢、程式協作與工作流自動化，但資安與法遵主管擔心不明腳本、資料外洩與權限失控。",
+        questions: [
+          "skill 的 publisher、版本、依賴、腳本與實際需要的 file / network / credential 權限是什麼？",
+          "哪些工作可用 instruction-only 或 read-only skill 先做 sandbox PoC，哪些必須進 allowlist 與人工批准？",
+          "若掃描出新 finding 或 upstream 被接管，誰負責 revoke、通知使用者與回退 workflow？"
+        ],
+        exercise:
+          "為三種 skill 設計 Trust Level：L1 instruction-only、L2 read-only tool、L3 scripted / network、L4 external-write / sensitive-data；為每級寫出必備證據與核准者。",
+        interview:
+          "我會把 agent skill 視為新的軟體供應鏈，而不是單純提示詞。我的導入方式是先建立 Skill Intake Gate：provenance、權限清單、靜態掃描、sandbox、owner、approval 與 revocation，讓團隊能安全地加速複用。"
+      }
+    },
+    {
       id: "2026-07-12",
       date: "2026-07-12",
       title: "Agent 開始需要管理層，而不是更多單點工具",
@@ -3978,15 +4331,15 @@ window.AI_LEARNING_DATA = {
   weekly: [
     {
       title: "本週主線",
-      text: "本週主線從 agent operations、evidence-first delivery 進一步走到 agent management layer：不只問 agent 會不會做，而是問誰分派、誰批准、誰管理記憶、誰追蹤成本、誰驗收、失敗時誰接手。"
+      text: "本週主線從 agent operations、evidence-first delivery、agent management layer，延伸到 agent skills supply chain：不只問 agent 會不會做，而是問誰分派、誰批准、誰管理記憶與成本，也要問 skill 從哪裡來、需要什麼權限、誰驗收、發現風險如何撤銷。"
     },
     {
       title: "本週名詞",
-      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Evidence Trail、Source Verification、Agent Management Layer、Memory Policy、Model Routing。"
+      text: "Agent Governance、Runtime Telemetry、Agent Handoff、Evidence Trail、Source Verification、Agent Management Layer、Memory Policy、Model Routing、Agent Skills、Skill Intake Gate、Capability Manifest。"
     },
     {
       title: "本週練習",
-      text: "把一個 agent 導入拆成 task queue、agent registry、permission boundary、memory policy、model routing、observability、human approval 與 rollback，並畫成 Agent Management Console blueprint。"
+      text: "先把一個 agent 導入拆成 task queue、agent registry、permission boundary、memory policy、model routing、observability、human approval 與 rollback；再替每個要安裝的 skill 補 provenance、capability inventory、scan、sandbox、owner 與 revocation。"
     }
   ]
 };
