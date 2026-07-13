@@ -1,64 +1,30 @@
-# GitHub Pages Maintenance
+# GitHub Pages Retirement Record
 
-## Current Setup
+## Status
 
-- Repository: <https://github.com/zzzzzzzzzzphoebe/phoebe-ai-learning>
-- GitHub Pages: <https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/>
-- Source: GitHub Actions workflow
-- Workflow: `.github/workflows/deploy-pages.yml`
-- Build mode: static files, no app build step; workflow uploads the repository root directly
+- State: **RETIRED / 停止更新**
+- Effective date: 2026-07-13
+- Legacy repository: <https://github.com/zzzzzzzzzzphoebe/phoebe-ai-learning>
+- Frozen snapshot: <https://zzzzzzzzzzphoebe.github.io/phoebe-ai-learning/>
+- Replacement: <https://phoebe-lunar-learning-os.zzzzzzzzzz-moon.chatgpt.site>
+- Automatic Pages workflow: disabled
 
-Keep the repository public-safe. Keep `index.html`, `styles.css`, `app.js`, `data/`, and `assets/` at the root level.
+The repository and Pages URL remain available as a historical snapshot. They are not a fallback publishing target and must not receive daily content.
 
-## Manual Recovery Flow
+## Retirement Rules
 
-Use this only if the repository needs to be recreated from a fresh local copy:
+1. Do not update data/learning-data.js or content/daily/ during the daily run.
+2. Do not push cache-bust updates or retrigger the Pages deployment workflow.
+3. Do not put the legacy Pages link in the daily reminder email.
+4. Keep the repository public-safe and preserve its existing history.
+5. Only recover or redeploy the legacy site when the user explicitly requests it.
 
-```bash
-cd /Users/ye/Desktop/Phoebe/04-Projects/10-ai-learning-journal
-git init
-git branch -M main
-git add .
-git commit -m "Initial AI learning journal"
-gh repo create phoebe-ai-learning --public --source=. --remote=origin --push
-```
+## New Daily Publishing Target
 
-Then enable GitHub Pages from:
+- Project: /Users/ye/Desktop/Phoebe/04-Projects/10-ai-learning-journal/gpt-sites-v2
+- Content source: app/page.tsx
+- Hosting binding: .openai/hosting.json
+- Production URL: <https://phoebe-lunar-learning-os.zzzzzzzzzz-moon.chatgpt.site>
+- Operating contract: gpt-sites-v2/docs/DAILY_PUBLISHING.md
 
-```text
-Settings -> Pages -> Build and deployment -> GitHub Actions
-```
-
-## Future Daily Automation Shape
-
-The daily task can later do four things:
-
-1. Pick one public-safe AI topic.
-2. Append an entry to `data/learning-data.js`.
-3. Write a matching Markdown note under `content/daily/YYYY-MM-DD.md`.
-4. Send a short email with the GitHub Pages link.
-
-## Deploy Failure Triage
-
-If GitHub sends a `pages build and deployment` failure mail but the `build` step succeeded, do not assume the site files are broken.
-
-Use this sequence:
-
-```bash
-cd /Users/ye/Desktop/Phoebe/04-Projects/10-ai-learning-journal
-./scripts/verify-pages-sync.sh
-```
-
-- If local and raw GitHub match, but Pages is stale, the failure is in Pages deploy rather than site content.
-- Wait a few minutes and verify again.
-- If Pages is still stale, rerun the `Deploy GitHub Pages` workflow or retrigger the Pages build instead of making unrelated content edits.
-
-## Actions Deploy Notes
-
-- The workflow is intentionally minimal because this site is static: checkout, configure Pages, upload the repo root, then deploy.
-- Keep the site public-safe and root-based. Do not move `index.html`, `styles.css`, `app.js`, `data/`, or `assets/` into a generated build folder unless the workflow is updated at the same time.
-- The main advantage over legacy branch deploy is observability: each run has explicit logs, rerun support, and a clear artifact/deploy split.
-
-This prevents a false fix loop where content keeps changing even though the real problem is a transient GitHub Pages deployment failure.
-
-Do not include company confidential data, private email details, API keys, tokens, customer identifiers, or internal-only notes.
+The new site remains private and requires ChatGPT sign-in. The daily email should link to that production URL only.
